@@ -2,9 +2,6 @@
 ARG VARIANT=3
 FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT}
 
-# Install Rails
-RUN gem install rails webdrivers 
-
 # Default value to allow debug server to serve content over GitHub Codespace's port forwarding service
 # The value is a comma-separated list of allowed domains 
 ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev"
@@ -22,3 +19,16 @@ RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSI
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
+
+RUN bundle config build.nokogiri --use-system-libraries;
+
+COPY Gemfile* /tmp/
+WORKDIR /tmp
+RUN bundle install
+
+ENV app /app
+RUN mkdir $app
+WORKDIR $app
+ADD . $app
+
+CMD rails s -b 0.0.0.0
