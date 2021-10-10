@@ -68,6 +68,7 @@ gem 'figaro'
 gem 'pry-byebug', platform: :mri, group: [:development, :test]
 gem 'pry-rails', platform: :mri, group: [:development, :test]
 gem 'rack-heartbeat'
+gem 'rexml', group: [:development, :test] # XML toolkit for Ruby. Now a bundled gem. Used by rspec.
 gem 'rspec-rails', group: [:development, :test]
 gem 'slim', require: 'slim/logic_less' # template language whose goal is to reduce the syntax to the essential parts without becoming cryptic.
 gem 'slim-rails' # Slim templates generator
