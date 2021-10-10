@@ -6,3 +6,7 @@ Tools to help validate web pages. Gathers validation results from multiple sourc
 
 ## Dockerized
 - see https://dev.to/imiked/starting-a-rails-app-using-vscode-containers-1gj9
+
+
+## Specs
+- `$ rspec`, see: https://github.com/rspec/rspec-rails
