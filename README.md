@@ -12,3 +12,7 @@ Tools to help validate web pages. Gathers validation results from multiple sourc
 - `$ rspec`, see: https://github.com/rspec/rspec-rails
 - Factory Bot ♥ Rails, see: [Getting Started](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md)
 - [Faker](https://github.com/stympy/faker): generate fake data such as names, addresses, and BossaNova artists.
+
+## Debugging
+- Both pry and debugger are supported (via pry-byebug).
+- add `debugger` or `binding.pry`
