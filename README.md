@@ -16,3 +16,6 @@ Tools to help validate web pages. Gathers validation results from multiple sourc
 ## Debugging
 - Both pry and debugger are supported (via pry-byebug).
 - add `debugger` or `binding.pry`
+
+## Configured via [Figaro](https://github.com/laserlemon/figaro)
+- see `config/application.yml`
