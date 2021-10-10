@@ -10,3 +10,4 @@ Tools to help validate web pages. Gathers validation results from multiple sourc
 
 ## Specs
 - `$ rspec`, see: https://github.com/rspec/rspec-rails
+- Factory Bot ♥ Rails, see: [Getting Started](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md)
