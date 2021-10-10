@@ -60,3 +60,4 @@ gem 'factory_bot_rails', require: false, group: [:development, :test]
 gem 'faker', require: false, group: [:development, :test]
 gem 'pry-byebug', platform: :mri, group: [:development, :test]
 gem 'pry-rails', platform: :mri, group: [:development, :test]
+gem 'haml-rails'
