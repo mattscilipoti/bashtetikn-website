@@ -63,3 +63,4 @@ gem 'pry-rails', platform: :mri, group: [:development, :test]
 gem 'haml-rails'
 gem 'figaro'
 gem 'rack-heartbeat'
+gem 'awesome_print', require: false, group: [:development, :test]
