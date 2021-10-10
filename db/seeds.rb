@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'database_cleaner'
+
+unless ENV['FORCE_SEED'] || Rails.env.development? || Rails.env.test?
+  fail "Safety net: If you really want to seed the '#{Rails.env}' database, use FORCE_SEED=true"
+end
+
+puts "Cleaning db, via truncation..."
+do_not_truncate = %w[] # add tables to ignore, e.g. users
+DatabaseCleaner.clean_with :truncation, :except => do_not_truncate
+
