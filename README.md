@@ -19,3 +19,7 @@ Tools to help validate web pages. Gathers validation results from multiple sourc
 
 ## Configured via [Figaro](https://github.com/laserlemon/figaro)
 - see `config/application.yml`
+
+## Monitoring
+- Use `/heartbeat` for app monitoring services.
+- via [rack-heartbeat](https://github.com/imajes/rack-heartbeat)

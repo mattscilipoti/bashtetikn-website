@@ -62,3 +62,4 @@ gem 'pry-byebug', platform: :mri, group: [:development, :test]
 gem 'pry-rails', platform: :mri, group: [:development, :test]
 gem 'haml-rails'
 gem 'figaro'
+gem 'rack-heartbeat'
