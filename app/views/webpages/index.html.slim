@@ -13,6 +13,8 @@ table
         td = link_to webpage.name, webpage
         td = webpage.url
         td
+          = link_to 'Validate HTML', validate_html_webpage_path(webpage)
+          = " | "
           = link_to 'Edit', edit_webpage_path(webpage)
           = " | "
           = link_to 'Destroy', webpage, data: { confirm: 'Are you sure?' }, method: :delete

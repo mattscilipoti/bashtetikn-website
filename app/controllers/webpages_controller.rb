@@ -1,5 +1,5 @@
 class WebpagesController < ApplicationController
-  before_action :set_webpage, only: %i[ show edit update destroy ]
+  before_action :set_webpage, only: %i[ show edit update destroy validate_html ]
 
   # GET /webpages or /webpages.json
   def index
@@ -54,6 +54,15 @@ class WebpagesController < ApplicationController
       format.html { redirect_to webpages_url, notice: "Webpage was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def validate_html
+    require 'bashtetikn'
+    validator = Bashtetikn::HtmlValidatorFromW3C.new
+    suspect_url = @webpage.url
+
+    @html_validation_results = validator.validate_uri(suspect_url)
+    render 'show'
   end
 
   private

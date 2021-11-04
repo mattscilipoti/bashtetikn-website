@@ -6,6 +6,9 @@ p
   strong Url:
   = @webpage.url
 
+- if @html_validation_results.present?
+  =debug @html_validation_results
+
 => link_to 'Edit', edit_webpage_path(@webpage)
 '|
 =< link_to 'Back', webpages_path

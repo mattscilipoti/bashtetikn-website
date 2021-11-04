@@ -61,6 +61,7 @@ end
 # BEGIN application specific gems (sorted alpha) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 gem 'awesome_print', require: false, group: [:development, :test]
+gem 'bashtetikn'
 gem 'database_cleaner', require: false, group: [:development, :test]
 gem 'factory_bot_rails', require: false, group: [:development, :test]
 gem 'faker', require: false, group: [:development, :test]
