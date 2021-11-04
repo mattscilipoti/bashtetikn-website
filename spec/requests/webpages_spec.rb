@@ -13,15 +13,17 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/webpages", type: :request do
-  
+
   # Webpage. As you add validations to Webpage, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: 'TEST NAME',
+      url: 'https://example.com/page'
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { url: 'not a url' }
   }
 
   describe "GET /index" do
@@ -76,9 +78,9 @@ RSpec.describe "/webpages", type: :request do
         }.to change(Webpage, :count).by(0)
       end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
+      it "renders an Unprocessable entity response (i.e. to display the 'new' template)" do
         post webpages_url, params: { webpage: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(422) # Unprocessable entity
       end
     end
   end
@@ -86,14 +88,17 @@ RSpec.describe "/webpages", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: 'UPDATED PAGE',
+          url: 'https://updated.example.com'
+        }
       }
 
       it "updates the requested webpage" do
         webpage = Webpage.create! valid_attributes
         patch webpage_url(webpage), params: { webpage: new_attributes }
         webpage.reload
-        skip("Add assertions for updated state")
+        expect(webpage.name).to eql("UPDATED PAGE")
+        expect(webpage.url).to eql("https://updated.example.com")
       end
 
       it "redirects to the webpage" do
@@ -105,10 +110,10 @@ RSpec.describe "/webpages", type: :request do
     end
 
     context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
+      it "renders a Unprocessable entity response (i.e. to display the 'edit' template)" do
         webpage = Webpage.create! valid_attributes
         patch webpage_url(webpage), params: { webpage: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(422) # Unprocessable entity
       end
     end
   end

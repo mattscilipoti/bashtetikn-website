@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "webpages/new", type: :view do
   before(:each) do
     assign(:webpage, Webpage.new(
-      name: "MyString",
-      url: "MyString"
+      name: "TEST NEW PAGE",
+      url: "https://example.com"
     ))
   end
 

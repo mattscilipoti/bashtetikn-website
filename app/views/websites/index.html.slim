@@ -1,5 +1,5 @@
 h1 Websites
-  
+
 table
   thead
     tr
@@ -12,7 +12,7 @@ table
       tr
         td = link_to website.name, website, title: "Show details for '#{website.name}'"
         td = website.url
-        td 
+        td
           = link_to 'Edit', edit_website_path(website)
           = " | "
           = link_to 'Destroy', website, data: { confirm: 'Are you sure?' }, method: :delete

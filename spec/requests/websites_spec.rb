@@ -13,7 +13,7 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/websites", type: :request do
-  
+
   # Website. As you add validations to Website, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
@@ -78,7 +78,7 @@ RSpec.describe "/websites", type: :request do
         }.to change(Website, :count).by(0)
       end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
+      it "renders an Unprocessable entity response (i.e. to display the 'new' template)" do
         post websites_url, params: { website: invalid_attributes }
         expect(response).to have_http_status(422) # Unprocessable entity
       end
@@ -97,9 +97,8 @@ RSpec.describe "/websites", type: :request do
         website = Website.create! valid_attributes
         patch website_url(website), params: { website: updated_attributes }
         website.reload
-        updated_website = Website.find(website.id)
-        expect(updated_website.name).to eql("UPDATED WEBSITE")
-        expect(updated_website.url).to eql("https://updated.example.com")
+        expect(website.name).to eql("UPDATED WEBSITE")
+        expect(website.url).to eql("https://updated.example.com")
       end
 
       it "redirects to the website" do
@@ -114,7 +113,7 @@ RSpec.describe "/websites", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         website = Website.create! valid_attributes
         patch website_url(website), params: { website: invalid_attributes }
-        
+
         expect(response).to have_http_status(422) # Unprocessable entity
       end
     end
