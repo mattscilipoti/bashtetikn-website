@@ -1,4 +1,4 @@
-# Bashtetikn
+# Bashtetikn (website)
 
 Tools to help validate web pages. Gathers validation results from multiple sources, providing a single interface for both requests and responses.
 
@@ -23,3 +23,7 @@ Tools to help validate web pages. Gathers validation results from multiple sourc
 ## Monitoring
 - Use `/heartbeat` for app monitoring services.
 - via [rack-heartbeat](https://github.com/imajes/rack-heartbeat)
+
+## View Templating via Slim
+
+- Note: using logic-less: https://github.com/slim-template/slim/blob/master/doc/logic_less.md

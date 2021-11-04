@@ -275,7 +275,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver
-  slim
   slim-rails
   spring
   turbolinks (~> 5)
