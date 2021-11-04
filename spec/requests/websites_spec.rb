@@ -17,11 +17,13 @@ RSpec.describe "/websites", type: :request do
   # Website. As you add validations to Website, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: "TEST #{Time.now.iso8601}",
+      url: "https://example.com"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { url: 'not a url' }
   }
 
   describe "GET /index" do
@@ -78,27 +80,31 @@ RSpec.describe "/websites", type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post websites_url, params: { website: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(422) # Unprocessable entity
       end
     end
   end
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+      let(:updated_attributes) {
+        { name: "UPDATED WEBSITE",
+          url: "https://updated.example.com"
+        }
       }
 
       it "updates the requested website" do
         website = Website.create! valid_attributes
-        patch website_url(website), params: { website: new_attributes }
+        patch website_url(website), params: { website: updated_attributes }
         website.reload
-        skip("Add assertions for updated state")
+        updated_website = Website.find(website.id)
+        expect(updated_website.name).to eql("UPDATED WEBSITE")
+        expect(updated_website.url).to eql("https://updated.example.com")
       end
 
       it "redirects to the website" do
         website = Website.create! valid_attributes
-        patch website_url(website), params: { website: new_attributes }
+        patch website_url(website), params: { website: updated_attributes }
         website.reload
         expect(response).to redirect_to(website_url(website))
       end
@@ -108,7 +114,8 @@ RSpec.describe "/websites", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         website = Website.create! valid_attributes
         patch website_url(website), params: { website: invalid_attributes }
-        expect(response).to be_successful
+        
+        expect(response).to have_http_status(422) # Unprocessable entity
       end
     end
   end
