@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "websites/edit", type: :view do
   before(:each) do
     @website = assign(:website, Website.create!(
-      name: "MyString",
-      url: "MyString"
+      name: "UPDATED NAME",
+      url: "https://updated.example.com"
     ))
   end
 
