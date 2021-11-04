@@ -5,18 +5,17 @@ table
     tr
       th Name
       th Url
-      th
-      th
-      th
+      th Actions
 
   tbody
     - @websites.each do |website|
       tr
-        td = website.name
+        td = link_to website.name, website, title: "Show details for '#{website.name}'"
         td = website.url
-        td = link_to 'Show', website
-        td = link_to 'Edit', edit_website_path(website)
-        td = link_to 'Destroy', website, data: { confirm: 'Are you sure?' }, method: :delete
+        td 
+          = link_to 'Edit', edit_website_path(website)
+          = " | "
+          = link_to 'Destroy', website, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
