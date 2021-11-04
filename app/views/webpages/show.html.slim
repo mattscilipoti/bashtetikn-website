@@ -7,7 +7,22 @@ p
   = @webpage.url
 
 - if @html_validation_results.present?
-  =debug @html_validation_results
+  h2 HTML Errors
+  -if @html_validation_results.errors.blank?
+    p No errors
+  - else
+    ul
+    - for message in @html_validation_results.errors
+      li = message.message
+
+  h2 HTML Warnings
+  -if @html_validation_results.warnings.blank?
+    p No warnings
+  - else
+    ul
+    - for message in @html_validation_results.errors
+      li = message.message
+
 
 => link_to 'Edit', edit_webpage_path(@webpage)
 '|
