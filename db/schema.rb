@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_04_024930) do
+ActiveRecord::Schema.define(version: 2021_11_04_185822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "validations", force: :cascade do |t|
+    t.string "type"
+    t.string "url"
+    t.bigint "webpage_id"
+    t.string "warnings", array: true
+    t.string "errors", array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["errors"], name: "index_validations_on_errors", using: :gin
+    t.index ["warnings"], name: "index_validations_on_warnings", using: :gin
+    t.index ["webpage_id"], name: "index_validations_on_webpage_id"
+  end
 
   create_table "webpages", force: :cascade do |t|
     t.string "name"
@@ -29,4 +42,5 @@ ActiveRecord::Schema.define(version: 2021_11_04_024930) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "validations", "webpages"
 end
