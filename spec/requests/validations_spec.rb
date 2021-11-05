@@ -13,15 +13,16 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/validations", type: :request do
-  
+
   # Validation. As you add validations to Validation, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { url: 'https://exmaple.com'
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { url: 'not a url' }
   }
 
   describe "GET /index" do
@@ -78,7 +79,7 @@ RSpec.describe "/validations", type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post validations_url, params: { validation: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(422) # Unprocessable entity
       end
     end
   end
@@ -86,14 +87,14 @@ RSpec.describe "/validations", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { url: "https://updated.example.com" }
       }
 
       it "updates the requested validation" do
         validation = Validation.create! valid_attributes
         patch validation_url(validation), params: { validation: new_attributes }
         validation.reload
-        skip("Add assertions for updated state")
+        expect(validation.url).to eql("https://updated.example.com")
       end
 
       it "redirects to the validation" do
@@ -108,7 +109,7 @@ RSpec.describe "/validations", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         validation = Validation.create! valid_attributes
         patch validation_url(validation), params: { validation: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(422) # Unprocessable entity
       end
     end
   end

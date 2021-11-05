@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "validations/edit", type: :view do
   before(:each) do
+    webpage = Webpage.create(name: "TEST PAGE", url: "https://example.com/edit")
+
     @validation = assign(:validation, Validation.create!(
-      type: "",
-      url: "MyString",
-      webpage: nil,
-      warnings: "",
-      errors: ""
+      type: "Validation",
+      url: "https://example.com/edit",
+      webpage: webpage,
+      warnings: [],
+      issues: []
     ))
   end
 
@@ -20,11 +22,11 @@ RSpec.describe "validations/edit", type: :view do
 
       assert_select "input[name=?]", "validation[url]"
 
-      assert_select "input[name=?]", "validation[webpage_id]"
+      assert_select "select[name=?]", "validation[webpage_id]"
 
       assert_select "input[name=?]", "validation[warnings]"
 
-      assert_select "input[name=?]", "validation[errors]"
+      assert_select "input[name=?]", "validation[issues]"
     end
   end
 end

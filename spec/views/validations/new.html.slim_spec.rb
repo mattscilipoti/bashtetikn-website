@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe "validations/new", type: :view do
   before(:each) do
     assign(:validation, Validation.new(
-      type: "",
-      url: "MyString",
-      webpage: nil,
-      warnings: "",
-      errors: ""
+      type: "Validation",
+      url: "https://new.example.com",
+      webpage: Webpage.first,
+      warnings: [],
+      issues: []
     ))
   end
 
@@ -20,11 +20,11 @@ RSpec.describe "validations/new", type: :view do
 
       assert_select "input[name=?]", "validation[url]"
 
-      assert_select "input[name=?]", "validation[webpage_id]"
+      assert_select "select[name=?]", "validation[webpage_id]"
 
       assert_select "input[name=?]", "validation[warnings]"
 
-      assert_select "input[name=?]", "validation[errors]"
+      assert_select "input[name=?]", "validation[issues]"
     end
   end
 end

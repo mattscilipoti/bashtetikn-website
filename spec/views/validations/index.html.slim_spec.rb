@@ -4,28 +4,31 @@ RSpec.describe "validations/index", type: :view do
   before(:each) do
     assign(:validations, [
       Validation.create!(
-        type: "Type",
-        url: "Url",
+        type: "Validation",
+        url: "https://1.example.com",
         webpage: nil,
-        warnings: "",
-        errors: ""
+        warnings: [],
+        issues: []
       ),
       Validation.create!(
-        type: "Type",
-        url: "Url",
+        type: "Validation",
+        url: "https://2.example.com",
         webpage: nil,
-        warnings: "",
-        errors: ""
+        warnings: [],
+        issues: []
       )
     ])
   end
 
   it "renders a list of validations" do
     render
-    assert_select "tr>td", text: "Type".to_s, count: 2
-    assert_select "tr>td", text: "Url".to_s, count: 2
-    assert_select "tr>td", text: nil.to_s, count: 2
-    assert_select "tr>td", text: "".to_s, count: 2
-    assert_select "tr>td", text: "".to_s, count: 2
+    # raise rendered
+
+    assert_select "tr>td.type", text: /Validation/, count: 2
+    assert_select "tr>td.url", text: /example.com/, count: 2
+    assert_select "tr>td.webpage", text: nil.to_s, count: 2
+    assert_select "tr>td.warnings", text: "0", count: 2
+    assert_select "tr>td.issues", text: "0", count: 2
+    assert_select "tr>td.actions", count: 2
   end
 end

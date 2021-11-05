@@ -14,11 +14,11 @@
     = f.text_field :url
   .field
     = f.label :webpage
-    = f.text_field :webpage
+    = f.collection_select :webpage_id, Webpage.all, :id, :name
   .field
     = f.label :warnings
     = f.text_field :warnings
   .field
-    = f.label :errors
-    = f.text_field :errors
+    = f.label :issues
+    = f.text_field :issues
   .actions = f.submit

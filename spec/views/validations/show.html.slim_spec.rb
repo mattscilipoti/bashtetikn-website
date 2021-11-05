@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe "validations/show", type: :view do
   before(:each) do
     @validation = assign(:validation, Validation.create!(
-      type: "Type",
-      url: "Url",
+      type: "Validation",
+      url: "https://show.example.com",
       webpage: nil,
       warnings: "",
-      errors: ""
+      issues: ""
     ))
   end
 

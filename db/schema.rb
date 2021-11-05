@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 2021_11_04_185822) do
     t.string "type"
     t.string "url"
     t.bigint "webpage_id"
-    t.string "warnings", array: true
-    t.string "errors", array: true
+    t.string "warnings", default: [], array: true
+    t.string "issues", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["errors"], name: "index_validations_on_errors", using: :gin
+    t.index ["issues"], name: "index_validations_on_issues", using: :gin
     t.index ["warnings"], name: "index_validations_on_warnings", using: :gin
     t.index ["webpage_id"], name: "index_validations_on_webpage_id"
   end
