@@ -57,7 +57,8 @@ class WebpagesController < ApplicationController
   end
 
   def validate_html
-    @html_validation_results = @webpage.validate_html
+    @webpage.validate_html
+    @webpage.save
     render 'show'
   end
 

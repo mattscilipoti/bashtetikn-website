@@ -73,3 +73,5 @@ gem 'rexml', group: [:development, :test] # XML toolkit for Ruby. Now a bundled 
 gem 'rspec-rails', group: [:development, :test]
 gem 'slim-rails' # Slim templates generator
 gem 'validate_url'
+gem 'vcr', require: false, group: [:test]
+gem 'webmock', require: false, group: [:test] # for vcr

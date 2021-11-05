@@ -6,22 +6,23 @@ p
   strong Url:
   = @webpage.url
 
-- if @html_validation_results.present?
-  h2 HTML Errors
-  -if @html_validation_results.errors.blank?
+- validation = @webpage.validations.last
+- if validation.present?
+  h2 HTML Errors (tested #{validation.created_at})
+  -if validation.issues.blank?
     p No errors
   - else
     ul
-    - for message in @html_validation_results.errors
-      li = message.message
+    - for message in validation.issues
+      li = message
 
-  h2 HTML Warnings
-  -if @html_validation_results.warnings.blank?
+  h2 HTML Warnings (tested #{validation.created_at})
+  -if validation.warnings.blank?
     p No warnings
   - else
     ul
-    - for message in @html_validation_results.errors
-      li = message.message
+    - for message in validation.warnings
+      li = message
 
 
 => link_to 'Edit', edit_webpage_path(@webpage)
