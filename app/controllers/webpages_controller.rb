@@ -57,11 +57,7 @@ class WebpagesController < ApplicationController
   end
 
   def validate_html
-    require 'bashtetikn'
-    validator = Bashtetikn::HtmlValidatorFromW3C.new
-    suspect_url = @webpage.url
-
-    @html_validation_results = validator.validate_uri(suspect_url)
+    @html_validation_results = @webpage.validate_html
     render 'show'
   end
 
