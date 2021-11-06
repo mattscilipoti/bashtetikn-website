@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_04_185822) do
+ActiveRecord::Schema.define(version: 2021_11_05_160852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "validations", force: :cascade do |t|
+  create_table "page_scans", force: :cascade do |t|
     t.string "type"
     t.string "url"
     t.bigint "webpage_id"
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 2021_11_04_185822) do
     t.string "issues", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["issues"], name: "index_validations_on_issues", using: :gin
-    t.index ["warnings"], name: "index_validations_on_warnings", using: :gin
-    t.index ["webpage_id"], name: "index_validations_on_webpage_id"
+    t.index ["issues"], name: "index_page_scans_on_issues", using: :gin
+    t.index ["warnings"], name: "index_page_scans_on_warnings", using: :gin
+    t.index ["webpage_id"], name: "index_page_scans_on_webpage_id"
   end
 
   create_table "webpages", force: :cascade do |t|
@@ -42,5 +42,5 @@ ActiveRecord::Schema.define(version: 2021_11_04_185822) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "validations", "webpages"
+  add_foreign_key "page_scans", "webpages"
 end

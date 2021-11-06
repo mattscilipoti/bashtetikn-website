@@ -1,7 +1,7 @@
 require 'bashtetikn'
 
 class Webpage < ApplicationRecord
-  has_many :validations
+  has_many :page_scans
   validates :url, presence: true, url: { public_suffix: true }
 
   def html_validator
@@ -10,7 +10,7 @@ class Webpage < ApplicationRecord
 
   def validate_html
     result = html_validator.validate_uri(self.url)
-    validations.build(
+    page_scans.build(
       url: url,
       warnings: result.warnings.collect(&:message),
       issues: result.errors.collect(&:message),

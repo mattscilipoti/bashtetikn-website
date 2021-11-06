@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Validation, type: :model do
+RSpec.describe PageScan, type: :model do
   describe '(validations)' do
-    subject(:validation) { Validation.new(url: 'https://example.com') }
+    subject(:page_scan) { PageScan.new(url: 'https://example.com') }
 
     it 'requires a url' do
       expect(subject).to be_valid

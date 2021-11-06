@@ -6,22 +6,22 @@ p
   strong Url:
   = @webpage.url
 
-- validation = @webpage.validations.last
-- if validation.present?
-  h2 HTML Errors (tested #{validation.created_at})
-  -if validation.issues.blank?
+- page_scan = @webpage.page_scans.last
+- if page_scan.present?
+  h2 HTML Errors (tested #{page_scan.created_at})
+  -if page_scan.issues.blank?
     p No errors
   - else
     ul
-    - for message in validation.issues
+    - for message in page_scan.issues
       li = message
 
-  h2 HTML Warnings (tested #{validation.created_at})
-  -if validation.warnings.blank?
+  h2 HTML Warnings (tested #{page_scan.created_at})
+  -if page_scan.warnings.blank?
     p No warnings
   - else
     ul
-    - for message in validation.warnings
+    - for message in page_scan.warnings
       li = message
 
 

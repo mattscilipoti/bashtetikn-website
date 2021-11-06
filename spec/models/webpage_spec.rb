@@ -22,7 +22,7 @@ RSpec.describe Webpage, type: :model do
     it 'converts results errors to #issues' do
       subject.url = 'https://w3c-validators.github.io/w3c_validators/invalid_html5.html'
       subject.validate_html
-      html_validation = subject.validations.last
+      html_validation = subject.page_scans.last
       expect(html_validation.issues.count).to eql(2)
       expect(html_validation.issues).to contain_exactly(
         "End tag for  “body” seen, but there were unclosed elements.",

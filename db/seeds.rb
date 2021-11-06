@@ -30,7 +30,7 @@ Webpage.create!(
   url: 'https://w3c-validators.github.io/w3c_validators/invalid_html5.html'
 )
 
-Validation.create!(
+PageScan.create!(
   url: 'https://example.com/1',
   webpage: Webpage.first,
   warnings: [{message: 'WARN 1'}],

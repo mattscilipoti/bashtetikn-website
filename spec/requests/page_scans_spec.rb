@@ -12,12 +12,12 @@
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/validations", type: :request do
+RSpec.describe "/page_scans", type: :request do
 
-  # Validation. As you add validations to Validation, be sure to
+  # PageScan. As you add validations to PageScan, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { url: 'https://exmaple.com'
+    { url: 'https://example.com'
     }
   }
 
@@ -27,58 +27,58 @@ RSpec.describe "/validations", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Validation.create! valid_attributes
-      get validations_url
+      PageScan.create! valid_attributes
+      get page_scans_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      validation = Validation.create! valid_attributes
-      get validation_url(validation)
+      page_scan = PageScan.create! valid_attributes
+      get page_scan_url(page_scan)
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_validation_url
+      get new_page_scan_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /edit" do
     it "render a successful response" do
-      validation = Validation.create! valid_attributes
-      get edit_validation_url(validation)
+      page_scan = PageScan.create! valid_attributes
+      get edit_page_scan_url(page_scan)
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new Validation" do
+      it "creates a new PageScan" do
         expect {
-          post validations_url, params: { validation: valid_attributes }
-        }.to change(Validation, :count).by(1)
+          post page_scans_url, params: { page_scan: valid_attributes }
+        }.to change(PageScan, :count).by(1)
       end
 
-      it "redirects to the created validation" do
-        post validations_url, params: { validation: valid_attributes }
-        expect(response).to redirect_to(validation_url(Validation.last))
+      it "redirects to the created page_scan" do
+        post page_scans_url, params: { page_scan: valid_attributes }
+        expect(response).to redirect_to(page_scan_url(PageScan.last))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new Validation" do
+      it "does not create a new PageScan" do
         expect {
-          post validations_url, params: { validation: invalid_attributes }
-        }.to change(Validation, :count).by(0)
+          post page_scans_url, params: { page_scan: invalid_attributes }
+        }.to change(PageScan, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post validations_url, params: { validation: invalid_attributes }
+        post page_scans_url, params: { page_scan: invalid_attributes }
         expect(response).to have_http_status(422) # Unprocessable entity
       end
     end
@@ -90,42 +90,42 @@ RSpec.describe "/validations", type: :request do
         { url: "https://updated.example.com" }
       }
 
-      it "updates the requested validation" do
-        validation = Validation.create! valid_attributes
-        patch validation_url(validation), params: { validation: new_attributes }
-        validation.reload
-        expect(validation.url).to eql("https://updated.example.com")
+      it "updates the requested page_scan" do
+        page_scan = PageScan.create! valid_attributes
+        patch page_scan_url(page_scan), params: { page_scan: new_attributes }
+        page_scan.reload
+        expect(page_scan.url).to eql("https://updated.example.com")
       end
 
-      it "redirects to the validation" do
-        validation = Validation.create! valid_attributes
-        patch validation_url(validation), params: { validation: new_attributes }
-        validation.reload
-        expect(response).to redirect_to(validation_url(validation))
+      it "redirects to the page_scan" do
+        page_scan = PageScan.create! valid_attributes
+        patch page_scan_url(page_scan), params: { page_scan: new_attributes }
+        page_scan.reload
+        expect(response).to redirect_to(page_scan_url(page_scan))
       end
     end
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        validation = Validation.create! valid_attributes
-        patch validation_url(validation), params: { validation: invalid_attributes }
+        page_scan = PageScan.create! valid_attributes
+        patch page_scan_url(page_scan), params: { page_scan: invalid_attributes }
         expect(response).to have_http_status(422) # Unprocessable entity
       end
     end
   end
 
   describe "DELETE /destroy" do
-    it "destroys the requested validation" do
-      validation = Validation.create! valid_attributes
+    it "destroys the requested page_scan" do
+      page_scan = PageScan.create! valid_attributes
       expect {
-        delete validation_url(validation)
-      }.to change(Validation, :count).by(-1)
+        delete page_scan_url(page_scan)
+      }.to change(PageScan, :count).by(-1)
     end
 
-    it "redirects to the validations list" do
-      validation = Validation.create! valid_attributes
-      delete validation_url(validation)
-      expect(response).to redirect_to(validations_url)
+    it "redirects to the page_scans list" do
+      page_scan = PageScan.create! valid_attributes
+      delete page_scan_url(page_scan)
+      expect(response).to redirect_to(page_scans_url)
     end
   end
 end

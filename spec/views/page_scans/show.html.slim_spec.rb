@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "validations/show", type: :view do
+RSpec.describe "page_scans/show", type: :view do
   before(:each) do
-    @validation = assign(:validation, Validation.create!(
-      type: "Validation",
+    @page_scan = assign(:page_scan, PageScan.create!(
+      type: "PageScan",
       url: "https://show.example.com",
       webpage: nil,
       warnings: "",
