@@ -12,9 +12,9 @@ RSpec.describe Webpage, type: :model do
     end
   end
 
-  describe '#html_validator', vcr: true do
-    it 'is a Bashtetikn::HtmlValidatorFromW3C' do
-      expect(subject.html_validator).to be_a(Bashtetikn::HtmlValidatorFromW3C)
+  describe '#html_validation_scanner', vcr: true do
+    it 'is a HtmlValidationScan' do
+      expect(subject.html_validation_scanner).to be_a(HtmlValidationScan)
     end
   end
 

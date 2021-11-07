@@ -14,14 +14,14 @@ table
     - @page_scans.each do |page_scan|
       tr
         td.type = page_scan.type
-        td.url = link_to page_scan.url, page_scan, title: "Show details"
+        td.url = link_to page_scan.url, page_scan_path(page_scan), title: "Show details"
         td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show details")
         td.warnings.count = page_scan.warnings.size
         td.issues.count = page_scan.issues.size
         td.actions
           = link_to 'Edit', edit_page_scan_path(page_scan)
           = " | "
-          = link_to 'Destroy', page_scan, data: { confirm: 'Are you sure?' }, method: :delete
+          = link_to 'Destroy', page_scan_path(page_scan), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
