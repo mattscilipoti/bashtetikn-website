@@ -11,12 +11,13 @@ table
     - @webpages.each do |webpage|
       tr
         td = link_to webpage.name, webpage
-        td = webpage.url
         td
-          = link_to 'Validate HTML', validate_html_webpage_path(webpage)
-          = " | "
+          small = link_to(webpage.url)
+        td
+          = link_to 'Validate&nbsp;HTML'.html_safe, validate_html_webpage_path(webpage)
+          = "&nbsp;|&nbsp;".html_safe
           = link_to 'Edit', edit_webpage_path(webpage)
-          = " | "
+          = "&nbsp;|&nbsp;".html_safe
           = link_to 'Destroy', webpage, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
