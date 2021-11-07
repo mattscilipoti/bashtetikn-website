@@ -5,19 +5,20 @@ table
     tr
       th Type
       th Webpage
-      th Warnings (ct)
       th Issues (ct)
+      th Warnings (ct)
       th Scanned Url
       th Actions
 
   tbody
     - @page_scans.each do |page_scan|
       tr
-        td.type = page_scan.type
-        td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show details")
-        td.warnings.count = page_scan.warnings.size
+        td.type = link_to page_scan.type, page_scan_path(page_scan), title: "Show Scan details"
+        td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")
         td.issues.count = page_scan.issues.size
-        td.url = link_to page_scan.url, page_scan_path(page_scan), title: "Show details"
+        td.warnings.count = page_scan.warnings.size
+        td.url
+          small =  link_to page_scan.url, page_scan.url, title: "Browse to Scanned page"
         td.actions
           = link_to 'Edit', edit_page_scan_path(page_scan)
           = " | "

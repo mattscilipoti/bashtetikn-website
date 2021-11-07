@@ -1,10 +1,9 @@
 p#notice = notice
 
 h1
-  = @page_scan.type
-  |PageScan of URL:
-  br
-  = @page_scan.url
+  - header = "#{@page_scan.type} of "
+  - header += @page_scan.webpage ? "Webpage: #{@page_scan.webpage.name}" : "URL: \n {#@page_scan.url}"
+  = header
 
 p
   strong Type:
@@ -16,15 +15,15 @@ p
 
 p
   strong Webpage:
-  = @page_scan.webpage
-
-p
-  strong Warnings:
-  = @page_scan.warnings
+  = link_to @page_scan.webpage.name, page_scan_path(@page_scan)
 
 p
   strong Issues:
   = @page_scan.issues
+
+p
+  strong Warnings:
+  = @page_scan.warnings
 
 => link_to 'Edit', edit_page_scan_path(@page_scan)
 '|
