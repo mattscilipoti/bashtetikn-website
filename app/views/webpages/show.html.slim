@@ -10,23 +10,34 @@ p
   strong Website:
   = link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
 
-- @webpage.last_scans.each do |page_scan|
-  h2 #{page_scan.type} (tested #{page_scan.created_at}, #{link_to('history', page_scans_path(webpage_id: @webpage.id))})
-  h3 Errors
-  -if page_scan.issues.blank?
-    p No errors
-  - else
-    ul
-    - for message in page_scan.issues
-      li = message
+hr
 
-  h2 Warnings
-  -if page_scan.warnings.blank?
-    p No warnings
-  - else
-    ul
-    - for message in page_scan.warnings
-      li = message
+h2
+  | Last Scans
+  subheader
+    |&nbsp;(
+    = link_to('history', page_scans_path(webpage_id: @webpage.id))
+    | )
+- @webpage.last_scans.each do |page_scan|
+  h3
+    =page_scan.type.titleize
+    subheader(title=page_scan.created_at)
+      |&nbsp;(tested&nbsp;
+      = time_ago_in_words(page_scan.created_at)
+      |&nbsp;ago)
+  .frame
+    h4.caption Errors (#{page_scan.issues.size})
+    -if page_scan.issues.present?
+      ol
+        - for message in page_scan.issues
+          li = message
+
+  .frame
+    h4.caption Warnings (#{page_scan.warnings.size})
+    -if page_scan.warnings.present?
+      ol
+        - for message in page_scan.warnings
+          li = message
 
 
 => link_to 'Edit', edit_webpage_path(@webpage)

@@ -1,8 +1,9 @@
 h1
   | Listing PageScans
   - if @webpage
-    small
-      | (Filtered by Webpage: "#{@webpage.name}")
+    br
+    subheader
+      |&nbsp;(Filtered by Webpage: "#{link_to(@webpage.name, @webpage)}")
 
 
 table

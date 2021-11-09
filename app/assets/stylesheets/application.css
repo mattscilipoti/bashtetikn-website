@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+subheader {
+  color: darkgray;
+  font-size: 66%;
+}
+
+div.frame {
+  border: solid 1px darkgray;
+  margin: 0 1em 1em 1em;
+  padding: 0 1em;
+}
+div.frame .caption {
+  background-color: white;
+  display: inline-block;
+  margin: 0;
+  padding: 0 0.5em;
+  position: relative;
+  top: -0.75em;
+}
+div.frame ol {
+  margin-top: 0;
+}
+
