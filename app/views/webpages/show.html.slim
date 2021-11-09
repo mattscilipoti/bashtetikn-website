@@ -1,10 +1,14 @@
 p#notice = notice
 
-h1= "Website \"#{@webpage.name}\""
+h1= "Webpage \"#{@webpage.name}\""
 
 p
   strong Url:
   = @webpage.url
+
+p
+  strong Website:
+  = link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
 
 - page_scan = @webpage.page_scans.last
 - if page_scan.present?

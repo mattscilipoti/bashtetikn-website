@@ -1,5 +1,6 @@
 # Represents a page to be scanned
 class Webpage < ApplicationRecord
+  belongs_to :website, optional: true, inverse_of: :webpages
   has_many :page_scans
   validates :url, presence: true, url: { public_suffix: true }
 

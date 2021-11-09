@@ -70,6 +70,6 @@ class WebpagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def webpage_params
-      params.require(:webpage).permit(:name, :url)
+      params.require(:webpage).permit(:name, :url, :website_id)
     end
 end

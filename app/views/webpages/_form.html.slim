@@ -12,4 +12,8 @@
   .field
     = f.label :url
     = f.text_field :url
+  .field
+    = f.label :website
+    = f.collection_select :website_id, Website.all, :id, :name
+
   .actions = f.submit

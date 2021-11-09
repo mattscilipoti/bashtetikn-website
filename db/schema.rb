@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_05_160852) do
+ActiveRecord::Schema.define(version: 2021_11_09_012237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2021_11_05_160852) do
     t.string "url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "website_id"
+    t.index ["website_id"], name: "index_webpages_on_website_id"
   end
 
   create_table "websites", force: :cascade do |t|
@@ -43,4 +45,5 @@ ActiveRecord::Schema.define(version: 2021_11_05_160852) do
   end
 
   add_foreign_key "page_scans", "webpages"
+  add_foreign_key "webpages", "websites"
 end
