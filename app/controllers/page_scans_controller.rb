@@ -3,7 +3,12 @@ class PageScansController < ApplicationController
 
   # GET /page_scans or /page_scans.json
   def index
-    @page_scans = PageScan.all
+    if (webpage_id = params[:webpage_id])
+      @webpage = Webpage.find(webpage_id)
+      @page_scans = @webpage.page_scans
+    else
+      @page_scans = PageScan.all
+    end
   end
 
   # GET /page_scans/1 or /page_scans/1.json

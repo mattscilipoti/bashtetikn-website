@@ -10,9 +10,9 @@ p
   strong Website:
   = link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
 
-- page_scan = @webpage.page_scans.last
-- if page_scan.present?
-  h2 HTML Errors (tested #{page_scan.created_at})
+- @webpage.last_scans.each do |page_scan|
+  h2 #{page_scan.type} (tested #{page_scan.created_at}, #{link_to('history', page_scans_path(webpage_id: @webpage.id))})
+  h3 Errors
   -if page_scan.issues.blank?
     p No errors
   - else
@@ -20,7 +20,7 @@ p
     - for message in page_scan.issues
       li = message
 
-  h2 HTML Warnings (tested #{page_scan.created_at})
+  h2 Warnings
   -if page_scan.warnings.blank?
     p No warnings
   - else

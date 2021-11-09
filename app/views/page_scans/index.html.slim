@@ -1,10 +1,17 @@
-h1 Listing PageScans
+h1
+  | Listing PageScans
+  - if @webpage
+    small
+      | (Filtered by Webpage: "#{@webpage.name}")
+
 
 table
   thead
     tr
       th Type
-      th Webpage
+      - unless @webpage
+        th Webpage
+      th Scanned At
       th Issues (ct)
       th Warnings (ct)
       th Scanned Url
@@ -14,7 +21,9 @@ table
     - @page_scans.each do |page_scan|
       tr
         td.type = link_to page_scan.type, page_scan_path(page_scan), title: "Show Scan details"
-        td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")
+        - unless @webpage
+          td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")
+        td.datetime[title=page_scan.created_at] = "#{time_ago_in_words(page_scan.created_at)} ago"
         td.issues.count = page_scan.issues.size
         td.warnings.count = page_scan.warnings.size
         td.url

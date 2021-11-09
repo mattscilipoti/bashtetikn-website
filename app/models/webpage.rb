@@ -1,7 +1,7 @@
 # Represents a page to be scanned
 class Webpage < ApplicationRecord
   belongs_to :website, optional: true, inverse_of: :webpages
-  has_many :page_scans
+  has_many :page_scans, -> { order(created_at: :desc) }
   validates :url, presence: true, url: { public_suffix: true }
 
   def html_validation_scanner
