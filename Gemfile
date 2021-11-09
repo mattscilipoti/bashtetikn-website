@@ -70,6 +70,7 @@ gem 'pry-byebug', platform: :mri, group: [:development, :test]
 gem 'pry-rails', platform: :mri, group: [:development, :test]
 gem 'rack-heartbeat'
 gem 'rexml', group: [:development, :test] # XML toolkit for Ruby. Now a bundled gem. Used by rspec.
+gem 'rspec-its', require: false, group: [:test]
 gem 'rspec-rails', group: [:development, :test]
 gem 'slim-rails' # Slim templates generator
 gem 'validate_url'

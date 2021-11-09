@@ -8,6 +8,14 @@ class Webpage < ApplicationRecord
     HtmlValidationScan.new(url: self.url)
   end
 
+  def last_scans
+    one_of_each_type = []
+    page_scans.order(updated_at: :desc).each do |scan|
+      one_of_each_type << scan unless one_of_each_type.pluck(:type).include?(scan.type)
+    end
+    one_of_each_type
+  end
+
   def validate_html
     scanner = html_validation_scanner
     scanner.scan

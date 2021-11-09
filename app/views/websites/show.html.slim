@@ -6,6 +6,23 @@ p
   strong Url:
   = @website.url
 
+h2 Webpages
+table
+  thead
+    th Scan Type
+    th Page Name
+    th Issues (ct)
+    th Warnings (ct)
+  body
+    - @website.webpages.each do |webpage|
+      - webpage.last_scans.each do |scan|
+        tr
+          td= scan.type
+          td= link_to webpage.name, webpage
+
+          td= scan.issues.size
+          td= scan.warnings.size
+
 => link_to 'Edit', edit_website_path(@website)
 '|
 =< link_to 'Back', websites_path
