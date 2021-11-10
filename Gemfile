@@ -72,6 +72,7 @@ gem 'rack-heartbeat'
 gem 'rexml', group: [:development, :test] # XML toolkit for Ruby. Now a bundled gem. Used by rspec.
 gem 'rspec-its', require: false, group: [:test]
 gem 'rspec-rails', group: [:development, :test]
+gem 'simple_form' # Forms made easy
 gem 'slim-rails' # Slim templates generator
 gem 'validate_url'
 gem 'vcr', require: false, group: [:test]
