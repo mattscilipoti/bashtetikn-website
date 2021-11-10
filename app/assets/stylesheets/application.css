@@ -55,3 +55,10 @@ div.frame ol {
   margin-top: 0;
 }
 
+input[type='text'] {
+  width: 100%;
+}
+
+input.url {
+  width: 100%;
+}

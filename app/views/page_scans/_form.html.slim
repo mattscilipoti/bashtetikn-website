@@ -1,24 +1,5 @@
-= form_for @page_scan do |f|
-  - if @page_scan.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@page_scan.errors.count, 'error')} prohibited this page_scan from being saved:"
-      ul
-        - @page_scan.errors.full_messages.each do |message|
-          li = message
+= simple_form_for @page_scan.becomes(PageScan) do |f|
+    = f.input :url
+    = f.association :webpage
 
-  .field
-    = f.label :type
-    = f.text_field :type
-  .field
-    = f.label :url
-    = f.text_field :url
-  .field
-    = f.label :webpage
-    = f.collection_select :webpage_id, Webpage.all, :id, :name
-  .field
-    = f.label :warnings
-    = f.text_field :warnings
-  .field
-    = f.label :issues
-    = f.text_field :issues
-  .actions = f.submit
+    = f.button :submit

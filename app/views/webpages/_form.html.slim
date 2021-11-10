@@ -1,19 +1,6 @@
-= form_for @webpage do |f|
-  - if @webpage.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@webpage.errors.count, 'error')} prohibited this webpage from being saved:"
-      ul
-        - @webpage.errors.full_messages.each do |message|
-          li = message
+= simple_form_for @webpage do |f|
+  = f.input :name
+  = f.input :url
+  = f.association :website, as: :radio_buttons
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :url
-    = f.text_field :url
-  .field
-    = f.label :website
-    = f.collection_select :website_id, Website.all, :id, :name
-
-  .actions = f.submit
+  = f.button :submit
