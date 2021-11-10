@@ -28,7 +28,8 @@ RSpec.describe HtmlValidationScan, type: :model do
     subject(:scan_results_uri) { HtmlValidationScan.new(url: 'https://example.com').scan_results_uri }
     its(:scheme) { should eql('https') }
     its(:host) { should eql('validator.w3.org') }
-    its(:path) { should eql('/nu') }
+    its(:path) { should eql('/nu/') } # WARN: Nu Html Checker requires the trailing slash before query params
+    its(:request_uri) { should start_with('/nu/?doc=http') }
     it 'query includes encoded URI to the page' do
       expect(subject.query).to eql('doc=https%3A%2F%2Fexample.com')
     end
