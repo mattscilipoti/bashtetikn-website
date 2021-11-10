@@ -12,6 +12,10 @@ class PageScan < ApplicationRecord
     )
   end
 
+  def scan_results_uri
+    raise NotImplementedError, "Implement in child"
+  end
+
   def validator
     raise NotImplementedError, "Implement in child"
   end

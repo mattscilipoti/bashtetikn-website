@@ -18,6 +18,7 @@ h2
     |&nbsp;(
     = link_to('history', page_scans_path(webpage_id: @webpage.id))
     | )
+  
 - @webpage.last_scans.each do |page_scan|
   h3
     =page_scan.type.titleize
@@ -25,6 +26,12 @@ h2
       |&nbsp;(tested&nbsp;
       = time_ago_in_words(page_scan.created_at)
       |&nbsp;ago)
+
+    subheader.scan_results 
+      |&nbsp;
+      = external_link_to('Scan Results', page_scan.scan_results_uri.to_s)
+    br
+
   .frame
     h4.caption Errors (#{page_scan.issues.size})
     -if page_scan.issues.present?

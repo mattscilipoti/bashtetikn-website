@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'rspec/its'
 require 'vcr_helper'
 require_relative '../shared/shared_examples_for_page_scans'
 
@@ -20,6 +21,16 @@ RSpec.describe HtmlValidationScan, type: :model do
         "End tag for  “body” seen, but there were unclosed elements.",
         "Unclosed element “section”."
       )
+    end
+  end
+
+  describe '#scan_results_uri, provides the URI to the scan_results' do
+    subject(:scan_results_uri) { HtmlValidationScan.new(url: 'https://example.com').scan_results_uri }
+    its(:scheme) { should eql('https') }
+    its(:host) { should eql('validator.w3.org') }
+    its(:path) { should eql('/nu') }
+    it 'query includes encoded URI to the page' do
+      expect(subject.query).to eql('doc=https%3A%2F%2Fexample.com')
     end
   end
 end
