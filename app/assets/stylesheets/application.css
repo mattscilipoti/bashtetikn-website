@@ -62,3 +62,13 @@ input[type='text'] {
 input.url {
   width: 100%;
 }
+
+/* external links */
+a.external:after {
+  /* Image downloaded from https://commons.wikimedia.org/wiki/File:External.svg */
+  /* Attribution: Denelson83, Public domain, via Wikimedia Commons */
+  background: url(/assets/external_link.svg) center right transparent no-repeat;
+  background-size: 8px;
+  content : '\00a0'; /* &nbsp; */
+  padding-right: 7px;
+}
