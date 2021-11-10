@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_012237) do
+ActiveRecord::Schema.define(version: 2021_11_10_234817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_012237) do
     t.string "issues", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "raw_results"
     t.index ["issues"], name: "index_page_scans_on_issues", using: :gin
     t.index ["warnings"], name: "index_page_scans_on_warnings", using: :gin
     t.index ["webpage_id"], name: "index_page_scans_on_webpage_id"
