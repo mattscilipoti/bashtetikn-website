@@ -21,7 +21,7 @@ table
   tbody
     - @page_scans.each do |page_scan|
       tr
-        td.type = link_to page_scan.type, page_scan_path(page_scan), title: "Show Scan details"
+        td.type = link_to page_scan.type.titleize, page_scan_path(page_scan), title: "Show Scan details"
         - unless @webpage
           td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")
         td.datetime[title=page_scan.created_at] = "#{time_ago_in_words(page_scan.created_at)} ago"

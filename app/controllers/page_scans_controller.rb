@@ -5,10 +5,12 @@ class PageScansController < ApplicationController
   def index
     if (webpage_id = params[:webpage_id])
       @webpage = Webpage.find(webpage_id)
-      @page_scans = @webpage.page_scans.order(created_at: :desc)
+      @page_scans = @webpage.page_scans
     else
       @page_scans = PageScan.all
     end
+
+    @page_scans = @page_scans.order(created_at: :desc)
   end
 
   # GET /page_scans/1 or /page_scans/1.json
