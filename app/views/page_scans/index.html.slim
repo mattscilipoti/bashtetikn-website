@@ -30,10 +30,4 @@ table
         td.url
           small =  link_to page_scan.url, page_scan.url, title: "Browse to Scanned page"
         td.actions
-          = link_to 'Edit', edit_page_scan_path(page_scan)
-          = " | "
           = link_to 'Destroy', page_scan_path(page_scan), data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New PageScan', new_page_scan_path

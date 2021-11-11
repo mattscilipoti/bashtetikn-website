@@ -42,76 +42,96 @@ RSpec.describe "/page_scans", type: :request do
   end
 
   describe "GET /new" do
-    it "renders a successful response" do
-      get new_page_scan_url
-      expect(response).to be_successful
+    it "is not possible" do
+      expect { get new_page_scan_url }.to raise_error(NameError, /undefined/)
+      expect { get '/page_scans/new' }.to raise_error(ActiveRecord::RecordNotFound, /'id'=new/)
     end
+
+    # it "renders a successful response" do
+    #   get new_page_scan_url
+    #   expect(response).to be_successful
+    # end
   end
 
   describe "GET /edit" do
-    it "render a successful response" do
-      page_scan = PageScan.create! valid_attributes
-      get edit_page_scan_url(page_scan)
-      expect(response).to be_successful
+    it "is not possible" do
+      expect { get edit_page_scan_url(-1) }.to raise_error(NameError, /undefined/)
+      expect { get '/page_scans/-1/edit' }.to raise_error(ActionController::RoutingError, /edit/)
     end
+
+    # it "render a successful response" do
+    #   page_scan = PageScan.create! valid_attributes
+    #   get edit_page_scan_url(page_scan)
+    #   expect(response).to be_successful
+    # end
   end
 
   describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new PageScan" do
-        expect {
-          post page_scans_url, params: { page_scan: valid_attributes }
-        }.to change(PageScan, :count).by(1)
-      end
-
-      it "redirects to the created page_scan" do
-        post page_scans_url, params: { page_scan: valid_attributes }
-        expect(response).to redirect_to(page_scan_url(PageScan.last))
-      end
+    it "is not possible" do
+      # expect { post page_scans_url }.to raise_error(NameError, /undefined/)
+      expect { post '/page_scans' }.to raise_error(ActionController::RoutingError, /POST.*page_scans/)
     end
 
-    context "with invalid parameters" do
-      it "does not create a new PageScan" do
-        expect {
-          post page_scans_url, params: { page_scan: invalid_attributes }
-        }.to change(PageScan, :count).by(0)
-      end
+    # context "with valid parameters" do
+    #   it "creates a new PageScan" do
+    #     expect {
+    #       post page_scans_url, params: { page_scan: valid_attributes }
+    #     }.to change(PageScan, :count).by(1)
+    #   end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post page_scans_url, params: { page_scan: invalid_attributes }
-        expect(response).to have_http_status(422) # Unprocessable entity
-      end
-    end
+    #   it "redirects to the created page_scan" do
+    #     post page_scans_url, params: { page_scan: valid_attributes }
+    #     expect(response).to redirect_to(page_scan_url(PageScan.last))
+    #   end
+    # end
+
+    # context "with invalid parameters" do
+    #   it "does not create a new PageScan" do
+    #     expect {
+    #       post page_scans_url, params: { page_scan: invalid_attributes }
+    #     }.to change(PageScan, :count).by(0)
+    #   end
+
+    #   it "renders a successful response (i.e. to display the 'new' template)" do
+    #     post page_scans_url, params: { page_scan: invalid_attributes }
+    #     expect(response).to have_http_status(422) # Unprocessable entity
+    #   end
+    # end
   end
 
   describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        { url: "https://updated.example.com" }
-      }
-
-      it "updates the requested page_scan" do
-        page_scan = PageScan.create! valid_attributes
-        patch page_scan_url(page_scan), params: { page_scan: new_attributes }
-        page_scan.reload
-        expect(page_scan.url).to eql("https://updated.example.com")
-      end
-
-      it "redirects to the page_scan" do
-        page_scan = PageScan.create! valid_attributes
-        patch page_scan_url(page_scan), params: { page_scan: new_attributes }
-        page_scan.reload
-        expect(response).to redirect_to(page_scan_url(page_scan))
-      end
+    it "is not possible" do
+      # expect { patch page_scan_url(-1) }.to raise_error(NameError, /undefined/)
+      expect { patch '/page_scans/-1' }.to raise_error(ActionController::RoutingError, /PATCH.*page_scans/)
     end
 
-    context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        page_scan = PageScan.create! valid_attributes
-        patch page_scan_url(page_scan), params: { page_scan: invalid_attributes }
-        expect(response).to have_http_status(422) # Unprocessable entity
-      end
-    end
+    # context "with valid parameters" do
+    #   let(:new_attributes) {
+    #     { url: "https://updated.example.com" }
+    #   }
+
+    #   it "updates the requested page_scan" do
+    #     page_scan = PageScan.create! valid_attributes
+    #     patch page_scan_url(page_scan), params: { page_scan: new_attributes }
+    #     page_scan.reload
+    #     expect(page_scan.url).to eql("https://updated.example.com")
+    #   end
+
+    #   it "redirects to the page_scan" do
+    #     page_scan = PageScan.create! valid_attributes
+    #     patch page_scan_url(page_scan), params: { page_scan: new_attributes }
+    #     page_scan.reload
+    #     expect(response).to redirect_to(page_scan_url(page_scan))
+    #   end
+    # end
+
+    # context "with invalid parameters" do
+    #   it "renders a successful response (i.e. to display the 'edit' template)" do
+    #     page_scan = PageScan.create! valid_attributes
+    #     patch page_scan_url(page_scan), params: { page_scan: invalid_attributes }
+    #     expect(response).to have_http_status(422) # Unprocessable entity
+    #   end
+    # end
   end
 
   describe "DELETE /destroy" do

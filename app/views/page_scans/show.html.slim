@@ -15,7 +15,7 @@ p
 
 p
   strong Webpage:
-  = link_to @page_scan.webpage.name, page_scan_path(@page_scan)
+  = link_to_if @page_scan.webpage, @page_scan.webpage.try(:name), @page_scan.webpage
 
 p
   strong Issues:
@@ -25,6 +25,4 @@ p
   strong Warnings:
   = @page_scan.warnings
 
-=> link_to 'Edit', edit_page_scan_path(@page_scan)
-'|
 =< link_to 'Back', page_scans_path
