@@ -6,20 +6,28 @@ p
   strong Url:
   = @website.url
 
+- webpages = @website.webpages.order(:name)
+
 h2 Webpages
-table
+ol.webpages
+  - webpages.each do |webpage|
+    li.webpage = link_to(webpage.name, webpage)
+
+h2 Webpage Scans
+table.scans
   thead
     th Scan Type
     th Page Name
+    th Scanned At
     th Issues (ct)
     th Warnings (ct)
   body
-    - @website.webpages.each do |webpage|
+    - webpages.each do |webpage|
       - webpage.last_scans.each do |scan|
         tr
           td= scan.type
           td= link_to webpage.name, webpage
-
+          td(title=scan.created_at)= "#{time_ago_in_words(scan.created_at)} ago"
           td= scan.issues.size
           td= scan.warnings.size
 
