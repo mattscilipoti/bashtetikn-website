@@ -5,11 +5,7 @@ class PageScan < ApplicationRecord
   validates :url, presence: true, url: { public_suffix: true }
 
   def scan
-    result = validator.validate_uri(self.url)
-    update!(
-      warnings: result.warnings.collect(&:message),
-      issues: result.errors.collect(&:message),
-    )
+    raise NotImplementedError, "Implement in child"
   end
 
   def scan_results_uri

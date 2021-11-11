@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'rspec/its'
+require 'rspec/json_expectations'
 require 'vcr_helper'
 require_relative '../shared/shared_examples_for_page_scans'
 
@@ -20,6 +21,16 @@ RSpec.describe HtmlValidationScan, type: :model do
       expect(subject.issues).to contain_exactly(
         "End tag for  “body” seen, but there were unclosed elements.",
         "Unclosed element “section”."
+      )
+    end
+
+    it 'populates #raw_results' do
+      subject.url = 'https://w3c-validators.github.io/w3c_validators/invalid_html5.html'
+      subject.scan
+      expect(subject.raw_results).to include_json(
+        messages: /error/,
+        uri: subject.url,
+        validity: false
       )
     end
   end

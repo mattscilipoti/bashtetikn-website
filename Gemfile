@@ -71,6 +71,7 @@ gem 'pry-rails', platform: :mri, group: [:development, :test]
 gem 'rack-heartbeat'
 gem 'rexml', group: [:development, :test] # XML toolkit for Ruby. Now a bundled gem. Used by rspec.
 gem 'rspec-its', require: false, group: [:test]
+gem 'rspec-json_expectations', require: false, group: [:test]
 gem 'rspec-rails', group: [:development, :test]
 gem 'simple_form' # Forms made easy
 gem 'slim-rails' # Slim templates generator
