@@ -58,8 +58,11 @@ class WebpagesController < ApplicationController
 
   def validate_html
     @webpage.validate_html
-    @webpage.save
-    render 'show'
+    if @webpage.save
+      redirect_to @webpage
+    else
+      render :show
+    end
   end
 
   private

@@ -12,40 +12,50 @@ p
 
 hr
 
-h2
-  | Last Scans
-  subheader
-    |&nbsp;(
-    = link_to('history', page_scans_path(webpage_id: @webpage.id))
-    | )
-  
-- @webpage.last_scans.each do |page_scan|
-  h3
-    =page_scan.type.titleize
-    subheader(title=page_scan.created_at)
-      |&nbsp;(tested&nbsp;
-      = time_ago_in_words(page_scan.created_at)
-      |&nbsp;ago)
+- last_scans = @webpage.last_scans
+- if last_scans.blank?
+  h2
+    | Last Scans
+    subheader
+      |&nbsp;(none)
+- else
+  h2
+    | Last Scans
+    subheader
+      |&nbsp;(
+      = link_to('history', page_scans_path(webpage_id: @webpage.id))
+      | )
 
-    subheader.scan_results 
-      |&nbsp;
-      = external_link_to('Scan Results', page_scan.scan_results_uri.to_s)
-    br
+  - last_scans.each do |page_scan|
 
-  .frame
-    h4.caption Errors (#{page_scan.issues.size})
-    -if page_scan.issues.present?
-      ol
-        - for message in page_scan.issues
-          li = message
+    - if page_scan.scanned_at?
+      = render partial: 'page_scan', object: page_scan
+    - else
+      h3[data={id: page_scan.id}]
+        =page_scan.type.titleize
+        subheader[title='Refresh page to check results']
+          |&nbsp;Scanning...
 
-  .frame
-    h4.caption Warnings (#{page_scan.warnings.size})
-    -if page_scan.warnings.present?
-      ol
-        - for message in page_scan.warnings
-          li = message
-
+hr
+- queued_scans = @webpage.page_scans.queued.order(:created_at)
+- if queued_scans.blank?
+  h2
+    | Queued Scans
+    subheader
+      |&nbsp;(none)
+- else
+  h2
+    | Queued Scans&nbsp;
+    subheader= "(#{queued_scans.size}) Refresh page to check results"
+  ol
+    - queued_scans.each do |queued_scan|
+      li
+        span.scan_type = queued_scan.type.titleize
+        |&nbsp;(Created at:&nbsp;
+        - created_at = queued_scan.created_at
+        span.date[title=created_at] = time_ago_in_words(created_at, include_seconds: true)
+        |&nbsp;ago)
+hr
 
 => link_to 'Edit', edit_webpage_path(@webpage)
 '|

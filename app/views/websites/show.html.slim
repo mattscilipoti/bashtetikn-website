@@ -27,7 +27,7 @@ table.scans
         tr
           td= scan.type
           td= link_to webpage.name, webpage
-          td(title=scan.created_at)= "#{time_ago_in_words(scan.created_at)} ago"
+          td(title=scan.scanned_at)= "#{time_ago_in_words(scan.scanned_at)} ago"
           td= scan.issues.size
           td= scan.warnings.size
 

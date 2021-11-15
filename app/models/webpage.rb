@@ -10,10 +10,10 @@ class Webpage < ApplicationRecord
 
   def last_scans
     one_of_each_type = []
-    page_scans.order(created_at: :desc).each do |scan|
+    page_scans.scanned.order(scanned_at: :desc).each do |scan|
       next if one_of_each_type.pluck(:type).include?(scan.type)
 
-      one_of_each_type << scan 
+      one_of_each_type << scan
     end
     one_of_each_type
   end

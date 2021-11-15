@@ -6,4 +6,11 @@ module ApplicationHelper
     default_html_options = {class: 'external', target: '_blank', rel:'noopener'}
     link_to(link_text, url, default_html_options.merge(html_options))
   end
+
+  # standard element to display datetime
+  def datetime_el(element_container_type, datetime)
+    content_tag(element_container_type, title: datetime) do
+      datetime ? "#{time_ago_in_words(datetime)} ago" : nil
+    end
+  end
 end
