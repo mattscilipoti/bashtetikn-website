@@ -60,5 +60,12 @@ RSpec.describe Webpage, type: :model do
         "Unclosed element “section”."
       )
     end
+
+    it 'performs the PageScan asynchronously' do
+        subject.url = 'https://w3c-validators.github.io/w3c_validators/valid_html5.html'
+        ActiveJob::Base.queue_adapter = :test
+        subject.validate_html
+        expect(PageScanJob).to(have_been_enqueued.with(subject.id))
+    end
   end
 end

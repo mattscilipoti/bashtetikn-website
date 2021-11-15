@@ -20,7 +20,8 @@ class Webpage < ApplicationRecord
 
   def validate_html
     scanner = html_validation_scanner
-    scanner.scan
+    scanner.save!
     page_scans << scanner
+    PageScanJob.perform_later scanner.id
   end
 end

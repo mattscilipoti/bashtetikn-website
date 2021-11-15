@@ -35,6 +35,7 @@ hr
         =page_scan.type.titleize
         subheader[title='Refresh page to check results']
           |&nbsp;Scanning...
+        i.busy-scanning[title='Refresh page to check results']
 
 hr
 - queued_scans = @webpage.page_scans.queued.order(:created_at)
