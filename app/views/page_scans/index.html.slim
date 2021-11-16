@@ -22,7 +22,7 @@ table
 
   tbody
     - @page_scans.each do |page_scan|
-      tr
+      tr[data={id: dom_id(page_scan)}]
         td.type = link_to page_scan.type.titleize, page_scan_path(page_scan), title: "Show Scan details"
         - unless @webpage
           td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")

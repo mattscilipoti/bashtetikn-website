@@ -31,7 +31,7 @@ hr
     - if page_scan.scanned_at?
       = render partial: 'page_scan', object: page_scan
     - else
-      h3[data={id: page_scan.id}]
+      h3[data={id: dom_id(page_scan)}]
         =page_scan.type.titleize
         subheader[title='Refresh page to check results']
           |&nbsp;Scanning...
@@ -50,7 +50,7 @@ hr
     subheader= "(#{queued_scans.size}) Refresh page to check results"
   ol
     - queued_scans.each do |queued_scan|
-      li
+      li[data={id: dom_id(queued_scan)}]
         span.scan_type = queued_scan.type.titleize
         |&nbsp;(Created at:&nbsp;
         - created_at = queued_scan.created_at
