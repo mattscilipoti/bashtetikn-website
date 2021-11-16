@@ -1,8 +1,19 @@
+- page_scan_td_count = 3
 table
   thead
     tr
+      th
+      th
+      - PageScan.descendants.each do |page_scan_class|
+       th[colspan=page_scan_td_count]= page_scan_class.name.titleize
+      th
+    tr
       th Name
       th Url
+      - PageScan.descendants.each do |page_scan_class|
+        th Issues
+        th Warnings
+        th Scanned At
       th Actions
 
   tbody
@@ -11,6 +22,16 @@ table
         td = link_to webpage.name, webpage
         td
           small = link_to(webpage.url)
+        - PageScan.descendants.each do |page_scan_class|
+          - scan = webpage.last_scans.detect{ |scan| scan.type == page_scan_class.name }
+          - if scan
+            td= scan.issues.size
+            td= scan.warnings.size
+            td(title=scan.scanned_at)= link_to("#{time_ago_in_words(scan.scanned_at)} ago", page_scan_path(scan))
+          - else
+            - page_scan_td_count.times do
+              td
+                /! placeholder for scan info
         td
           = link_to 'Validate&nbsp;HTML'.html_safe, validate_html_webpage_path(webpage)
           = "&nbsp;|&nbsp;".html_safe
