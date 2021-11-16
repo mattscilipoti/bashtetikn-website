@@ -1,0 +1,19 @@
+table
+  thead
+    tr
+      th Name
+      th Url
+      th Actions
+
+  tbody
+    - webpages.each do |webpage|
+      tr[data={id: dom_id(webpage)}]
+        td = link_to webpage.name, webpage
+        td
+          small = link_to(webpage.url)
+        td
+          = link_to 'Validate&nbsp;HTML'.html_safe, validate_html_webpage_path(webpage)
+          = "&nbsp;|&nbsp;".html_safe
+          = link_to 'Edit', edit_webpage_path(webpage)
+          = "&nbsp;|&nbsp;".html_safe
+          = link_to 'Destroy', webpage, data: { confirm: 'Are you sure?' }, method: :delete
