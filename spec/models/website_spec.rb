@@ -21,4 +21,20 @@ RSpec.describe Website, type: :model do
       expect(subject).to_not be_valid
     end
   end
+
+  describe '(instance methods)' do
+    subject(:website) { Website.new(name: 'TEST') }
+    
+    describe '#to_param' do
+      it 'starts with the ID' do
+        subject.id = 12
+        expect(subject.to_param).to start_with('12-')
+      end
+
+      it 'ends with #name (parameterized)' do
+        subject.name = 'TEST SITE'
+        expect(subject.to_param).to end_with('test-site')
+      end
+    end
+  end
 end
