@@ -65,14 +65,14 @@ gem 'bashtetikn'
 gem 'database_cleaner', require: false, group: [:development, :test]
 gem 'factory_bot_rails', require: false, group: [:development, :test]
 gem 'faker', require: false, group: [:development, :test]
-gem 'figaro'
-gem 'pry-byebug', platform: :mri, group: [:development, :test]
+gem 'pry-byebug', platform: :mri, group: [:development, :test] # for Debugger/pry
 gem 'pry-rails', platform: :mri, group: [:development, :test]
 gem 'rack-heartbeat'
 gem 'rexml', group: [:development, :test] # XML toolkit for Ruby. Now a bundled gem. Used by rspec.
 gem 'rspec-its', require: false, group: [:test]
 gem 'rspec-json_expectations', require: false, group: [:test]
 gem 'rspec-rails', group: [:development, :test]
+gem 'solargraph', require: false, group: [:development, :test] # for Linter
 gem 'simple_form' # Forms made easy
 gem 'slim-rails' # Slim templates generator
 gem 'spinners' # Sass mixin to generate pure CSS3 loading/busy indicators.

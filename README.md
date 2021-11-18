@@ -17,8 +17,8 @@ Tools to help validate web pages. Gathers validation results from multiple sourc
 - Both pry and debugger are supported (via pry-byebug).
 - add `debugger` or `binding.pry`
 
-## Configured via [Figaro](https://github.com/laserlemon/figaro)
-- see `config/application.yml`
+## Configured via Rails credentials
+- see https://edgeguides.rubyonrails.org/security.html#environmental-security
 
 ## Monitoring
 - Use `/heartbeat` for app monitoring services.
