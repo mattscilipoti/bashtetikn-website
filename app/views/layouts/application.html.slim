@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    meta content="width=device-width,initial-scale=1" name="viewport"
+    title Workspace
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    header
+      nav
+        ul.navbar
+          li.logo
+            = link_to "Home", root_path, id: "logo"
+          li= link_to "Websites", websites_path
+          li= link_to "Webpages", webpages_path
+          li= link_to "PageScans", page_scans_path
+    .main
+      = yield

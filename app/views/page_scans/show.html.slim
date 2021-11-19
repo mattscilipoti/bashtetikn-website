@@ -1,0 +1,28 @@
+p#notice = notice
+
+h1
+  - header = "#{@page_scan.type} of "
+  - header += @page_scan.webpage ? "Webpage: #{@page_scan.webpage.name}" : "URL: \n {#@page_scan.url}"
+  = header
+
+p
+  strong Type:
+  = @page_scan.type
+
+p
+  strong Url:
+  = @page_scan.url
+
+p
+  strong Webpage:
+  = link_to_if @page_scan.webpage, @page_scan.webpage.try(:name), @page_scan.webpage
+
+p
+  strong Issues:
+  = @page_scan.issues
+
+p
+  strong Warnings:
+  = @page_scan.warnings
+
+=< link_to 'Back', page_scans_path

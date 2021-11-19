@@ -1,0 +1,5 @@
+= simple_form_for @page_scan.becomes(PageScan) do |f|
+    = f.input :url
+    = f.association :webpage
+
+    = f.button :submit

@@ -1,0 +1,22 @@
+h1 Websites
+
+table
+  thead
+    tr
+      th Name
+      th Url
+      th Actions
+
+  tbody
+    - @websites.each do |website|
+      tr
+        td = link_to website.name, website, title: "Show details for '#{website.name}'"
+        td = website.url
+        td
+          = link_to 'Edit', edit_website_path(website)
+          = " | "
+          = link_to 'Destroy', website, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Website', new_website_path

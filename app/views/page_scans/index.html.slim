@@ -1,0 +1,33 @@
+h1
+  | Listing PageScans
+  - if @webpage
+    br
+    subheader
+      |&nbsp;(Filtered by Webpage: "#{link_to(@webpage.name, @webpage)}")
+
+
+table
+  thead
+    tr
+      th Type
+      - unless @webpage
+        th Webpage
+      th Scanned At
+      th Issues (ct)
+      th Warnings (ct)
+      th Scanned Url
+      th Actions
+
+  tbody
+    - @page_scans.each do |page_scan|
+      tr
+        td.type = link_to page_scan.type.titleize, page_scan_path(page_scan), title: "Show Scan details"
+        - unless @webpage
+          td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")
+        td.datetime[title=page_scan.created_at] = "#{time_ago_in_words(page_scan.created_at)} ago"
+        td.issues.count = page_scan.issues.size
+        td.warnings.count = page_scan.warnings.size
+        td.url
+          small =  link_to page_scan.url, page_scan.url, title: "Browse to Scanned page"
+        td.actions
+          = link_to 'Destroy', page_scan_path(page_scan), data: { confirm: 'Are you sure?' }, method: :delete
