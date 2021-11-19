@@ -1,6 +1,6 @@
 # Bashtetikn (website)
 
-Tools to help validate web pages. Gathers validation results from multiple sources, providing a single interface for both requests and responses.
+Website to help validate web pages. Gathers validation results from multiple sources, providing insight into current and historical issues. WebUI for [bashtetikn library](https://github.com/mattscilipoti/bashtetikn).
 
 > bashtetikn: Yiddish for "To validate"
 
