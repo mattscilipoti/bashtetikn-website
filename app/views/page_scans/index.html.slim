@@ -12,6 +12,8 @@ table
       th Type
       - unless @webpage
         th Webpage
+      th Created At
+      th Queued At
       th Scanned At
       th Issues (ct)
       th Warnings (ct)
@@ -20,11 +22,13 @@ table
 
   tbody
     - @page_scans.each do |page_scan|
-      tr
+      tr[data={id: dom_id(page_scan)}]
         td.type = link_to page_scan.type.titleize, page_scan_path(page_scan), title: "Show Scan details"
         - unless @webpage
           td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")
-        td.datetime[title=page_scan.created_at] = "#{time_ago_in_words(page_scan.created_at)} ago"
+        = datetime_el(:td, page_scan.created_at)
+        = datetime_el(:td, page_scan.queued_at)
+        = datetime_el(:td, page_scan.scanned_at)
         td.issues.count = page_scan.issues.size
         td.warnings.count = page_scan.warnings.size
         td.url

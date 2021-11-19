@@ -9,7 +9,7 @@ table
 
   tbody
     - @websites.each do |website|
-      tr
+      tr[data={id: dom_id(website)}]
         td = link_to website.name, website, title: "Show details for '#{website.name}'"
         td = website.url
         td

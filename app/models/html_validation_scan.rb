@@ -7,6 +7,7 @@ class HtmlValidationScan < PageScan
 
     update!(
       raw_results: results.to_json,
+      scanned_at: Time.now.utc,
       warnings: results.warnings.collect(&:message),
       issues: results.errors.collect(&:message),
     )
@@ -14,7 +15,7 @@ class HtmlValidationScan < PageScan
 
   def scan_results_uri
     URI::HTTPS.build(
-      host: 'validator.w3.org', 
+      host: 'validator.w3.org',
       path: '/nu/',
       query: { doc: url }.to_query,
     )

@@ -10,7 +10,7 @@ class PageScansController < ApplicationController
       @page_scans = PageScan.all
     end
 
-    @page_scans = @page_scans.order(created_at: :desc)
+    @page_scans = @page_scans.order(scanned_at: :desc)
   end
 
   # GET /page_scans/1 or /page_scans/1.json

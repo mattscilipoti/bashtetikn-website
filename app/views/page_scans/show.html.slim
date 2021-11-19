@@ -1,28 +1,31 @@
 p#notice = notice
 
 h1
-  - header = "#{@page_scan.type} of "
-  - header += @page_scan.webpage ? "Webpage: #{@page_scan.webpage.name}" : "URL: \n {#@page_scan.url}"
+  - header = "#{@page_scan.type.titleize} of "
+  - header += @page_scan.webpage ? "Webpage: #{@page_scan.webpage.name.inspect}" : "URL: \n {#@page_scan.url}"
   = header
 
 p
-  strong Type:
-  = @page_scan.type
-
-p
-  strong Url:
+  strong Url:&nbsp;
   = @page_scan.url
 
 p
-  strong Webpage:
+  strong Webpage:&nbsp;
   = link_to_if @page_scan.webpage, @page_scan.webpage.try(:name), @page_scan.webpage
 
 p
-  strong Issues:
-  = @page_scan.issues
+  strong Issues(#{@page_scan.issues.size}):&nbsp;
+  ol
+    - @page_scan.issues.each do |message|
+     li= message
 
 p
-  strong Warnings:
-  = @page_scan.warnings
+  strong Warnings(#{@page_scan.warnings.size}):&nbsp;
+  ol
+    - @page_scan.warnings.each do |message|
+     li= message
+p
+  strong Scan results:&nbsp;
+  = link_to @page_scan.scan_results_uri.to_s, @page_scan.scan_results_uri.to_s
 
 =< link_to 'Back', page_scans_path
