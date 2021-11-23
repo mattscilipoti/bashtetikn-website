@@ -6,16 +6,15 @@ p
   strong Url:
   = @website.url
 
-- webpages = @website.webpages.order(:name)
-
-h2 Webpages
-
-ul
+h3 Perform Scans
+ul.horizontal
   - PageScan.descendants.each do |page_scan_class|
     li
       = page_scan_link_to(page_scan_class: page_scan_class, model: @website) do
-        = font_awesome_icon('microscope', caption: page_scan_class.name.titleize)
+        = font_awesome_icon(page_scan_class.icon_name)
 
+- webpages = @website.webpages.order(:name)
+h2 Webpages
 =render 'webpages/table', webpages: webpages
 
 => link_to 'Edit', edit_website_path(@website)

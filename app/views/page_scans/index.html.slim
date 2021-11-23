@@ -10,8 +10,7 @@ table
   thead
     tr
       th Type
-      - unless @webpage
-        th Webpage
+      th Webpage
       th Created At
       th Queued At
       th Scanned At
@@ -23,9 +22,12 @@ table
   tbody
     - @page_scans.each do |page_scan|
       tr[data={id: dom_id(page_scan)}]
-        td.type = link_to page_scan.type.titleize, page_scan_path(page_scan), title: "Show Scan details"
-        - unless @webpage
-          td.webpage = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")
+        td.type
+          = link_to page_scan_path(page_scan), title: "Show #{page_scan.class.name.titleize} details" do
+            = font_awesome_icon(page_scan.icon_name)
+        td.webpage
+          - if page_scan.webpage
+            = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")
         = datetime_el(:td, page_scan.created_at)
         = datetime_el(:td, page_scan.queued_at)
         = datetime_el(:td, page_scan.scanned_at)
