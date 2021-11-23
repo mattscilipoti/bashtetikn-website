@@ -9,25 +9,8 @@ p
 - webpages = @website.webpages.order(:name)
 
 h2 Webpages
-=render 'webpages/table', webpages: webpages
 
-h2 Webpage Scans
-table.scans
-  thead
-    th Scan Type
-    th Page Name
-    th Scanned At
-    th Issues (ct)
-    th Warnings (ct)
-  body
-    - webpages.each do |webpage|
-      - webpage.last_scans.each do |scan|
-        tr[data={id: dom_id(scan)}]
-          td= scan.type.titleize
-          td= link_to webpage.name, webpage
-          td(title=scan.scanned_at)= "#{time_ago_in_words(scan.scanned_at)} ago"
-          td= scan.issues.size
-          td= scan.warnings.size
+=render 'webpages/table', webpages: webpages
 
 => link_to 'Edit', edit_website_path(@website)
 '|
