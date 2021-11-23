@@ -12,7 +12,9 @@ h2 Webpages
 
 ul
   - PageScan.descendants.each do |page_scan_class|
-    li= link_to("#{page_scan_class.name.titleize} all pages", url_for(controller: 'websites', action: page_scan_class.name.underscore, id: @website))
+    li
+      = page_scan_link_to(page_scan_class: page_scan_class, model: @website) do
+        = font_awesome_icon('microscope', caption: page_scan_class.name.titleize)
 
 =render 'webpages/table', webpages: webpages
 
