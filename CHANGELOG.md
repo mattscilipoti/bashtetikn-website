@@ -13,6 +13,7 @@ In place of release version numbers, we organize via deploys to Production (by D
 - add FontAwesomeHelper#font_awesome_icon
 - add PageScansHelper#page_scan_link_to
 - add rspec-html-matchers for rspec
+- use microscope icon for HtmlValidationScan
 
 ## 2021-11-19 HtmlValidationScans are async
 
