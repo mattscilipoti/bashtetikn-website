@@ -19,7 +19,8 @@ html
           li= link_to "Websites", websites_path
           li= link_to "Webpages", webpages_path
           li= link_to "PageScans", page_scans_path
-          li= "(#{Rails.env})" unless Rails.env.production?
+          - unless Rails.env.production?
+            li= "(#{Rails.env})"
       div#flash_messages(data={turbolinks: false})
         - flash.each do |key, value|
           = content_tag(:div, value, :class => "flash #{key}")
