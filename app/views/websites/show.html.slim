@@ -10,6 +10,10 @@ p
 
 h2 Webpages
 
+ul
+  - PageScan.descendants.each do |page_scan_class|
+    li= link_to("#{page_scan_class.name.titleize} all pages", url_for(controller: 'websites', action: page_scan_class.name.underscore, id: @website))
+
 =render 'webpages/table', webpages: webpages
 
 => link_to 'Edit', edit_website_path(@website)
