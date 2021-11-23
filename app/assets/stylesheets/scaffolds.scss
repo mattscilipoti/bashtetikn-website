@@ -33,9 +33,6 @@ div.field,
 div.actions {
   margin-bottom: 10px; }
 
-#notice {
-  color: green; }
-
 .field_with_errors {
   padding: 2px;
   background-color: red;
@@ -63,3 +60,19 @@ div.actions {
 
 label {
   display: block; }
+
+// Flash messages
+.flash {
+  background-color: Linen;
+  border: gray solid 1px;
+  padding: 2px 4px;
+  &.alert {
+    color: orange;
+  }
+  &.notice {
+    color: blue;
+  }
+  &.success {
+    color: green;
+  }
+}

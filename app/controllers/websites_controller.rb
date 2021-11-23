@@ -4,7 +4,9 @@ class WebsitesController < ApplicationController
   # GET /website/:id/html_validation_scan
   def html_validation_scan
     @website.html_validation_scan
-    redirect_back(fallback_location: root_path)
+
+    flash[:notice] = 'Scanning all pages. Wait a bit, then refresh to see scan results'
+    redirect_back(fallback_location: root_path, allow_other_host: false)
   end
 
   # GET /websites or /websites.json

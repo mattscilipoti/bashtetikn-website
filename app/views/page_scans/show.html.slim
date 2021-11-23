@@ -1,5 +1,3 @@
-p#notice = notice
-
 h1
   - header = "#{@page_scan.type.titleize} of "
   - header += @page_scan.webpage ? "Webpage: #{@page_scan.webpage.name.inspect}" : "URL: \n {#@page_scan.url}"

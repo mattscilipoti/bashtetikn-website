@@ -20,5 +20,9 @@ html
           li= link_to "Webpages", webpages_path
           li= link_to "PageScans", page_scans_path
           li= "(#{Rails.env})" unless Rails.env.production?
+      div#flash_messages(data={turbolinks: false})
+        - flash.each do |key, value|
+          = content_tag(:div, value, :class => "flash #{key}")
+
     .main
       = yield
