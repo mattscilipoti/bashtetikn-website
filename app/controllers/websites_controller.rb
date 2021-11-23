@@ -1,5 +1,11 @@
 class WebsitesController < ApplicationController
-  before_action :set_website, only: %i[ show edit update destroy ]
+  before_action :set_website, only: %i[destroy edit html_validation_scan show update]
+
+  # GET /website/:id/html_validation_scan
+  def html_validation_scan
+    @website.html_validation_scan
+    redirect_back(fallback_location: root_path)
+  end
 
   # GET /websites or /websites.json
   def index

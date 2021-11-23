@@ -6,28 +6,16 @@ p
   strong Url:
   = @website.url
 
-- webpages = @website.webpages.order(:name)
+h3 Perform Scans
+ul.horizontal
+  - PageScan.descendants.each do |page_scan_class|
+    li
+      = page_scan_link_to(page_scan_class: page_scan_class, model: @website) do
+        = font_awesome_icon(page_scan_class.icon_name, caption: "Perform #{page_scan_class.name.titleize.pluralize}")
 
+- webpages = @website.webpages.order(:name)
 h2 Webpages
 =render 'webpages/table', webpages: webpages
-
-h2 Webpage Scans
-table.scans
-  thead
-    th Scan Type
-    th Page Name
-    th Scanned At
-    th Issues (ct)
-    th Warnings (ct)
-  body
-    - webpages.each do |webpage|
-      - webpage.last_scans.each do |scan|
-        tr[data={id: dom_id(scan)}]
-          td= scan.type.titleize
-          td= link_to webpage.name, webpage
-          td(title=scan.scanned_at)= "#{time_ago_in_words(scan.scanned_at)} ago"
-          td= scan.issues.size
-          td= scan.warnings.size
 
 => link_to 'Edit', edit_website_path(@website)
 '|

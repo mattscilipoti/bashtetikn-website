@@ -7,6 +7,10 @@ class PageScan < ApplicationRecord
   scope :queued, -> { where.not(queued_at: nil).where(scanned_at: nil) }
   scope :scanned, -> { where.not(scanned_at: nil) }
 
+  def icon_name
+    raise NotImplementedError, "Implement in child"
+  end
+
   def scan
     raise NotImplementedError, "Implement in child"
   end

@@ -1,11 +1,15 @@
-- page_scan_td_count = 3
+- page_scan_td_count = 3 # issues, warnings, scanned_at
 table
   thead
     tr
       th
       th
       - PageScan.descendants.each do |page_scan_class|
-       th[colspan=page_scan_td_count]= page_scan_class.name.titleize
+       th[colspan=page_scan_td_count]
+         = page_scan_class.name.titleize
+         |&nbsp;(
+         = font_awesome_icon(page_scan_class.icon_name)
+         |)
       th
     tr
       th Name
@@ -25,8 +29,8 @@ table
         - PageScan.descendants.each do |page_scan_class|
           - scan = webpage.last_scans.detect{ |scan| scan.type == page_scan_class.name }
           - if scan
-            td= scan.issues.size
-            td= scan.warnings.size
+            td.count= scan.issues.size
+            td.count= scan.warnings.size
             td(title=scan.scanned_at)= link_to("#{time_ago_in_words(scan.scanned_at)} ago", page_scan_path(scan))
           - else
             - page_scan_td_count.times do
