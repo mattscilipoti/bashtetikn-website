@@ -6,8 +6,16 @@ class HtmlValidationScan < PageScan
     'microscope'
   end
 
+  def self.validator
+    Bashtetikn::HtmlValidatorFromW3C.new
+  end
+
+  def self.validator_uri
+    validator.validator.validator_uri
+  end
+
   def icon_name
-    self.call.icon_name
+    self.class.icon_name
   end
 
   def scan
@@ -30,6 +38,10 @@ class HtmlValidationScan < PageScan
   end
 
   def validator
-    Bashtetikn::HtmlValidatorFromW3C.new
+    self.class.validator
+  end
+
+  def validator_uri
+    self.class.validator_uri
   end
 end

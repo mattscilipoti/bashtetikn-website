@@ -2,7 +2,7 @@
 
 Website to help validate web pages. Gathers validation results from multiple sources, providing insight into current and historical issues. WebUI for [bashtetikn library](https://github.com/mattscilipoti/bashtetikn).
 
-> bashtetikn: Yiddish for "To validate"
+> bashtetikn (Yiddish, verb, /bɛ-oSH-tɛk-in/): To validate, certify, or confirm
 
 ## Dockerized
 - see https://dev.to/imiked/starting-a-rails-app-using-vscode-containers-1gj9

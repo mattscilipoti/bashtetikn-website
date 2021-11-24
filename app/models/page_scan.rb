@@ -1,5 +1,7 @@
+# Acts as an Interface and Base Class for PageScan descendants
+require "sti_preload" # preloads descendants
 class PageScan < ApplicationRecord
-  # self.abstract_class = true
+  include StiPreload # Only in the root STI class.
 
   belongs_to :webpage, optional: true
   validates :url, presence: true, url: { public_suffix: true }
@@ -26,6 +28,10 @@ class PageScan < ApplicationRecord
   end
 
   def validator
+    raise NotImplementedError, "Implement in child"
+  end
+
+  def validator_uri
     raise NotImplementedError, "Implement in child"
   end
 end
