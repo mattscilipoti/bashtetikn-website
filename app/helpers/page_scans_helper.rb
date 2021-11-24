@@ -8,6 +8,9 @@ module PageScansHelper
               else
                 raise ArgumentError, "Unsupported model (#{mode.class.name})."
               end
+
+    tooltip += " (via #{page_scan_class.validator_uri})"
+
     controller_name = model.class.name.pluralize.downcase
     url_info = {
       controller: controller_name,

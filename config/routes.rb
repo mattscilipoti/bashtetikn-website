@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     Rails.logger.debug "In routes: PageScan.descendants==#{PageScan.descendants.collect(&:name)}"
     PageScan.descendants.each do |page_scan_class|
       page_scan_route = page_scan_class.name.underscore
-      Rails.logger.debug "Adding route get: #{page_scan_route}"
+      Rails.logger.debug "Adding route, websites GET #{page_scan_route}"
       get page_scan_route, on: :member
     end
   end

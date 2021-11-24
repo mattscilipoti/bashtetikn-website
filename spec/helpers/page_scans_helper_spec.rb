@@ -38,11 +38,11 @@ RSpec.describe PageScansHelper, type: :helper do
       ).to have_tag(:a, text: 'TEST CAPTION')
     end
 
-    it 'creates a link with a title derived from the scanner' do
+    it "creates a link with a title/tooltip derived from the scanner, including the scan tool's URL" do
       expect(
         page_scan_link_to(page_scan_class: HtmlValidationScan, model: mock_website, caption: 'TEST CAPTION')
       ).to have_tag(:a, with: {
-        title: 'Html Validation Scan all pages'
+        title: 'Html Validation Scan all pages (via https://validator.w3.org/nu/)'
       })
     end
 

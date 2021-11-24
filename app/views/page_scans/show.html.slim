@@ -1,5 +1,5 @@
 h1
-  - header = "#{@page_scan.type.titleize} of "
+  - header = "#{@page_scan.type.titleize} (via #{@page_scan.validator_uri}) of "
   - header += @page_scan.webpage ? "Webpage: #{@page_scan.webpage.name.inspect}" : "URL: \n {#@page_scan.url}"
   = header
 

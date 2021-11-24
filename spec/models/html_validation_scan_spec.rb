@@ -9,12 +9,6 @@ RSpec.describe HtmlValidationScan, type: :model do
 
   its(:icon_name) { should eql('microscope') }
 
-  describe '#validator' do
-    it 'is a Bashtetikn::HtmlValidatorFromW3C' do
-      expect(subject.validator).to be_a(Bashtetikn::HtmlValidatorFromW3C)
-    end
-  end
-
   describe '#scan', vcr: true do
     it 'converts results errors to #issues' do
       subject.url = 'https://w3c-validators.github.io/w3c_validators/invalid_html5.html'
@@ -45,6 +39,18 @@ RSpec.describe HtmlValidationScan, type: :model do
     its(:request_uri) { should start_with('/nu/?doc=http') }
     it 'query includes encoded URI to the page' do
       expect(subject.query).to eql('doc=https%3A%2F%2Fexample.com')
+    end
+  end
+
+  describe '#validator' do
+    it 'is a Bashtetikn::HtmlValidatorFromW3C' do
+      expect(subject.validator).to be_a(Bashtetikn::HtmlValidatorFromW3C)
+    end
+  end
+
+  describe '#validator_uri' do
+    it 'is the W3C Nu Validator' do
+      expect(subject.validator_uri.to_s).to eql('https://validator.w3.org/nu/')
     end
   end
 end

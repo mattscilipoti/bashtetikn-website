@@ -1,3 +1,4 @@
+# Acts as an Interface and Base Class for PageScan descendants
 class PageScan < ApplicationRecord
   # self.abstract_class = true
 
@@ -26,6 +27,10 @@ class PageScan < ApplicationRecord
   end
 
   def validator
+    raise NotImplementedError, "Implement in child"
+  end
+
+  def validator_uri
     raise NotImplementedError, "Implement in child"
   end
 end
