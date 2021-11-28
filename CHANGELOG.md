@@ -9,7 +9,11 @@ In place of release version numbers, we organize via deploys to Production (by D
 
 ## Upcoming: Add favicon
 
-- add acccessible-icon as favicon
+- FIX: PageScan.descendants (again - for testing too, this time)
+- FIX: website#html_validation_page_scan (redirect_back caused multiple scans)
+- Rename HtmlValidationScan to HtmlValidation*Page*Scan
+- Add acccessible-icon as favicon
+
 
 ## 2021-11-24: Present Validator info
 
