@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
+## Upcoming: Add Foundation
+
+- add favicon: acccessible-icon
+- Removed gem "spinners"
+
 ## 2021-12-01: Add favicon, fix issues
 
 - FIX: PageScan.descendants (again - for testing too, this time)
