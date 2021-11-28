@@ -18,7 +18,14 @@ div.main {
   clear: both;
 }
 
-nav ul {
+/* Basic Nav: */
+nav .home {
+  font-weight: bold;
+}
+ */
+
+/* Basic Nav styles:  (replaced by Foundation) */
+/* nav ul {
   margin-bottom: 2em;
   padding: 0.5em;
 }
@@ -31,7 +38,7 @@ nav li:after {
 }
 nav li:last-child:after {
   content: "";
-}
+} */
 
 subheader {
   color: darkgray;

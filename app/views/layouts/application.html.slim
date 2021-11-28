@@ -13,15 +13,15 @@ html
     = stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload'
   body
     header
-      nav
-        ul.navbar
-          li.logo
+      nav.top-bar
+        ul.menu
+          li.home.logo
             = link_to "Home", root_path, id: "logo"
           li= link_to "Websites", websites_path
           li= link_to "Webpages", webpages_path
           li= link_to "PageScans", page_scans_path
           - unless Rails.env.production?
-            li= "(#{Rails.env})"
+            li.menu-text= "(#{Rails.env})"
       div#flash_messages(data={turbolinks: false})
         - flash.each do |key, value|
           = content_tag(:div, value, :class => "flash #{key}")
