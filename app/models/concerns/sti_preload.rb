@@ -1,4 +1,5 @@
 # Used to preload STI Base Class descendants
+#   This ensures "descendants" method works for STI base classes
 # see: https://guides.rubyonrails.org/autoloading_and_reloading_constants.html#single-table-inheritance
 # Should be included in Base Class via `require "sti_preload"` & `include StiPreload`
 # e.g. see app/models/page_scan.rb
