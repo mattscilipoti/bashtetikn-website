@@ -7,7 +7,7 @@ class Website < ApplicationRecord
     "#{id}-#{name.parameterize}"
   end
 
-  def html_validation_scan
+  def html_validation_page_scan
     webpages.each(&:validate_html)
   end
 end

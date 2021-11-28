@@ -20,27 +20,27 @@ RSpec.describe PageScansHelper, type: :helper do
 
     it 'creates a link' do
       expect(
-        page_scan_link_to(page_scan_class: HtmlValidationScan, model: mock_website, caption: 'TEST')
+        page_scan_link_to(page_scan_class: HtmlValidationPageScan, scanned_model: mock_website, caption: 'TEST')
       ).to have_tag(:a)
     end
 
     it 'creates a link to the passed scanner' do
       expect(
-        page_scan_link_to(page_scan_class: HtmlValidationScan, model: mock_website, caption: 'TEST')
+        page_scan_link_to(page_scan_class: HtmlValidationPageScan, scanned_model: mock_website, caption: 'TEST')
       ).to have_tag(:a, with: {
-        href: html_validation_scan_website_path(mock_website.id)
+        href: html_validation_page_scan_website_path(mock_website.id)
       })
     end
 
     it 'creates a link with the passed caption' do
       expect(
-        page_scan_link_to(page_scan_class: HtmlValidationScan, model: mock_website, caption: 'TEST CAPTION')
+        page_scan_link_to(page_scan_class: HtmlValidationPageScan, scanned_model: mock_website, caption: 'TEST CAPTION')
       ).to have_tag(:a, text: 'TEST CAPTION')
     end
 
     it "creates a link with a title/tooltip derived from the scanner, including the scan tool's URL" do
       expect(
-        page_scan_link_to(page_scan_class: HtmlValidationScan, model: mock_website, caption: 'TEST CAPTION')
+        page_scan_link_to(page_scan_class: HtmlValidationPageScan, scanned_model: mock_website, caption: 'TEST CAPTION')
       ).to have_tag(:a, with: {
         title: 'Html Validation Scan all pages (via https://validator.w3.org/nu/)'
       })
@@ -48,7 +48,7 @@ RSpec.describe PageScansHelper, type: :helper do
 
     it 'creates a link, with the passed content' do
       expect(
-        page_scan_link_to(page_scan_class: HtmlValidationScan, model: mock_website) do
+        page_scan_link_to(page_scan_class: HtmlValidationPageScan, scanned_model: mock_website) do
           content_tag(:span, 'TEST SPAN')
         end
       ).to have_tag(:a) do

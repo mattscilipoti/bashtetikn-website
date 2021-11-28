@@ -1,7 +1,7 @@
 require 'bashtetikn'
 
 # Scans a URL, recording HTML validation issues
-class HtmlValidationScan < PageScan
+class HtmlValidationPageScan < PageScan
   def self.icon_name
     'microscope'
   end
