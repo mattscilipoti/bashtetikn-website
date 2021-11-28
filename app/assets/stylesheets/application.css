@@ -72,3 +72,15 @@ a.external:after {
   content : '\00a0'; /* &nbsp; */
   padding-right: 7px;
 }
+
+/* FontAwesome */
+i.fas {
+  font-size: 1.2em;
+  padding: 4px;
+}
+a i.fas:hover {
+  background-color: lightsteelblue;
+  /* border: solid 1px darkslategray; */
+  border-radius: 4px;
+  color: darkslategray;
+}
