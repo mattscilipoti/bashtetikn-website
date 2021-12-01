@@ -7,15 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
-## Upcoming: Add favicon, fix issues
+## 2021-12-01: Add favicon, fix issues
 
 - FIX: PageScan.descendants (again - for testing too, this time)
 - FIX: website#html_validation_page_scan (redirect_back caused multiple scans)
 - FIX: webpages#show, correct website URL link (was local)
 - WORKAROUND: page_scans#index limits to 25 (needs pagination)
 - Rename HtmlValidationScan to HtmlValidation*Page*Scan
-- Add acccessible-icon as favicon
-
+- Add accessible-icon as favicon
 
 ## 2021-11-24: Present Validator info
 
