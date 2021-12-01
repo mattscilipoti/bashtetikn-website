@@ -5,7 +5,7 @@ class Webpage < ApplicationRecord
   validates :url, presence: true, url: { public_suffix: true }
 
   def html_validation_scanner
-    HtmlValidationScan.new(url: self.url)
+    HtmlValidationPageScan.new(url: self.url)
   end
 
   def last_scans

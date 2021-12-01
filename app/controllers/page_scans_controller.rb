@@ -10,7 +10,9 @@ class PageScansController < ApplicationController
       @page_scans = PageScan.all
     end
 
-    @page_scans = @page_scans.order(scanned_at: :desc)
+    # WORKAROUND: limit to 25.
+    # TODO: paginate
+    @page_scans = @page_scans.order(scanned_at: :desc).limit(25)
   end
 
   # GET /page_scans/1 or /page_scans/1.json

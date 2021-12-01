@@ -1,21 +1,21 @@
 module PageScansHelper
-  def page_scan_link_to(page_scan_class:, model:, caption: nil, &block)
-    tooltip = case model
+  def page_scan_link_to(page_scan_class:, scanned_model:, caption: nil, &block)
+    tooltip = case scanned_model
               when Website
                 "#{page_scan_class.name.titleize} all pages"
               when PageScan
                 page_scan_class.name.titleize
               else
-                raise ArgumentError, "Unsupported model (#{mode.class.name})."
+                raise ArgumentError, "Unsupported scanned_model (#{scanned_model.class.name})."
               end
 
     tooltip += " (via #{page_scan_class.validator_uri})"
 
-    controller_name = model.class.name.pluralize.downcase
+    controller_name = scanned_model.class.name.pluralize.downcase
     url_info = {
       controller: controller_name,
       action: page_scan_class.name.underscore,
-      id: model.id,
+      id: scanned_model.id,
     }
 
     if caption.present?

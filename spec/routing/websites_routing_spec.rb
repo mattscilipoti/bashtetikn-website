@@ -35,8 +35,8 @@ RSpec.describe WebsitesController, type: :routing do
       expect(delete: "/websites/1").to route_to("websites#destroy", id: "1")
     end
 
-    it "routes to #html_validation_scan" do
-      expect(get: "/websites/1/html_validation_scan").to route_to("websites#html_validation_scan", id: "1")
+    it "routes to #html_validation_page_scan" do
+      expect(get: "/websites/1/html_validation_page_scan").to route_to("websites#html_validation_page_scan", id: "1")
     end
   end
 end

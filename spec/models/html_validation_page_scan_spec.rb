@@ -4,7 +4,7 @@ require 'rspec/json_expectations'
 require 'vcr_helper'
 require_relative '../shared/shared_examples_for_page_scans'
 
-RSpec.describe HtmlValidationScan, type: :model do
+RSpec.describe HtmlValidationPageScan, type: :model do
   it_behaves_like 'Any PageScan'
 
   its(:icon_name) { should eql('microscope') }
@@ -32,7 +32,7 @@ RSpec.describe HtmlValidationScan, type: :model do
   end
 
   describe '#scan_results_uri, provides the URI to the scan_results' do
-    subject(:scan_results_uri) { HtmlValidationScan.new(url: 'https://example.com').scan_results_uri }
+    subject(:scan_results_uri) { HtmlValidationPageScan.new(url: 'https://example.com').scan_results_uri }
     its(:scheme) { should eql('https') }
     its(:host) { should eql('validator.w3.org') }
     its(:path) { should eql('/nu/') } # WARN: Nu Html Checker requires the trailing slash before query params

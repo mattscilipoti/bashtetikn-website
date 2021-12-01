@@ -27,3 +27,4 @@ Website to help validate web pages. Gathers validation results from multiple sou
 ## View Templating via Slim
 
 - Note: using logic-less: https://github.com/slim-template/slim/blob/master/doc/logic_less.md
+- favicon: https://gauger.io/fonticon/, accessible-icon, rgba(64, 44, 255, 1)

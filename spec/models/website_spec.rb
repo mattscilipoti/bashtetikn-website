@@ -24,7 +24,7 @@ RSpec.describe Website, type: :model do
 
   describe '(instance methods)' do
     subject(:website) { Website.new(name: 'TEST', url: 'https://example.com') }
-    
+
     describe '#to_param' do
       it 'starts with the ID' do
         subject.id = 12
@@ -37,7 +37,7 @@ RSpec.describe Website, type: :model do
       end
     end
 
-    describe '#html_validation_scan', vcr: true do  
+    describe '#html_validation_page_scan', vcr: true do
       before(:each) do
         subject.save!
         subject.webpages.create!(url: 'https://w3c-validators.github.io/w3c_validators/valid_html5.html')
@@ -45,16 +45,16 @@ RSpec.describe Website, type: :model do
         subject.webpages.create!(url: 'https://w3c-validators.github.io/w3c_validators/valid_markup.html')
       end
 
-      it 'calls #html_validation_scan on each page' do
+      it 'calls #html_validation_page_scan on each page' do
         subject.webpages.each do |webpage|
-          expect(webpage).to receive(:html_validation_scan)
+          expect(webpage).to receive(:html_validation_page_scan)
         end
-        subject.html_validation_scan
+        subject.html_validation_page_scan
       end
 
       it 'performs a PageScan for each Webpage, asynchronously' do
         ActiveJob::Base.queue_adapter = :test
-        subject.html_validation_scan
+        subject.html_validation_page_scan
         expect(PageScanJob).to(have_been_enqueued.exactly(3).times)
       end
     end

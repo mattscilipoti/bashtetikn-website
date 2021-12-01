@@ -1,12 +1,12 @@
 class WebsitesController < ApplicationController
-  before_action :set_website, only: %i[destroy edit html_validation_scan show update]
+  before_action :set_website, only: %i[destroy edit html_validation_page_scan show update]
 
-  # GET /website/:id/html_validation_scan
-  def html_validation_scan
-    @website.html_validation_scan
+  # GET /website/:id/html_validation_page_scan
+  def html_validation_page_scan
+    @website.html_validation_page_scan
 
     flash[:notice] = 'Scanning all pages. Wait a bit, then refresh to see scan results'
-    redirect_back(fallback_location: root_path, allow_other_host: false)
+    redirect_to @website
   end
 
   # GET /websites or /websites.json
