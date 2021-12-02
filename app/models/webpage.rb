@@ -18,7 +18,7 @@ class Webpage < ApplicationRecord
     one_of_each_type
   end
 
-  def validate_html
+  def html_validation_page_scan
     scanner = html_validation_scanner
     scanner.save!
     page_scans << scanner

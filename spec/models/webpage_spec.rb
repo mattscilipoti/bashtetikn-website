@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'vcr_helper'
 require 'rspec/its'
 
 RSpec.describe Webpage, type: :model do
@@ -13,7 +12,7 @@ RSpec.describe Webpage, type: :model do
     end
   end
 
-  describe '#html_validation_scanner', vcr: true do
+  describe '#html_validation_scanner' do
     it 'is a HtmlValidationPageScan' do
       expect(subject.html_validation_scanner).to be_a(HtmlValidationPageScan)
     end
@@ -26,7 +25,7 @@ RSpec.describe Webpage, type: :model do
     end
 
     context 'only one scan scans' do
-      let(:single_scan) { HtmlValidationPageScan.new(url: 'https://page_scan.example.com') }
+      let(:single_scan) { HtmlValidationPageScan.new(url: 'https://page_scan.example.com', scanned_at: 1.minute.ago) }
       subject(:webpage) do
         Webpage.create!(url: 'https://page.example.com').tap {|page| page.page_scans << single_scan }
       end
@@ -36,8 +35,9 @@ RSpec.describe Webpage, type: :model do
     context 'multiple scans, of multiple types' do
       class TestScanner < PageScan; end
       let(:type_a_1) { PageScan.new(type: 'HtmlValidationPageScan', url: 'https://a1.example.com', scanned_at: 5.minutes.ago) }
-      let(:type_a_2) { PageScan.new(type: 'HtmlValidationPageScan', url: 'https://a2.example.com') }
-      let(:type_b_1) { PageScan.new(type: 'TestScanner', url: 'https://b1.example.com') }
+      let(:type_a_2) { PageScan.new(type: 'HtmlValidationPageScan', url: 'https://a2.example.com', scanned_at: Time.now) }
+      let(:type_a_3) { PageScan.new(type: 'HtmlValidationPageScan', url: 'https://a2.example.com') }
+      let(:type_b_1) { PageScan.new(type: 'TestScanner', url: 'https://b1.example.com', scanned_at: Time.now) }
       let(:type_b_2) { PageScan.new(type: 'TestScanner', url: 'https://b2.example.com', scanned_at: 5.minutes.ago) }
 
       subject(:webpage) do
@@ -49,22 +49,11 @@ RSpec.describe Webpage, type: :model do
     end
   end
 
-  describe '#validate_html', vcr: true do
-    it 'converts results errors to #issues' do
-      subject.url = 'https://w3c-validators.github.io/w3c_validators/invalid_html5.html'
-      subject.validate_html
-      html_validation = subject.page_scans.last
-      expect(html_validation.issues.count).to eql(2)
-      expect(html_validation.issues).to contain_exactly(
-        "End tag for  “body” seen, but there were unclosed elements.",
-        "Unclosed element “section”."
-      )
-    end
-
+  describe '#html_validation_page_scan' do
     it 'performs the PageScan asynchronously' do
         subject.url = 'https://w3c-validators.github.io/w3c_validators/valid_html5.html'
         ActiveJob::Base.queue_adapter = :test
-        subject.validate_html
+        subject.html_validation_page_scan
         expect(PageScanJob).to(have_been_enqueued.with(subject.id))
     end
   end

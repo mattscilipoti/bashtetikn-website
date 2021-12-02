@@ -42,7 +42,7 @@ RSpec.describe PageScansHelper, type: :helper do
       expect(
         page_scan_link_to(page_scan_class: HtmlValidationPageScan, scanned_model: mock_website, caption: 'TEST CAPTION')
       ).to have_tag(:a, with: {
-        title: 'Html Validation Scan all pages (via https://validator.w3.org/nu/)'
+        title: 'Html Validation Page Scan all pages (via https://validator.w3.org/nu/)'
       })
     end
 
