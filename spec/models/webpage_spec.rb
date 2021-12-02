@@ -33,7 +33,6 @@ RSpec.describe Webpage, type: :model do
     end
 
     context 'multiple scans, of multiple types' do
-      class TestScanner < PageScan; end
       let(:type_a_1) { PageScan.new(type: 'HtmlValidationPageScan', url: 'https://a1.example.com', scanned_at: 5.minutes.ago) }
       let(:type_a_2) { PageScan.new(type: 'HtmlValidationPageScan', url: 'https://a2.example.com', scanned_at: Time.now) }
       let(:type_a_3) { PageScan.new(type: 'HtmlValidationPageScan', url: 'https://a2.example.com') }
@@ -41,6 +40,7 @@ RSpec.describe Webpage, type: :model do
       let(:type_b_2) { PageScan.new(type: 'TestScanner', url: 'https://b2.example.com', scanned_at: 5.minutes.ago) }
 
       subject(:webpage) do
+        stub_const 'TestScanner', Class.new(PageScan)
         Webpage.create!(url: 'https://page.example.com').tap {|page| page.page_scans = [type_a_1, type_a_2, type_b_1, type_b_2] }
       end
       it 'includes the last scan of each type' do
