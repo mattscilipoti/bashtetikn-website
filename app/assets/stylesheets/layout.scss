@@ -1,0 +1,63 @@
+/* external links */
+a.external:after {
+  /* Image downloaded from https://commons.wikimedia.org/wiki/File:External.svg */
+  /* Attribution: Denelson83, Public domain, via Wikimedia Commons */
+  background: url(/assets/external_link.svg) center right transparent no-repeat;
+  background-size: 8px;
+  content : '\00a0'; /* &nbsp; */
+  padding-right: 7px;
+}
+
+div.main {
+  clear: both;
+}
+
+div.frame {
+  border: solid 1px darkgray;
+  margin: 0 1em 1em 1em;
+  padding: 0 1em;
+
+  .caption {
+    background-color: white;
+    display: inline-block;
+    margin: 0;
+    padding: 0 0.5em;
+    position: relative;
+    top: -0.75em;
+  }
+
+  ol {
+    margin-top: 0;
+  }
+}
+
+input[type='text'] {
+  width: 100%;
+}
+
+input.url {
+  width: 100%;
+}
+
+/* Basic Nav: */
+nav .home {
+  font-weight: bold;
+}
+
+/* Basic Nav styles:  (replaced by Foundation) */
+/* nav ul {
+  margin-bottom: 2em;
+  padding: 0.5em;
+}
+nav li {
+  display: inline-block;
+  float: left;
+}
+nav li:after {
+  content: " | ";
+}
+nav li:last-child:after {
+  content: "";
+} */
+
+
