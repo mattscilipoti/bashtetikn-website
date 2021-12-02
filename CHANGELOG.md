@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
-## Upcoming: Add Foundation
+## 2021-12-01: Add Foundation 6
 
-- add favicon: acccessible-icon
+- Add Foundation 6 (from Zurb)
+  - format menu, tables
+- Extract layout.scss, font_awesome.scs fom application.scss
+- Style:
+  - Convert "custom" element subheader to .subheader
+  - Add padding to div.main
 - Removed gem "spinners"
 
 ## 2021-12-01: Add favicon, fix issues
