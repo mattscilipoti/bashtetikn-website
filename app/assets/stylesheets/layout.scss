@@ -31,6 +31,13 @@ div.frame {
   }
 }
 
+h1, h2, h3, h4, h5 {
+  .subheader {
+    color: darkgray;
+    font-size: 66%;
+  }
+}
+
 input[type='text'] {
   width: 100%;
 }

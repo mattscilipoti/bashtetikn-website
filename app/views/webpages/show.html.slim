@@ -14,12 +14,12 @@ hr
 - if last_scans.blank?
   h2
     | Last Scans
-    subheader
+    span.subheader
       |&nbsp;(none)
 - else
   h2
     | Last Scans
-    subheader
+    span.subheader
       |&nbsp;(
       = link_to('history', page_scans_path(webpage_id: @webpage.id))
       | )
@@ -31,7 +31,7 @@ hr
     - else
       h3[data={id: dom_id(page_scan)}]
         =page_scan.type.titleize
-        subheader[title='Refresh page to check results']
+        span.subheader[title='Refresh page to check results']
           |&nbsp;Scanning...
         i.busy-scanning[title='Refresh page to check results']
 
@@ -40,12 +40,12 @@ hr
 - if queued_scans.blank?
   h2
     | Queued Scans
-    subheader
+    span.subheader
       |&nbsp;(none)
 - else
   h2
     | Queued Scans&nbsp;
-    subheader= "(#{queued_scans.size}) Refresh page to check results"
+    span.subheader= "(#{queued_scans.size}) Refresh page to check results"
   ol
     - queued_scans.each do |queued_scan|
       li[data={id: dom_id(queued_scan)}]
