@@ -4,14 +4,14 @@ RSpec.describe "page_scans/index", type: :view do
   before(:each) do
     assign(:page_scans, [
       PageScan.create!(
-        type: "PageScan",
+        type: "HtmlValidationPageScan",
         url: "https://1.example.com",
         webpage: nil,
         warnings: [],
         issues: []
       ),
       PageScan.create!(
-        type: "PageScan",
+        type: "HtmlValidationPageScan",
         url: "https://2.example.com",
         webpage: nil,
         warnings: [],
@@ -24,7 +24,7 @@ RSpec.describe "page_scans/index", type: :view do
     render
     # raise rendered
 
-    assert_select "tr>td.type", text: /Page Scan/, count: 2
+    assert_select "tr>td.type", title: /Page Scan/, count: 2
     assert_select "tr>td.url", text: /example.com/, count: 2
     assert_select "tr>td.webpage", text: nil.to_s, count: 2
     assert_select "tr>td.warnings", text: "0", count: 2
