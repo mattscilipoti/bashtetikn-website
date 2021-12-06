@@ -6,10 +6,8 @@ table.webpages
       th
       - PageScan.descendants.each do |page_scan_class|
        th[colspan=page_scan_td_count]
-         = page_scan_class.name.titleize
-         |&nbsp;(
          = font_awesome_icon(page_scan_class.icon_name)
-         |)
+         = page_scan_class.name.titleize
       th
     tr
       th Name
