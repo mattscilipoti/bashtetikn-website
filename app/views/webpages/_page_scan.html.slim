@@ -8,7 +8,7 @@ h3[data={id: dom_id(page_scan)}]
 
   span.subheader.scan_results
     |, 
-    = external_link_to('scan report', page_scan.scan_results_uri.to_s)
+    = external_link_to('scan report', page_scan.scan_results_uri.to_s, title: "See scan report at #{page_scan.validator_uri}")
     |)
 br
 

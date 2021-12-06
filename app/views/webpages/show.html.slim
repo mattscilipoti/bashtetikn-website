@@ -1,12 +1,12 @@
 h1= "Webpage \"#{@webpage.name}\""
 
 p
-  strong Url:
-  = @webpage.url
+  strong Url:&nbsp;
+  span.url= external_link_to(@webpage.url, @webpage.url)
 
 p
-  strong Website:
-  = link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
+  strong Website:&nbsp;
+  span= link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
 
 hr
 
@@ -21,7 +21,7 @@ hr
     | Last Scans
     span.subheader
       |&nbsp;(
-      = link_to('history', page_scans_path(webpage_id: @webpage.id))
+      = link_to('history', page_scans_path(webpage_id: @webpage.id), title: 'List all past Page Scans')
       | )
 
   - last_scans.each do |page_scan|
