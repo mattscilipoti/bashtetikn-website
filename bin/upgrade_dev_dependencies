@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+require 'pathname'
+require 'fileutils'
+include FileUtils
+
+# path to your application root.
+APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+def bundle_update(group)
+  puts "== Upgrading '#{group}' group dependencies..."
+  cmd_args = bundle_update_cmd('development')
+
+  commit_if_changes(cmd_args) do
+    system!(*cmd_args)
+  end
+end
+
+def bundle_update_cmd(group)
+  ['bundle', 'update', "--group", group]
+end
+
+def commit_if_changes(*messages)
+  yield
+  msg = Array(messages).join(' ')
+  has_changes = !system('git', 'diff', '--exit-code')
+  return unless has_changes
+  puts 'Running rspec...'
+  system!('bundle exec rspec --fail-fast --tag ~@production --format progress')
+  system!('git', 'commit', '-am', msg)
+end
+
+chdir APP_ROOT do
+  # This script is a way to update your development dependencies automatically.
+  # Add necessary update steps to this file.
+
+  system! 'gem install bundler --conservative'
+  system!('bundle check')
+
+  bundle_update('development')
+  bundle_update('test')
+
+  commit_if_changes("Upgraded robocop.yml via mry gem.") do
+    puts "\n== Upgrading RuboCop Config..."
+    system! 'mry .rubocop.yml'
+  end
+
+  puts "\n== Runing CodeClimate..."
+  system('brew update && brew upgrade codeclimate')
+  system('codeclimate analyze')
+end
