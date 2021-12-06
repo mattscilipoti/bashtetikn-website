@@ -1,5 +1,5 @@
 class WebpagesController < ApplicationController
-  before_action :set_webpage, only: %i[ show edit update destroy validate_html ]
+  before_action :set_webpage, only: %i[ show edit update destroy html_validation_page_scan ]
 
   # GET /webpages or /webpages.json
   def index
@@ -56,8 +56,8 @@ class WebpagesController < ApplicationController
     end
   end
 
-  def validate_html
-    @webpage.validate_html
+  def html_validation_page_scan
+    @webpage.html_validation_page_scan
     if @webpage.save
       redirect_to @webpage
     else

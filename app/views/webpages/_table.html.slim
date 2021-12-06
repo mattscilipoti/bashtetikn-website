@@ -1,15 +1,13 @@
 - page_scan_td_count = 3 # issues, warnings, scanned_at
-table
+table.webpages
   thead
     tr
       th
       th
       - PageScan.descendants.each do |page_scan_class|
        th[colspan=page_scan_td_count]
-         = page_scan_class.name.titleize
-         |&nbsp;(
          = font_awesome_icon(page_scan_class.icon_name)
-         |)
+         = page_scan_class.name.titleize
       th
     tr
       th Name
@@ -37,7 +35,7 @@ table
               td
                 /! placeholder for scan info
         td
-          = link_to 'Validate&nbsp;HTML'.html_safe, validate_html_webpage_path(webpage)
+          = link_to 'Validate&nbsp;HTML'.html_safe, html_validation_page_scan_webpage_path(webpage)
           = "&nbsp;|&nbsp;".html_safe
           = link_to 'Edit', edit_webpage_path(webpage)
           = "&nbsp;|&nbsp;".html_safe

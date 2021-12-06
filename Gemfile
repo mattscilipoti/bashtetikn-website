@@ -76,7 +76,6 @@ gem 'rspec-rails', group: [:development, :test]
 gem 'solargraph', require: false, group: [:development, :test] # for Linter
 gem 'simple_form' # Forms made easy
 gem 'slim-rails' # Slim templates generator
-gem 'spinners' # Sass mixin to generate pure CSS3 loading/busy indicators.
 gem 'validate_url'
 gem 'vcr', require: false, group: [:test]
 gem 'webmock', require: false, group: [:test] # for vcr

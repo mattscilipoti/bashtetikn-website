@@ -1,0 +1,8 @@
+@import '~foundation-sites/scss/foundation';
+
+@import 'settings';
+
+// Include everything by default. Pick individual components from here instead
+// https://github.com/foundation/foundation-sites/blob/develop/scss/foundation.scss#L80
+
+@include foundation-everything();

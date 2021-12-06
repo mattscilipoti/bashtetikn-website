@@ -17,7 +17,7 @@ RSpec.describe "/page_scans", type: :request do
   # PageScan. As you add validations to PageScan, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { type: 'PageScan',
+    { type: 'HtmlValidationPageScan',
       url: 'https://example.com'
     }
   }

@@ -52,7 +52,7 @@ RSpec.describe FontAwesomeHelper, type: :helper do
     it 'creates an image link, with the passed caption' do
       expect(
         helper.font_awesome_icon('camera-retro', caption: 'TEST CAPTION')
-      ).to have_tag(:i, text: 'TEST CAPTION')
+      ).to have_tag(:i, text: /TEST CAPTION/)
     end
   end
 end

@@ -22,12 +22,12 @@ RSpec.describe "websites/show", type: :view do
   it "renders list of Webpages" do
     render
     expect(rendered).to have_css('h2', text: /Webpages/)
-    expect(rendered).to have_css('ol li.webpage', count: 1)
+    expect(rendered).to have_css('table.webpages tbody tr', count: 1)
   end
 
-  it "renders table of Scans" do
-    render
-    expect(rendered).to have_css('h2', text: /Webpage Scans/)
-    expect(rendered).to have_css('table.scans')
-  end
+  # it "renders table of Scans" do
+  #   render
+  #   expect(rendered).to have_css('h2', text: /Webpage Scans/)
+  #   expect(rendered).to have_css('table.scans')
+  # end
 end

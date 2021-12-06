@@ -10,17 +10,17 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload'
   body
     header
-      nav
-        ul.navbar
-          li.logo
-            = link_to "Home", root_path, id: "logo"
-          li= link_to "Websites", websites_path
-          li= link_to "Webpages", webpages_path
-          li= link_to "PageScans", page_scans_path
+      nav.top-bar
+        ul.menu
+          =foundation_menu_list_item "Home", root_path
+          =foundation_menu_list_item "Websites", websites_path
+          =foundation_menu_list_item "Webpages", webpages_path
+          =foundation_menu_list_item "PageScans", page_scans_path
           - unless Rails.env.production?
-            li= "(#{Rails.env})"
+            li.menu-text.environment= "(#{Rails.env})"
       div#flash_messages(data={turbolinks: false})
         - flash.each do |key, value|
           = content_tag(:div, value, :class => "flash #{key}")

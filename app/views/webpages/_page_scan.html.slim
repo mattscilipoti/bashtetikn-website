@@ -1,14 +1,15 @@
 h3[data={id: dom_id(page_scan)}]
   =page_scan.type.titleize
 
-  subheader(title=page_scan.scanned_at)
+  span.subheader(title=page_scan.scanned_at)
     |&nbsp;(tested&nbsp;
     = time_ago_in_words(page_scan.scanned_at)
-    |&nbsp;ago)
+    |&nbsp;ago
 
-  subheader.scan_results
-    |&nbsp;
-    = external_link_to('Scan Results', page_scan.scan_results_uri.to_s)
+  span.subheader.scan_results
+    |, 
+    = external_link_to('scan report', page_scan.scan_results_uri.to_s, title: "See scan report at #{page_scan.validator_uri}")
+    |)
 br
 
 .frame

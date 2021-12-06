@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
+## 2021-12-01: Add Foundation 6
+
+- Add Foundation 6 (from Zurb)
+  - format menu, tables
+- Extract layout.scss, font_awesome.scs fom application.scss
+- Style:
+  - Format menu, tables
+  - Convert "custom" element subheader to .subheader
+  - Add padding to div.main
+  - Add :after images for internal/external links
+- Removed gem "spinners"
+- Rename HtmlValidationScan to HtmlValidationPageScan (convention *_page_scan.rb)
+
 ## 2021-12-01: Add favicon, fix issues
 
 - FIX: PageScan.descendants (again - for testing too, this time)

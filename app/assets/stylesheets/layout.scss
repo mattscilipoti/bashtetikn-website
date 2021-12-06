@@ -1,0 +1,135 @@
+// Vaiables copied from Foundation. TODO: re-arrange to use Foundation vars (Rails 7?)
+$body-background: White; 
+$primary-color: #1779ba;
+
+// Identify links with icon
+a:not(.external) {
+  &:after {
+    color: LightGray;
+    font-family: "Font Awesome 5 Free";
+    font-size: 75%;
+    font-weight: 900; // "Solid" font group
+    content: "\00a0\f0c1"; // &nbsp; + link icon -> https://fontawesome.com/v5.15/icons/link?style=solid
+  }
+  &:hover:after {
+    color: $primary-color;
+  }
+}
+
+// Identify external links with icon
+a.external {
+  &:after {
+    color: LightGray;
+    content: "\00a0\f35d"; // &nbsp; + external link icon -> https://fontawesome.com/v5.15/icons/external-link-alt?style=solid
+    font-family: "Font Awesome 5 Free";
+    font-size: 75%;
+    font-weight: 900; // "Solid" font group
+  }
+  &:hover:after {
+    color: $primary-color;
+  }
+}
+
+// Our attempt to provide a bordered section.
+div.frame {
+  border: solid 1px darkgray;
+  margin: 0 1em 1em 1em;
+  padding: 0 1em;
+
+  .caption {
+    background-color: $body-background;
+    display: inline-block;
+    margin: 0;
+    padding: 0 0.5em;
+    position: relative;
+    top: -0.75em;
+  }
+
+  ol {
+    margin-top: 0;
+  }
+}
+
+// The main content section
+div.main {
+  clear: both;
+  padding: 10px;
+}
+
+h1, h2, h3, h4, h5 {
+  .subheader {
+    color: darkgray;
+    font-size: 66%;
+  }
+}
+
+input[type='text'] {
+  width: 100%;
+}
+
+input.url {
+  width: 100%;
+}
+
+// Section: Basic Nav
+/* Foundation covers basic styling
+  - remove our standard link icon 
+*/
+nav {
+  a:not(.external):after {
+    content: '' // override link icon
+  }
+}
+
+// Basic Nav styles:  (replaced by Foundation)
+/* nav ul {
+  margin-bottom: 2em;
+  padding: 0.5em;
+}
+nav li {
+  display: inline-block;
+  float: left;
+}
+nav li:after {
+  content: " | ";
+}
+nav li:last-child:after {
+  content: "";
+} */
+
+// Section: Table 
+/* Foundation covers basic formatting & striping.
+   We add vertical borders.
+*/
+table {
+  th, td {
+    border-left: 1px solid Gainsboro;
+  }
+
+  th:last-child, td:last-child {
+    border-right: 1px solid Gainsboro;
+  }
+
+  td.count {
+    text-align: right;
+  }
+  td.icon {
+    text-align: center;
+  }
+}
+
+// Section: Rails "flash" messages
+.flash {
+  background-color: Linen;
+  border: gray solid 1px;
+  padding: 2px 4px;
+  &.alert {
+    color: orange;
+  }
+  &.notice {
+    color: blue;
+  }
+  &.success {
+    color: green;
+  }
+}

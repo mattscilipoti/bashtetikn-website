@@ -1,8 +1,8 @@
 h1
-  | Listing PageScans
+  | Page Scans
   - if @webpage
     br
-    subheader
+    span.subheader
       |&nbsp;(Filtered by Webpage: "#{link_to(@webpage.name, @webpage)}")
 
 
@@ -22,18 +22,18 @@ table
   tbody
     - @page_scans.each do |page_scan|
       tr[data={id: dom_id(page_scan)}]
-        td.type
+        td.type.icon
           = link_to page_scan_path(page_scan), title: "Show #{page_scan.class.name.titleize} details" do
             = font_awesome_icon(page_scan.icon_name)
         td.webpage
           - if page_scan.webpage
-            = link_to_if(page_scan.webpage.present?, page_scan.webpage.try(:name), page_scan.webpage, title: "Show Webpage details")
+            = link_to(page_scan.webpage.name, page_scan.webpage, title: "Show Webpage details")
         = datetime_el(:td, page_scan.created_at)
         = datetime_el(:td, page_scan.queued_at)
         = datetime_el(:td, page_scan.scanned_at)
         td.issues.count = page_scan.issues.size
         td.warnings.count = page_scan.warnings.size
         td.url
-          small =  link_to page_scan.url, page_scan.url, title: "Browse to Scanned page"
+          small = external_link_to page_scan.url, page_scan.url, title: "Browse to Scanned page"
         td.actions
           = link_to 'Destroy', page_scan_path(page_scan), data: { confirm: 'Are you sure?' }, method: :delete

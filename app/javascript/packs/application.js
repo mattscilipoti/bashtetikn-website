@@ -13,3 +13,10 @@ import "@fortawesome/fontawesome-free/css/all"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("css/application.scss")
+
+import { Foundation } from 'foundation-sites'
+import $ from 'jquery'
+
+document.addEventListener('turbolinks:load', () => $(document).foundation())
