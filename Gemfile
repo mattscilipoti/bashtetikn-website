@@ -65,6 +65,7 @@ gem 'bashtetikn'
 gem 'database_cleaner', require: false, group: [:development, :test]
 gem 'factory_bot_rails', require: false, group: [:development, :test]
 gem 'faker', require: false, group: [:development, :test]
+gem 'mry', require: false, group: [:development] # Migrates .Rubocop.Yml, $ mry .rubocop.yml
 gem 'pry-byebug', platform: :mri, group: [:development, :test] # for Debugger/pry
 gem 'pry-rails', platform: :mri, group: [:development, :test]
 gem 'rack-heartbeat'
@@ -73,6 +74,7 @@ gem 'rspec-html-matchers', require: false, group: [:test]
 gem 'rspec-its', require: false, group: [:test]
 gem 'rspec-json_expectations', require: false, group: [:test]
 gem 'rspec-rails', group: [:development, :test]
+gem 'rubocop', require: false, group: [:development] # Ruby static code analyze
 gem 'solargraph', require: false, group: [:development, :test] # for Linter
 gem 'simple_form' # Forms made easy
 gem 'slim-rails' # Slim templates generator

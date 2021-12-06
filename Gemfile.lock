@@ -129,6 +129,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.1)
     minitest (5.14.4)
+    mry (0.78.0.0)
+      rubocop (>= 0.41.0)
     msgpack (1.4.2)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-linux)
@@ -338,6 +340,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mry
   pg (~> 1.1)
   pry-byebug
   pry-rails
@@ -350,6 +353,7 @@ DEPENDENCIES
   rspec-its
   rspec-json_expectations
   rspec-rails
+  rubocop
   sass-rails (>= 6)
   selenium-webdriver
   simple_form
