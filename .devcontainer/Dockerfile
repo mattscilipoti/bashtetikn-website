@@ -22,6 +22,9 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 
 RUN bundle config build.nokogiri --use-system-libraries;
 
+# WORKAROND for error: iseq.rb:13:in `to_binary': wrong argument type false (expected Symbol)
+ENV DISABLE_BOOTSNAP_COMPILE_CACHE=false
+
 COPY Gemfile* /tmp/
 WORKDIR /tmp
 RUN bundle install
