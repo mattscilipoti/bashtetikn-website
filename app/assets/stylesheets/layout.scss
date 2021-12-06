@@ -2,7 +2,7 @@
 $body-background: White; 
 $primary-color: #1779ba;
 
-/* Identify links with icon */
+// Identify links with icon
 a:not(.external) {
   &:after {
     color: LightGray;
@@ -16,7 +16,7 @@ a:not(.external) {
   }
 }
 
-/* external links */
+// Identify external links with icon
 a.external {
   &:after {
     color: LightGray;
@@ -30,11 +30,7 @@ a.external {
   }
 }
 
-div.main {
-  clear: both;
-  padding: 10px;
-}
-
+// Our attempt to provide a bordered section.
 div.frame {
   border: solid 1px darkgray;
   margin: 0 1em 1em 1em;
@@ -54,6 +50,12 @@ div.frame {
   }
 }
 
+// The main content section
+div.main {
+  clear: both;
+  padding: 10px;
+}
+
 h1, h2, h3, h4, h5 {
   .subheader {
     color: darkgray;
@@ -69,17 +71,17 @@ input.url {
   width: 100%;
 }
 
-/* Basic Nav: */
+// Section: Basic Nav
+/* Foundation covers basic styling
+  - remove our standard link icon 
+*/
 nav {
-  .home a {
-    font-weight: bold;
-  }
   a:not(.external):after {
     content: '' // override link icon
   }
 }
 
-/* Basic Nav styles:  (replaced by Foundation) */
+// Basic Nav styles:  (replaced by Foundation)
 /* nav ul {
   margin-bottom: 2em;
   padding: 0.5em;
@@ -95,6 +97,10 @@ nav li:last-child:after {
   content: "";
 } */
 
+// Section: Table 
+/* Foundation covers basic formatting & striping.
+   We add vertical borders.
+*/
 table {
   th, td {
     border-left: 1px solid Gainsboro;
@@ -112,7 +118,7 @@ table {
   }
 }
 
-// Flash messages
+// Section: Rails "flash" messages
 .flash {
   background-color: Linen;
   border: gray solid 1px;

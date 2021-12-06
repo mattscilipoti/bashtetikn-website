@@ -4,10 +4,12 @@ class Webpage < ApplicationRecord
   has_many :page_scans
   validates :url, presence: true, url: { public_suffix: true }
 
+  # Provides the object used to perform the scan
   def html_validation_scanner
     HtmlValidationPageScan.new(url: self.url)
   end
 
+  # The most recently performed scans, one of each PageScan type.
   def last_scans
     one_of_each_type = []
     page_scans.scanned.order(scanned_at: :desc).each do |scan|
@@ -18,6 +20,7 @@ class Webpage < ApplicationRecord
     one_of_each_type
   end
 
+  # Perform an HTML Validation Page Scan
   def html_validation_page_scan
     scanner = html_validation_scanner
     scanner.save!
