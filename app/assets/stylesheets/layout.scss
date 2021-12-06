@@ -1,11 +1,18 @@
+
+/* Identify links with icon */
+a:not(.external):after {
+  color: LightGray;
+  font-family: "Font Awesome 5 Free";
+  font-size: .75em;
+  font-weight: 900; // "Solid" font group
+  content: "\00a0\f0c1"; // &nbsp; + link icon -> https://fontawesome.com/v5.15/icons/link?style=solid
+}
+
 /* external links */
 a.external:after {
-  /* Image downloaded from https://commons.wikimedia.org/wiki/File:External.svg */
-  /* Attribution: Denelson83, Public domain, via Wikimedia Commons */
-  background: url(/assets/external_link.svg) center right transparent no-repeat;
-  background-size: 8px;
-  content : '\00a0'; /* &nbsp; */
-  padding-right: 7px;
+  content: "\00a0\f35d"; // &nbsp; + external link icon -> https://fontawesome.com/v5.15/icons/external-link-alt?style=solid
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; // "Solid" font group
 }
 
 div.main {
