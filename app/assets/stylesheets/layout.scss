@@ -68,4 +68,16 @@ nav li:last-child:after {
   content: "";
 } */
 
+table {
+  th, td {
+    border-left: 1px solid Gainsboro;
+  }
 
+  th:last-child, td:last-child {
+    border-right: 1px solid Gainsboro;
+  }
+
+  td.count {
+    text-align: right;
+  }
+}
