@@ -1,9 +1,9 @@
 # [Choice] Ruby version: 2, 2.7, 2.6, 2.5
-ARG VARIANT=3
+ARG VARIANT=3.0
 FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT}
 
 # Default value to allow debug server to serve content over GitHub Codespace's port forwarding service
-# The value is a comma-separated list of allowed domains 
+# The value is a comma-separated list of allowed domains
 ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev"
 
 # [Choice] Node.js version: lts/*, 16, 14, 12, 10
