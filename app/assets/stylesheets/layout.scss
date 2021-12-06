@@ -105,4 +105,23 @@ table {
   td.count {
     text-align: right;
   }
+  td.icon {
+    text-align: center;
+  }
+}
+
+// Flash messages
+.flash {
+  background-color: Linen;
+  border: gray solid 1px;
+  padding: 2px 4px;
+  &.alert {
+    color: orange;
+  }
+  &.notice {
+    color: blue;
+  }
+  &.success {
+    color: green;
+  }
 }
