@@ -1,17 +1,18 @@
-a {
-  font-weight: 500;
-}
+// Vaiables copied from Foundation. TODO: re-arrange to use Foundation vars (Rails 7?)
+$body-background: White; 
+$primary-color: #1779ba;
+
 /* Identify links with icon */
 a:not(.external) {
   &:after {
     color: LightGray;
     font-family: "Font Awesome 5 Free";
-    font-size: .75em;
+    font-size: 75%;
     font-weight: 900; // "Solid" font group
     content: "\00a0\f0c1"; // &nbsp; + link icon -> https://fontawesome.com/v5.15/icons/link?style=solid
   }
   &:hover:after {
-    color: #1779ba;
+    color: $primary-color;
   }
 }
 
@@ -21,10 +22,11 @@ a.external {
     color: LightGray;
     content: "\00a0\f35d"; // &nbsp; + external link icon -> https://fontawesome.com/v5.15/icons/external-link-alt?style=solid
     font-family: "Font Awesome 5 Free";
+    font-size: 75%;
     font-weight: 900; // "Solid" font group
   }
   &:hover:after {
-    color: #1779ba;
+    color: $primary-color;
   }
 }
 
@@ -39,7 +41,7 @@ div.frame {
   padding: 0 1em;
 
   .caption {
-    background-color: white;
+    background-color: $body-background;
     display: inline-block;
     margin: 0;
     padding: 0 0.5em;

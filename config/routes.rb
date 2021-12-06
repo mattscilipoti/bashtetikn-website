@@ -19,5 +19,5 @@ Rails.application.routes.draw do
       get page_scan_route, on: :member
     end
   end
-  root to: redirect('/welcome', status: 302)
+  root to: 'misc_pages#welcome'
 end

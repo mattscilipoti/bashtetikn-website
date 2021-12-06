@@ -15,13 +15,12 @@ html
     header
       nav.top-bar
         ul.menu
-          li.home.logo
-            = link_to "Home", root_path, id: "logo"
-          li= link_to "Websites", websites_path
-          li= link_to "Webpages", webpages_path
-          li= link_to "PageScans", page_scans_path
+          =foundation_menu_list_item "Home", root_path
+          =foundation_menu_list_item "Websites", websites_path
+          =foundation_menu_list_item "Webpages", webpages_path
+          =foundation_menu_list_item "PageScans", page_scans_path
           - unless Rails.env.production?
-            li.menu-text= "(#{Rails.env})"
+            li.menu-text.environment= "(#{Rails.env})"
       div#flash_messages(data={turbolinks: false})
         - flash.each do |key, value|
           = content_tag(:div, value, :class => "flash #{key}")
