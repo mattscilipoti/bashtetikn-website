@@ -7,9 +7,3 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 import "@fortawesome/fontawesome-free/css/all"
-
-
-import { Foundation } from 'foundation-sites'
-import $ from 'jquery'
-
-document.addEventListener('turbolinks:load', () => $(document).foundation())
