@@ -348,7 +348,6 @@ DEPENDENCIES
   sprockets-rails (>= 3.4.1)
   stimulus-rails (>= 0.7.3)
   turbo-rails (>= 0.9.0)
-  tzinfo-data
   validate_url
   vcr
   web-console (>= 4.1.0)

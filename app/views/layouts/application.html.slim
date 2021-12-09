@@ -1,16 +1,17 @@
 doctype html
 html
   head
-    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    / meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
     meta content="width=device-width,initial-scale=1" name="viewport"
     - page_title = "bashtetikn:#{controller.controller_name}"
     - page_title += "(#{Rails.env})" unless Rails.env.production?
     title= page_title
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload'
+    
+    = stylesheet_link_tag 'application', 'data-turbol-track': 'reload'
+    = javascript_importmap_tags
+    
   body
     header
       nav.top-bar
