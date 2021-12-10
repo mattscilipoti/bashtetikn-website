@@ -284,6 +284,8 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (0.7.3)
       rails (>= 6.0.0)
+    tailwindcss-rails (0.5.4)
+      railties (>= 6.0.0)
     temple (0.8.2)
     thor (1.1.0)
     tilt (2.0.10)
@@ -357,6 +359,7 @@ DEPENDENCIES
   solargraph
   sprockets-rails (>= 3.4.1)
   stimulus-rails (>= 0.7.3)
+  tailwindcss-rails (>= 0.5.3)
   turbo-rails (>= 0.9.0)
   validate_url
   vcr
