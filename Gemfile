@@ -25,7 +25,7 @@ gem "turbo-rails", ">= 0.9.0"
 gem "stimulus-rails", ">= 0.7.3"
 
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails", ">= 0.5.3"
+# gem "tailwindcss-rails", ">= 0.5.3" # WORKAROUND below
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder", "~> 2.11"
@@ -97,6 +97,9 @@ gem 'rubocop', require: false, group: [:development] # Ruby static code analyze
 gem 'solargraph', require: false, group: [:development, :test] # for Linter
 gem 'simple_form' # Forms made easy
 gem 'slim-rails' # Slim templates generator
+gem "tailwindcss-rails",
+    github: "dorianmariefr/tailwindcss-rails",
+    branch: "minimal" # WORKAROUND: fixes SassC::SyntaxError: Error: unterminated attribute selector for type", https://stackoverflow.com/questions/68898511/tailwindcss-typography-sasscsyntaxerror-error-unterminated-attribute-select
 gem 'validate_url'
 gem 'vcr', require: false, group: [:test]
 gem 'webmock', require: false, group: [:test] # for vcr
