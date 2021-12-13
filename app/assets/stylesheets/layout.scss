@@ -2,11 +2,23 @@
 $body-background: White; 
 $primary-color: #1779ba;
 $secondary-color: #d6eaf8;
+$text-color-dark-on-light: Black;
 $text-color-light-on-dark: White;
 
 @font-face {
   font-family: 'FontAwesome6Solid';
   src: url('/assets/fontawesome/webfonts/fa-solid-900.ttf')
+}
+
+a {
+  color: $text-color-dark-on-light;
+  text-decoration: none; 
+}
+a:visited {
+  color: $primary-color; 
+}
+a:hover {
+  text-decoration: underline; 
 }
 
 // Identify links with icon
@@ -70,6 +82,7 @@ main {
 
 h1, h2, h3, h4, h5 {
   font-weight: 500;
+  margin: 0.2em 0;
   .subheader {
     color: darkgray;
     font-size: 66%;
@@ -77,10 +90,11 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2.5em;
+  margin-top: 0;
 }
 h2 {
-  font-size: 2.2em;
+  font-size: 2em;
 }
 h3 {
   font-size: 1.6em;
@@ -127,6 +141,15 @@ nav {
   &.top-bar {
     background-color: $secondary-color;
   }
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 6px;
+
+    a {
+      text-decoration: none;
+    }
+  }
   a:not(.external):after {
     content: '' // override link icon
   }
@@ -147,31 +170,26 @@ nav {
    We add vertical borders.
 */
 table {
+  border-spacing: 1px;
   margin: .5em 0;
 
   th, td {
-    border-left: 1px solid Gainsboro;
-    padding: 2px 6px;
+    // border-left: 1px solid Gainsboro;
+    padding: 6px;
     overflow-wrap: break-word;
   }
 
-  th:last-child, td:last-child {
-    border-right: 1px solid Gainsboro;
-  }
+  // th:last-child, td:last-child {
+  //   border-right: 1px solid Gainsboro;
+  // }
 
   thead {
     tr {
       background-color: $secondary-color;
     }
-    tr:last-child {
-      border-bottom: 1px solid LightGray;
-    }    
   }
 
   tbody {
-    tr {
-      border-bottom: 1px solid Gainsboro;
-    }
     tr:nth-child(even) td {
       background-color: scale-color($secondary-color, $lightness: 60%);
     }

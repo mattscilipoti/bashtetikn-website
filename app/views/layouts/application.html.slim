@@ -20,7 +20,7 @@ html
   body
     header
       nav.top-bar
-        ul.menu.flex
+        ul.menu
           =tailwind_menu_list_item "Home", root_path
           =tailwind_menu_list_item "Websites", websites_path
           =tailwind_menu_list_item "Webpages", webpages_path
@@ -31,5 +31,5 @@ html
         - flash.each do |key, value|
           = content_tag(:div, value, :class => "flash #{key}")
 
-    main.container.mx-auto.mt-4.px-2
+    main.container
       = yield
