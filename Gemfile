@@ -97,9 +97,9 @@ gem 'rubocop', require: false, group: [:development] # Ruby static code analyze
 gem 'solargraph', require: false, group: [:development, :test] # for Linter
 gem 'simple_form' # Forms made easy
 gem 'slim-rails' # Slim templates generator
-gem "tailwindcss-rails",
-    github: "dorianmariefr/tailwindcss-rails",
-    branch: "minimal" # WORKAROUND: fixes SassC::SyntaxError: Error: unterminated attribute selector for type", https://stackoverflow.com/questions/68898511/tailwindcss-typography-sasscsyntaxerror-error-unterminated-attribute-select
+# gem "tailwindcss-rails",
+#     github: "dorianmariefr/tailwindcss-rails",
+#     branch: "minimal" # WORKAROUND: fixes SassC::SyntaxError: Error: unterminated attribute selector for type", https://stackoverflow.com/questions/68898511/tailwindcss-typography-sasscsyntaxerror-error-unterminated-attribute-select
 gem 'validate_url'
 gem 'vcr', require: false, group: [:test]
 gem 'webmock', require: false, group: [:test] # for vcr
