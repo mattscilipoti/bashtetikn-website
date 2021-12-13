@@ -20,16 +20,16 @@ html
   body
     header
       nav.top-bar
-        ul.menu
-          =foundation_menu_list_item "Home", root_path
-          =foundation_menu_list_item "Websites", websites_path
-          =foundation_menu_list_item "Webpages", webpages_path
-          =foundation_menu_list_item "PageScans", page_scans_path
+        ul.menu.flex
+          =tailwind_menu_list_item "Home", root_path
+          =tailwind_menu_list_item "Websites", websites_path
+          =tailwind_menu_list_item "Webpages", webpages_path
+          =tailwind_menu_list_item   "PageScans", page_scans_path
           - unless Rails.env.production?
             li.menu-text.environment= "(#{Rails.env})"
       div#flash_messages(data={turbolinks: false})
         - flash.each do |key, value|
           = content_tag(:div, value, :class => "flash #{key}")
 
-    main.container.mx-auto.mt-28.px-5
+    main.container.mx-auto.mt-4.px-2
       = yield
