@@ -191,6 +191,7 @@ nav {
    We add vertical borders.
 */
 table {
+  border:1px solid $secondary-color;
   border-spacing: 1px;
   margin: .5em 0;
 
