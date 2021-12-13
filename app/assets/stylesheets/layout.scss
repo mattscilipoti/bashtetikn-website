@@ -162,20 +162,24 @@ nav {
     list-style: none;
     padding: $default-padding;
 
-    a {
-      text-decoration: none;
-    }
-  }
-  a:not(.external):after {
-    content: '' // override link icon
-  }
-  li {
-    padding: 4px;
-    &.is-active {
-      background-color: $primary-color;
-      color: $text-color-light-on-dark;
+    li {
+      padding: $default-padding (2 * $default-padding);
+      border-right: 1px solid $text-color-light-on-dark;
+      &:last-child {
+        border-right: none;
+      }
+      &.is-active {
+        background-color: $primary-color;
+        color: $text-color-light-on-dark;
+        a {
+          color: inherit;
+        }
+      }
       a {
-        color: inherit;
+        text-decoration: none;
+        &:not(.external):after {
+          content: '' // override link icon
+        }
       }
     }
   }
