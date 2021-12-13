@@ -6,10 +6,16 @@ include FileUtils
 # path to your application root.
 APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
 
+# This script upgrades your development and test dependencies. 
+# It also updates rubocop config file via "mry".
+# Each step is committed.
+
+# Runs a system call, raises error on issue
 def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
 end
 
+# update dependencies in a group, committing changes 
 def bundle_update(group)
   puts "== Upgrading '#{group}' group dependencies..."
   cmd_args = bundle_update_cmd('development')
@@ -23,6 +29,7 @@ def bundle_update_cmd(group)
   ['bundle', 'update', "--group", group]
 end
 
+# commits to git, with the passed messages, if git sees a change
 def commit_if_changes(*messages)
   yield
   msg = Array(messages).join(' ')
@@ -33,9 +40,9 @@ def commit_if_changes(*messages)
   system!('git', 'commit', '-am', msg)
 end
 
+# The "main" routine
 chdir APP_ROOT do
-  # This script is a way to update your development dependencies automatically.
-  # Add necessary update steps to this file.
+  # Add necessary update steps to this area.
 
   system! 'gem install bundler --conservative'
   system!('bundle check')
