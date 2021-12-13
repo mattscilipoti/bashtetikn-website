@@ -234,16 +234,24 @@ table {
 
 // Section: Rails "flash" messages
 .flash {
-  background-color: Linen;
+  background-color: FloralWhite;
   border: gray solid 1px;
-  padding: 2px 4px;
+  font-size: 1.2em;
+  padding: $default-padding;
+  
   &.alert {
     color: orange;
   }
   &.notice {
-    color: blue;
+    color: $primary-color;
   }
   &.success {
     color: green;
   }
+}
+
+// To call attention to an element, add the class 'highlight'
+.highlight {
+  background-color: yellow;
+  transition: 0.5s linear background-color;
 }

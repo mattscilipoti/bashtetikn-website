@@ -11,7 +11,10 @@ In place of release version numbers, we organize via deploys to Production (by D
 
 - Upgrade Ruby: 3.0.2 to 3.0.3
 - Upgrade Rails 6.1.4 to 7.0.0.rc1
-- Remove Foundation
+- Upgrade FontAwesome 5 to 6
+- Remove Foundation, style manually
+- Style: briefly highlight flash messages
+- Add script: bin/upgrade_dev_dependencies
 
 ## 2021-12-01: Add Foundation 6
 
