@@ -11,6 +11,10 @@ $default-padding: 6px;
   src: url('/assets/fontawesome/webfonts/fa-solid-900.ttf')
 }
 
+body {
+  font-family: Helvetica, Arial, sans-serif
+}
+
 a {
   color: $text-color-dark-on-light;
   text-decoration: none; 
@@ -92,6 +96,7 @@ form {
 }
 
 h1, h2, h3, h4, h5 {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 500;
   margin: 0.2em 0;
   .subheader {
