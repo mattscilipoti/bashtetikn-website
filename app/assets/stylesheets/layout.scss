@@ -115,40 +115,53 @@ nav {
   }
 }
 
-// Basic Nav styles:  (replaced by Foundation)
-/* nav ul {
-  margin-bottom: 2em;
-  padding: 0.5em;
-}
-nav li {
-  display: inline-block;
-  float: left;
-}
-nav li:after {
-  content: " | ";
-}
-nav li:last-child:after {
-  content: "";
-} */
-
 // Section: Table 
 /* Foundation covers basic formatting & striping.
    We add vertical borders.
 */
 table {
+  margin: .5em 0;
+
   th, td {
     border-left: 1px solid Gainsboro;
+    padding: 2px 6px;
+    overflow-wrap: break-word;
   }
 
   th:last-child, td:last-child {
     border-right: 1px solid Gainsboro;
   }
 
-  td.count {
-    text-align: right;
+  thead {
+    tr {
+      background-color: $secondary-color;
+    }
+    tr:last-child {
+      border-bottom: 1px solid LightGray;
+    }    
   }
-  td.icon {
-    text-align: center;
+
+  tbody {
+    tr {
+      border-bottom: 1px solid Gainsboro;
+    }
+    tr:nth-child(even) td {
+      background-color: scale-color($secondary-color, $lightness: 60%);
+    }
+
+    td.count {
+      text-align: right;
+    }
+    td.datetime {
+      text-align: center;
+    }
+    td.icon {
+      text-align: center;
+    }
+    td.url {
+      font-size: .7em;
+      font-stretch: condensed;
+    }
   }
 }
 
