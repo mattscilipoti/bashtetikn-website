@@ -1,29 +1,34 @@
 h1
-  - header = "#{@page_scan.type.titleize} (via #{@page_scan.validator_uri}) of "
-  - header += @page_scan.webpage ? "Webpage: #{@page_scan.webpage.name.inspect}" : "URL: \n {#@page_scan.url}"
-  = header
+  = @page_scan.type.titleize
+  .subheader = @page_scan.webpage ? "  of Webpage: #{@page_scan.webpage.name.inspect}" : "URL: \n {#@page_scan.url}"
+  .subheader = " (via #{@page_scan.validator_uri})"
 
-p
-  strong Url:&nbsp;
-  = @page_scan.url
+.frame
+  h2.caption Fields
+  .frame-content
+    p
+      strong Url:&nbsp;
+      = external_link_to @page_scan.url, @page_scan.url
 
-p
-  strong Webpage:&nbsp;
-  = link_to_if @page_scan.webpage, @page_scan.webpage.try(:name), @page_scan.webpage
+    p
+      strong Webpage:&nbsp;
+      = link_to_if @page_scan.webpage, @page_scan.webpage.try(:name), @page_scan.webpage
 
-p
-  strong Issues(#{@page_scan.issues.size}):&nbsp;
-  ol
-    - @page_scan.issues.each do |message|
-     li= message
+    p
+      strong Scan results:&nbsp;
+      = external_link_to @page_scan.scan_results_uri.to_s, @page_scan.scan_results_uri.to_s
 
-p
-  strong Warnings(#{@page_scan.warnings.size}):&nbsp;
-  ol
-    - @page_scan.warnings.each do |message|
-     li= message
-p
-  strong Scan results:&nbsp;
-  = link_to @page_scan.scan_results_uri.to_s, @page_scan.scan_results_uri.to_s
+.frame
+  h2.caption Issues(#{@page_scan.issues.size}):&nbsp;
+  .frame-content
+    ol.numbered
+      - @page_scan.issues.each do |message|
+        li= message
+.frame
+  h2.caption Warnings(#{@page_scan.warnings.size}):&nbsp;
+  .frame-content
+    ol.numbered
+      - @page_scan.warnings.each do |message|
+        li= message
 
 =< link_to 'Back', page_scans_path

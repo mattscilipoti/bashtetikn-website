@@ -1,14 +1,16 @@
 h1= "Webpage \"#{@webpage.name}\""
 
-p
-  strong Url:&nbsp;
-  span.url= external_link_to(@webpage.url, @webpage.url)
+.frame
+  h2.caption Fields
+  .frame-content
+    p
+      strong Url:&nbsp;
+      span.url= external_link_to(@webpage.url, @webpage.url)
 
-p
-  strong Website:&nbsp;
-  span= link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
+    p
+      strong Website:&nbsp;
+      span= link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
 
-hr
 
 - last_scans = @webpage.last_scans
 - if last_scans.blank?
@@ -23,6 +25,7 @@ hr
       |&nbsp;(
       = link_to('history', page_scans_path(webpage_id: @webpage.id), title: 'List all past Page Scans')
       | )
+  
 
   - last_scans.each do |page_scan|
 
@@ -35,7 +38,7 @@ hr
           |&nbsp;Scanning...
         i.busy-scanning[title='Refresh page to check results']
 
-hr
+
 - queued_scans = @webpage.page_scans.queued.order(:created_at)
 - if queued_scans.blank?
   h2
