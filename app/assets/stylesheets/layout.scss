@@ -64,10 +64,24 @@ main {
 }
 
 h1, h2, h3, h4, h5 {
+  font-weight: 500;
   .subheader {
     color: darkgray;
     font-size: 66%;
   }
+}
+
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 2.2em;
+}
+h3 {
+  font-size: 1.6em;
+}
+h4 {
+  font-size: 1.2em;
 }
 
 input[type='text'] {
