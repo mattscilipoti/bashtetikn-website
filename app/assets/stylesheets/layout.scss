@@ -20,9 +20,10 @@ a {
   text-decoration: none; 
 }
 a:visited {
-  color: $primary-color; 
+  color: $text-color-dark-on-light; 
 }
 a:hover {
+  color: $primary-color; 
   text-decoration: underline; 
 }
 
@@ -36,7 +37,7 @@ a:not(.external) {
     content: "\00a0\f0c1"; // &nbsp; + link icon -> https://fontawesome.com/v5.15/icons/link?style=solid
   }
   &:hover:after {
-    color: $primary-color;
+    color: inherit;
   }
 }
 
