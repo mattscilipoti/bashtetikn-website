@@ -20,6 +20,6 @@
     hr
     h4 Warnings (#{page_scan.warnings.size})
     -if page_scan.warnings.present?
-      ol.numbered
+      ol
         - for message in page_scan.warnings
           li = message

@@ -76,6 +76,7 @@ div.frame {
 
   ol {
     margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -146,11 +147,6 @@ input.url {
 main {
   clear: both;
   padding: 10px;
-}
-
-ol.numbered {
-  list-style: decimal;
-  margin-left: 1.2em;
 }
 
 // Section: Basic Nav

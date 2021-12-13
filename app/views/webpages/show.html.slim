@@ -19,7 +19,7 @@ h1= "Webpage \"#{@webpage.name}\""
         li(class=page_scan_class.name.underscore)
           = page_scan_link_to(page_scan_class: page_scan_class, scanned_model: @webpage) do
             = font_awesome_icon(page_scan_class.icon_name)
-            span Perform #{page_scan_class.name.titleize.pluralize}"
+            span Perform #{page_scan_class.name.titleize.pluralize}
 
 
 - last_scans = @webpage.last_scans

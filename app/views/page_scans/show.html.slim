@@ -21,13 +21,13 @@ h1
 .frame
   h2.caption Issues(#{@page_scan.issues.size}):&nbsp;
   .frame-content
-    ol.numbered
+    ol
       - @page_scan.issues.each do |message|
         li= message
 .frame
   h2.caption Warnings(#{@page_scan.warnings.size}):&nbsp;
   .frame-content
-    ol.numbered
+    ol
       - @page_scan.warnings.each do |message|
         li= message
 
