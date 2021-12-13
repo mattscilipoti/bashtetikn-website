@@ -11,6 +11,16 @@ h1= "Webpage \"#{@webpage.name}\""
       strong Website:&nbsp;
       span= link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
 
+.frame
+  h2.caption Perform a Scan
+  .frame-content
+    ul.horizontal
+      - PageScan.descendants.each do |page_scan_class|
+        li(class=page_scan_class.name.underscore)
+          = page_scan_link_to(page_scan_class: page_scan_class, scanned_model: @webpage) do
+            = font_awesome_icon(page_scan_class.icon_name)
+            span Perform #{page_scan_class.name.titleize.pluralize}"
+
 
 - last_scans = @webpage.last_scans
 - if last_scans.blank?
