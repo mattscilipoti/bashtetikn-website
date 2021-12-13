@@ -36,10 +36,10 @@ h1= "Webpage \"#{@webpage.name}\""
         =page_scan.type.titleize
         span.subheader[title='Refresh page to check results']
           |&nbsp;Scanning...
-        i.busy-scanning[title='Refresh page to check results']
+        i.busy[title='Refresh page to check results']
 
 
-- queued_scans = @webpage.page_scans.queued.order(:created_at)
+- queued_scans = @webpage.page_scans.queued.order(:queued_at)
 - if queued_scans.blank?
   h2
     | Queued Scans
@@ -52,13 +52,16 @@ h1= "Webpage \"#{@webpage.name}\""
   ol
     - queued_scans.each do |queued_scan|
       li[data={id: dom_id(queued_scan)}]
+        i.busy[title='Refresh page to check results']
+        |&nbsp;
         span.scan_type = queued_scan.type.titleize
-        |&nbsp;(Created at:&nbsp;
-        - created_at = queued_scan.created_at
-        span.date[title=created_at] = time_ago_in_words(created_at, include_seconds: true)
+        |&nbsp;(Queued:&nbsp;
+        - queued_at = queued_scan.queued_at
+        span.date[title=queued_at] = time_ago_in_words(queued_at, include_seconds: true)
         |&nbsp;ago)
 hr
 
-=> link_to 'Edit', edit_webpage_path(@webpage)
-'|
-=< link_to 'Back', webpages_path
+p.actions
+  => link_to 'Edit', edit_webpage_path(@webpage)
+  '|
+  =< link_to 'Back', webpages_path

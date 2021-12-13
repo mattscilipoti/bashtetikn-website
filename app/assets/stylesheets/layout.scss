@@ -89,6 +89,23 @@ h4 {
   font-size: 1.2em;
 }
 
+i.busy {
+  /* see: https://www.w3schools.com/howto/howto_css_loader.asp */
+  border: 4px solid $secondary-color; /* Light grey */
+  border-top: 4px solid $primary-color; /* Image Target Green */
+  border-bottom: 4px solid $primary-color; /* Image Target Green */
+  border-radius: 50%;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  animation: busy-spinner 2s linear infinite;
+
+  @keyframes busy-spinner { /* Used by .busy */
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
 input[type='text'] {
   width: 100%;
 }
