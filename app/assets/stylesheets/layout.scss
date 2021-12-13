@@ -39,17 +39,22 @@ a.external {
 
 // Our attempt to provide a bordered section.
 div.frame {
-  border: solid 1px darkgray;
-  margin: 0 1em 1em 1em;
-  padding: 0 1em;
+  border: solid 1px LightGray;
+  margin: 2em 0 1em 0;
+  padding: .5em;
 
   .caption {
     background-color: $body-background;
     display: inline-block;
     margin: 0;
-    padding: 0 0.5em;
+    padding: 0 0.12em;
     position: relative;
-    top: -0.75em;
+    top: -1em;
+  }
+
+  .frame-content {
+    position: relative;
+    top: -1em;
   }
 
   ol {
@@ -90,6 +95,11 @@ input[type='text'] {
 
 input.url {
   width: 100%;
+}
+
+ol.numbered {
+  list-style: decimal;
+  margin-left: 1.2em;
 }
 
 // Section: Basic Nav
