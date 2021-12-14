@@ -6,18 +6,19 @@
 }
 
 body {
+  background-color: $color-background-body;
   font-family: Helvetica, Arial, sans-serif
 }
 
 a {
-  color: $text-color-dark-on-light;
+  color: $color-text-dark-on-light;
   text-decoration: none; 
 }
 a:visited {
-  color: $text-color-dark-on-light; 
+  color: $color-text-dark-on-light; 
 }
 a:hover {
-  color: $primary-color; 
+  color: $color-primary; 
   text-decoration: underline; 
 }
 
@@ -45,22 +46,22 @@ a.external {
     font-weight: 900; // "Solid" font group
   }
   &:hover:after {
-    color: $primary-color;
+    color: $color-primary;
   }
 }
 
 form {
   div.input {
-    margin-top: $default-padding;
+    margin-top: $padding-default;
   }
   label {
     font-weight: bold;
   }
   input {
-    margin: $default-padding;
+    margin: $padding-default;
 
     &[type="submit"] {
-      margin-top: (3 * $default-padding);
+      margin-top: (3 * $padding-default);
     }
   }
 }
@@ -70,7 +71,7 @@ h1, h2, h3, h4, h5 {
   font-weight: 500;
   margin: 0.5em 0;
   .subheader {
-    color: darkgray;
+    color: $color-success;
     font-size: 66%;
   }
 }
@@ -90,9 +91,9 @@ h4 {
 
 i.busy {
   /* see: https://www.w3schools.com/howto/howto_css_loader.asp */
-  border: 4px solid $secondary-color; /* Light grey */
-  border-top: 4px solid $primary-color; /* Image Target Green */
-  border-bottom: 4px solid $primary-color; /* Image Target Green */
+  border: 4px solid $color-secondary; /* Light grey */
+  border-top: 4px solid $color-primary; /* Image Target Green */
+  border-bottom: 4px solid $color-primary; /* Image Target Green */
   border-radius: 50%;
   display: inline-block;
   width: 20px;
@@ -124,22 +125,22 @@ main {
 */
 nav {
   &.top-bar {
-    background-color: $secondary-color;
+    background-color: $color-secondary;
   }
   ul {
     display: flex;
     list-style: none;
-    padding: $default-padding;
+    padding: $padding-default;
 
     li {
-      padding: $default-padding (2 * $default-padding);
-      border-right: 1px solid $text-color-light-on-dark;
+      padding: $padding-default (2 * $padding-default);
+      border-right: 1px solid $color-text-light-on-dark;
       &:last-child {
         border-right: none;
       }
       &.is-active {
-        background-color: $primary-color;
-        color: $text-color-light-on-dark;
+        background-color: $color-primary;
+        color: $color-text-light-on-dark;
         a {
           color: inherit;
         }
@@ -159,13 +160,13 @@ nav {
    We add vertical borders.
 */
 table {
-  border:1px solid $secondary-color;
+  border:1px solid $color-secondary;
   border-spacing: 1px;
   margin: .5em 0;
 
   th, td {
     // border-left: 1px solid Gainsboro;
-    padding: $default-padding;
+    padding: $padding-default;
     overflow-wrap: break-word;
   }
 
@@ -175,13 +176,13 @@ table {
 
   thead {
     tr {
-      background-color: $secondary-color;
+      background-color: $color-secondary;
     }
   }
 
   tbody {
     tr:nth-child(even) td {
-      background-color: scale-color($secondary-color, $lightness: 60%);
+      background-color: scale-color($color-secondary, $lightness: 60%);
     }
 
     td.count {
@@ -205,16 +206,19 @@ table {
   background-color: FloralWhite;
   border: gray solid 1px;
   font-size: 1.2em;
-  padding: $default-padding;
+  padding: $padding-default;
   
   &.alert {
-    color: orange;
+    background-color: lighten($color-warning, 55%);
+    color: $color-warning;
   }
   &.notice {
-    color: $primary-color;
+    background-color: lighten($color-primary, 55%);
+    color: $color-primary;
   }
   &.success {
-    color: green;
+    background-color: lighten($color-success, 70%);
+    color: $color-success;
   }
 }
 
