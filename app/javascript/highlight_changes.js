@@ -1,6 +1,4 @@
 
-// import { application } from './application.js'
-
 // Removes class .highlight from all elements
 //   after a delay (1000ms == 1s)
 // This will fade away the highlighting ("yellow") background from the "highlighted" elements
