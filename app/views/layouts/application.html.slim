@@ -32,7 +32,7 @@ html
             li.menu-text.environment= "(#{Rails.env})"
       div#flash_messages(data={turbolinks: false})
         - flash.each do |key, value|
-          = content_tag(:div, value, :class => "flash highlight #{key}")
+          = flash_tag(key, value)
 
     main.container
       = yield
