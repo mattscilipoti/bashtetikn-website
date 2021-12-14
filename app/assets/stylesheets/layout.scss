@@ -50,6 +50,13 @@ a.external {
   }
 }
 
+fieldset {
+  border: 3px double $color-secondary;
+  legend {
+    margin-bottom: (-3 * $padding-default); // WORKAROUND: for gap below legend
+  }
+}
+
 form {
   div.input {
     margin-top: $padding-default;
@@ -199,6 +206,11 @@ table {
       font-stretch: condensed;
     }
   }
+}
+
+ul {
+  list-style: none;
+  padding-left: $padding-default;
 }
 
 // Section: Rails "flash" messages

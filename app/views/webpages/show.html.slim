@@ -14,7 +14,7 @@ fieldset
 fieldset
   legend
     h2 Perform a Scan
-  ul.horizontal
+  ul
     - PageScan.descendants.each do |page_scan_class|
       li(class=page_scan_class.name.underscore)
         = page_scan_link_to(page_scan_class: page_scan_class, scanned_model: @webpage) do
