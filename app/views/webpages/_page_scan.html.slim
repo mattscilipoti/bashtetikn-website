@@ -1,25 +1,26 @@
-.frame
-  h3.caption[data={id: dom_id(page_scan)}]
-    =page_scan.type.titleize
+fieldset 
+  legend
+    h3[data={id: dom_id(page_scan)}]
+      =page_scan.type.titleize
 
-    span.subheader(title=page_scan.scanned_at)
-      |&nbsp;(tested&nbsp;
-      = time_ago_in_words(page_scan.scanned_at)
-      |&nbsp;ago
+      span.subheader(title=page_scan.scanned_at)
+        |&nbsp;(tested&nbsp;
+        = time_ago_in_words(page_scan.scanned_at)
+        |&nbsp;ago
 
-    span.subheader.scan_results
-      |, 
-      = external_link_to('scan report', page_scan.scan_results_uri.to_s, title: "See scan report at #{page_scan.validator_uri}")
-      |)
-  .frame-content
-    h4 Errors (#{page_scan.issues.size})
-    -if page_scan.issues.present?
-      ol
-        - for message in page_scan.issues
-          li = message
-    hr
-    h4 Warnings (#{page_scan.warnings.size})
-    -if page_scan.warnings.present?
-      ol
-        - for message in page_scan.warnings
-          li = message
+      span.subheader.scan_results
+        |, 
+        = external_link_to('scan report', page_scan.scan_results_uri.to_s, title: "See scan report at #{page_scan.validator_uri}")
+        |)
+
+  h4 Errors (#{page_scan.issues.size})
+  -if page_scan.issues.present?
+    ol
+      - for message in page_scan.issues
+        li = message
+  hr
+  h4 Warnings (#{page_scan.warnings.size})
+  -if page_scan.warnings.present?
+    ol
+      - for message in page_scan.warnings
+        li = message

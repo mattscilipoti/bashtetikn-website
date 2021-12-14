@@ -1,6 +1,8 @@
 = simple_form_for @webpage do |f|
   = f.input :name
   = f.input :url
-  = f.association :website, as: :radio_buttons
+  fieldset
+    legend Website
+    = f.association :website, as: :radio_buttons, label: false
 
   = f.button :submit

@@ -1,41 +1,42 @@
 h1= "Webpage \"#{@webpage.name}\""
 
-.frame
-  h2.caption Fields
-  .frame-content
-    p
-      strong Url:&nbsp;
-      span.url= external_link_to(@webpage.url, @webpage.url)
+fieldset
+  legend 
+    h2 Fields
+  p
+    strong Url:&nbsp;
+    span.url= external_link_to(@webpage.url, @webpage.url)
 
-    p
-      strong Website:&nbsp;
-      span= link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
+  p
+    strong Website:&nbsp;
+    span= link_to_if @webpage.website, @webpage.website.try(:name), @webpage.website
 
-.frame
-  h2.caption Perform a Scan
-  .frame-content
-    ul.horizontal
-      - PageScan.descendants.each do |page_scan_class|
-        li(class=page_scan_class.name.underscore)
-          = page_scan_link_to(page_scan_class: page_scan_class, scanned_model: @webpage) do
-            = font_awesome_icon(page_scan_class.icon_name)
-            span Perform #{page_scan_class.name.titleize.pluralize}
+fieldset
+  legend
+    h2 Perform a Scan
+  ul.horizontal
+    - PageScan.descendants.each do |page_scan_class|
+      li(class=page_scan_class.name.underscore)
+        = page_scan_link_to(page_scan_class: page_scan_class, scanned_model: @webpage) do
+          = font_awesome_icon(page_scan_class.icon_name)
+          span Perform #{page_scan_class.name.titleize.pluralize}
 
-
-- last_scans = @webpage.last_scans
-- if last_scans.blank?
-  h2
-    | Last Scans
-    span.subheader
-      |&nbsp;(none)
-- else
-  h2
-    | Last Scans
-    span.subheader
-      |&nbsp;(
-      = link_to('history', page_scans_path(webpage_id: @webpage.id), title: 'List all past Page Scans')
-      | )
-  
+fieldset
+  - last_scans = @webpage.last_scans
+  legend
+    - if last_scans.blank?
+      h2
+        | Last Scans
+        span.subheader
+          |&nbsp;(none)
+    - else
+      h2
+        | Last Scans
+        span.subheader
+          |&nbsp;(
+          = link_to('history', page_scans_path(webpage_id: @webpage.id), title: 'List all past Page Scans')
+          | )
+      
 
   - last_scans.each do |page_scan|
 
@@ -48,28 +49,29 @@ h1= "Webpage \"#{@webpage.name}\""
           |&nbsp;Scanning...
         i.busy[title='Refresh page to check results']
 
-
-- queued_scans = @webpage.page_scans.queued.order(:queued_at)
-- if queued_scans.blank?
-  h2
-    | Queued Scans
-    span.subheader
-      |&nbsp;(none)
-- else
-  h2
-    | Queued Scans&nbsp;
-    span.subheader= "(#{queued_scans.size}) Refresh page to check results"
-  ol
-    - queued_scans.each do |queued_scan|
-      li[data={id: dom_id(queued_scan)}]
-        i.busy[title='Refresh page to check results']
-        |&nbsp;
-        span.scan_type = queued_scan.type.titleize
-        |&nbsp;(Queued:&nbsp;
-        - queued_at = queued_scan.queued_at
-        span.date[title=queued_at] = time_ago_in_words(queued_at, include_seconds: true)
-        |&nbsp;ago)
-hr
+fieldset
+  - queued_scans = @webpage.page_scans.queued.order(:queued_at)
+  - if queued_scans.blank?
+    legend
+      h2
+        | Queued Scans
+        span.subheader
+          |&nbsp;(none)
+  - else
+    legend
+      h2
+        | Queued Scans&nbsp;
+        span.subheader= "(#{queued_scans.size}) Refresh page to check results"
+    ol
+      - queued_scans.each do |queued_scan|
+        li[data={id: dom_id(queued_scan)}]
+          i.busy[title='Refresh page to check results']
+          |&nbsp;
+          span.scan_type = queued_scan.type.titleize
+          |&nbsp;(Queued:&nbsp;
+          - queued_at = queued_scan.queued_at
+          span.date[title=queued_at] = time_ago_in_words(queued_at, include_seconds: true)
+          |&nbsp;ago)
 
 p.actions
   => link_to 'Edit', edit_webpage_path(@webpage)
