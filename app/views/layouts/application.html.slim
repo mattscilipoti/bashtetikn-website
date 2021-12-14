@@ -24,10 +24,10 @@ html lang=I18n.locale
     header
       nav.top-bar
         ul.menu
-          =tailwind_menu_list_item "Home", root_path
-          =tailwind_menu_list_item "Websites", websites_path
-          =tailwind_menu_list_item "Webpages", webpages_path
-          =tailwind_menu_list_item   "PageScans", page_scans_path
+          = menu_list_item "Home", root_path
+          = menu_list_item "Websites", websites_path
+          = menu_list_item "Webpages", webpages_path
+          = menu_list_item   "PageScans", page_scans_path
           - unless Rails.env.production?
             li.menu-text.environment= "(#{Rails.env})"
       div#flash_messages(data={turbolinks: false})
