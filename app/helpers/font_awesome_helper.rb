@@ -8,13 +8,14 @@ module FontAwesomeHelper
     uploaded: :fak
   }
 
-  def font_awesome_icon(icon_name, caption: nil, icon_type: :solid, html_options: {})
+  def font_awesome_icon(icon_name, accessible_label: nil, caption: nil, icon_type: :solid, html_options: {})
     image_type_abbreviation = IconTypeAbbreviations.fetch(icon_type)
     image_classes = [image_type_abbreviation, "fa-#{icon_name.to_s.parameterize}"]
     html_option_classes = html_options.fetch(:class, '').split(' ')
-    css_class = image_classes + html_option_classes
+    css_classes = image_classes + html_option_classes
     caption = "&nbsp;#{caption}".html_safe if caption
-    html_options.merge!({class: css_class.join(' ')})
+    accessibility_options = accessible_label ? { aria: { label: accessible_label }} : { aria: { hidden: true }}
+    html_options.merge!(class: css_classes.join(' ')).merge!(accessibility_options)
     content_tag(:i, caption, html_options)
   end
 end
