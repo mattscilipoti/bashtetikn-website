@@ -224,6 +224,5 @@ table {
 
 // To call attention to an element, add the class 'highlight'
 .highlight {
-  background-color: yellow;
-  transition: 0.5s linear background-color;
+  background-color: yellow !important; // important overrides flash message background-color
 }
