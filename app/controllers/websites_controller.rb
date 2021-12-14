@@ -33,7 +33,7 @@ class WebsitesController < ApplicationController
 
     respond_to do |format|
       if @website.save
-        format.html { redirect_to @website, notice: "Website was successfully created." }
+        format.html { redirect_to @website, success: "Website was successfully created." }
         format.json { render :show, status: :created, location: @website }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -46,7 +46,7 @@ class WebsitesController < ApplicationController
   def update
     respond_to do |format|
       if @website.update(website_params)
-        format.html { redirect_to @website, notice: "Website was successfully updated." }
+        format.html { redirect_to @website, success: "Website was successfully updated." }
         format.json { render :show, status: :ok, location: @website }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,7 +59,7 @@ class WebsitesController < ApplicationController
   def destroy
     @website.destroy
     respond_to do |format|
-      format.html { redirect_to websites_url, notice: "Website was successfully destroyed." }
+      format.html { redirect_to websites_url, success: "Website was successfully destroyed." }
       format.json { head :no_content }
     end
   end

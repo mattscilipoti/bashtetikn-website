@@ -16,8 +16,8 @@ RSpec.describe "page_scans/show", type: :view do
 
     assert_select "p", text: /Url/
     assert_select "p", text: /Webpage/
-    assert_select "p", text: /Issues\(0\)/
-    assert_select "p", text: /Warnings\(0\)/
     assert_select "p", text: /Scan results/i
+    assert_select "h2", text: /Issues\(0\)/
+    assert_select "h2", text: /Warnings\(0\)/
   end
 end

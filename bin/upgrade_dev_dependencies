@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+require 'pathname'
+require 'fileutils'
+include FileUtils
+
+# path to your application root.
+APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
+
+# This script upgrades your development and test dependencies. 
+# It also updates rubocop config file via "mry".
+# Each step is committed.
+
+# Runs a system call, raises error on issue
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+# update dependencies in a group, committing changes 
+def bundle_update(group)
+  puts "== Upgrading '#{group}' group dependencies..."
+  cmd_args = bundle_update_cmd('development')
+
+  commit_if_changes(cmd_args) do
+    system!(*cmd_args)
+  end
+end
+
+def bundle_update_cmd(group)
+  ['bundle', 'update', "--group", group]
+end
+
+# commits to git, with the passed messages, if git sees a change
+def commit_if_changes(*messages)
+  yield
+  msg = Array(messages).join(' ')
+  has_changes = !system('git', 'diff', '--exit-code')
+  return unless has_changes
+  puts 'Running rspec...'
+  system!('bundle exec rspec --fail-fast --tag ~@production --format progress')
+  system!('git', 'commit', '-am', msg)
+end
+
+# The "main" routine
+chdir APP_ROOT do
+  # Add necessary update steps to this area.
+
+  system! 'gem install bundler --conservative'
+  system!('bundle check')
+
+  bundle_update('development')
+  bundle_update('test')
+
+  commit_if_changes("Upgraded robocop.yml via mry gem.") do
+    puts "\n== Upgrading RuboCop Config..."
+    system! 'mry .rubocop.yml'
+  end
+
+  # puts "\n== Runing CodeClimate..."
+  # system('codeclimate analyze')
+end

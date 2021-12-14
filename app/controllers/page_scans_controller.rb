@@ -34,7 +34,7 @@ class PageScansController < ApplicationController
 
     respond_to do |format|
       if @page_scan.save
-        format.html { redirect_to @page_scan, notice: "PageScan was successfully created." }
+        format.html { redirect_to @page_scan, success: "PageScan was successfully created." }
         format.json { render :show, status: :created, location: @page_scan }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class PageScansController < ApplicationController
   def update
     respond_to do |format|
       if @page_scan.update(page_scan_params)
-        format.html { redirect_to @page_scan, notice: "PageScan was successfully updated." }
+        format.html { redirect_to @page_scan, success: "PageScan was successfully updated." }
         format.json { render :show, status: :ok, location: @page_scan }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class PageScansController < ApplicationController
   def destroy
     @page_scan.destroy
     respond_to do |format|
-      format.html { redirect_to page_scans_url, notice: "PageScan was successfully destroyed." }
+      format.html { redirect_to page_scans_url, success: "PageScan was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -25,7 +25,7 @@ class WebpagesController < ApplicationController
 
     respond_to do |format|
       if @webpage.save
-        format.html { redirect_to @webpage, notice: "Webpage was successfully created." }
+        format.html { redirect_to @webpage, success: "Webpage was successfully created." }
         format.json { render :show, status: :created, location: @webpage }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class WebpagesController < ApplicationController
   def update
     respond_to do |format|
       if @webpage.update(webpage_params)
-        format.html { redirect_to @webpage, notice: "Webpage was successfully updated." }
+        format.html { redirect_to @webpage, success: "Webpage was successfully updated." }
         format.json { render :show, status: :ok, location: @webpage }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class WebpagesController < ApplicationController
   def destroy
     @webpage.destroy
     respond_to do |format|
-      format.html { redirect_to webpages_url, notice: "Webpage was successfully destroyed." }
+      format.html { redirect_to webpages_url, success: "Webpage was successfully destroyed." }
       format.json { head :no_content }
     end
   end

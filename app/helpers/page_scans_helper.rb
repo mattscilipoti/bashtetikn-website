@@ -1,10 +1,10 @@
 module PageScansHelper
   def page_scan_link_to(page_scan_class:, scanned_model:, caption: nil, &block)
     tooltip = case scanned_model
+              when PageScan, Webpage
+                page_scan_class.name.titleize
               when Website
                 "#{page_scan_class.name.titleize} all pages"
-              when PageScan
-                page_scan_class.name.titleize
               else
                 raise ArgumentError, "Unsupported scanned_model (#{scanned_model.class.name})."
               end

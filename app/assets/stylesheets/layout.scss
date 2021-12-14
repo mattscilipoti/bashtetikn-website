@@ -1,18 +1,38 @@
-// Vaiables copied from Foundation. TODO: re-arrange to use Foundation vars (Rails 7?)
-$body-background: White; 
-$primary-color: #1779ba;
+@import 'variables';
+
+@font-face {
+  font-family: 'FontAwesome6Solid';
+  src: url('/assets/fontawesome/webfonts/fa-solid-900.ttf')
+}
+
+body {
+  background-color: $color-background-body;
+  font-family: Helvetica, Arial, sans-serif
+}
+
+a {
+  color: $color-text-dark-on-light;
+  text-decoration: none; 
+}
+a:visited {
+  color: $color-text-dark-on-light; 
+}
+a:hover {
+  color: $color-primary; 
+  text-decoration: underline; 
+}
 
 // Identify links with icon
 a:not(.external) {
   &:after {
     color: LightGray;
-    font-family: "Font Awesome 5 Free";
+    font-family: "FontAwesome6Solid";
     font-size: 75%;
     font-weight: 900; // "Solid" font group
     content: "\00a0\f0c1"; // &nbsp; + link icon -> https://fontawesome.com/v5.15/icons/link?style=solid
   }
   &:hover:after {
-    color: $primary-color;
+    color: inherit;
   }
 }
 
@@ -21,45 +41,75 @@ a.external {
   &:after {
     color: LightGray;
     content: "\00a0\f35d"; // &nbsp; + external link icon -> https://fontawesome.com/v5.15/icons/external-link-alt?style=solid
-    font-family: "Font Awesome 5 Free";
+    font-family: "FontAwesome6Solid";
     font-size: 75%;
     font-weight: 900; // "Solid" font group
   }
   &:hover:after {
-    color: $primary-color;
+    color: $color-primary;
   }
 }
 
-// Our attempt to provide a bordered section.
-div.frame {
-  border: solid 1px darkgray;
-  margin: 0 1em 1em 1em;
-  padding: 0 1em;
-
-  .caption {
-    background-color: $body-background;
-    display: inline-block;
-    margin: 0;
-    padding: 0 0.5em;
-    position: relative;
-    top: -0.75em;
-  }
-
-  ol {
-    margin-top: 0;
+fieldset {
+  border: 3px double $color-secondary;
+  legend {
+    margin-bottom: (-3 * $padding-default); // WORKAROUND: for gap below legend
   }
 }
 
-// The main content section
-div.main {
-  clear: both;
-  padding: 10px;
+form {
+  div.input {
+    margin-top: $padding-default;
+  }
+  label {
+    font-weight: bold;
+  }
+  input {
+    margin: $padding-default;
+
+    &[type="submit"] {
+      margin-top: (3 * $padding-default);
+    }
+  }
 }
 
 h1, h2, h3, h4, h5 {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+  margin: 0.5em 0;
   .subheader {
-    color: darkgray;
+    color: $color-success;
     font-size: 66%;
+  }
+}
+h1 {
+  font-size: 2.5em;
+  margin-top: 0;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.6em;
+}
+h4 {
+  font-size: 1.2em;
+}
+
+i.busy {
+  /* see: https://www.w3schools.com/howto/howto_css_loader.asp */
+  border: 4px solid $color-secondary; /* Light grey */
+  border-top: 4px solid $color-primary; /* Image Target Green */
+  border-bottom: 4px solid $color-primary; /* Image Target Green */
+  border-radius: 50%;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  animation: busy-spinner 2s linear infinite;
+
+  @keyframes busy-spinner { /* Used by .busy */
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 }
 
@@ -71,65 +121,120 @@ input.url {
   width: 100%;
 }
 
+main {
+  clear: both;
+  padding: 10px;
+}
+
 // Section: Basic Nav
 /* Foundation covers basic styling
   - remove our standard link icon 
 */
 nav {
-  a:not(.external):after {
-    content: '' // override link icon
+  &.top-bar {
+    background-color: $color-secondary;
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    padding: $padding-default;
+
+    li {
+      padding: $padding-default (2 * $padding-default);
+      border-right: 1px solid $color-text-light-on-dark;
+      &:last-child {
+        border-right: none;
+      }
+      &.is-active {
+        background-color: $color-primary;
+        color: $color-text-light-on-dark;
+        a {
+          color: inherit;
+        }
+      }
+      a {
+        text-decoration: none;
+        &:not(.external):after {
+          content: '' // override link icon
+        }
+      }
+    }
   }
 }
-
-// Basic Nav styles:  (replaced by Foundation)
-/* nav ul {
-  margin-bottom: 2em;
-  padding: 0.5em;
-}
-nav li {
-  display: inline-block;
-  float: left;
-}
-nav li:after {
-  content: " | ";
-}
-nav li:last-child:after {
-  content: "";
-} */
 
 // Section: Table 
 /* Foundation covers basic formatting & striping.
    We add vertical borders.
 */
 table {
+  border:1px solid $color-secondary;
+  border-spacing: 1px;
+  margin: .5em 0;
+
   th, td {
-    border-left: 1px solid Gainsboro;
+    // border-left: 1px solid Gainsboro;
+    padding: $padding-default;
+    overflow-wrap: break-word;
   }
 
-  th:last-child, td:last-child {
-    border-right: 1px solid Gainsboro;
+  // th:last-child, td:last-child {
+  //   border-right: 1px solid Gainsboro;
+  // }
+
+  thead {
+    tr {
+      background-color: $color-secondary;
+    }
   }
 
-  td.count {
-    text-align: right;
+  tbody {
+    tr:nth-child(even) td {
+      background-color: scale-color($color-secondary, $lightness: 60%);
+    }
+
+    td.count {
+      text-align: right;
+    }
+    td.datetime {
+      text-align: center;
+    }
+    td.icon {
+      text-align: center;
+    }
+    td.url {
+      font-size: .7em;
+      font-stretch: condensed;
+    }
   }
-  td.icon {
-    text-align: center;
-  }
+}
+
+ul {
+  list-style: none;
+  padding-left: $padding-default;
 }
 
 // Section: Rails "flash" messages
 .flash {
-  background-color: Linen;
+  background-color: FloralWhite;
   border: gray solid 1px;
-  padding: 2px 4px;
+  font-size: 1.2em;
+  padding: $padding-default;
+  
   &.alert {
-    color: orange;
+    background-color: lighten($color-warning, 55%);
+    color: $color-warning;
   }
   &.notice {
-    color: blue;
+    background-color: lighten($color-primary, 55%);
+    color: $color-primary;
   }
   &.success {
-    color: green;
+    background-color: lighten($color-success, 70%);
+    color: $color-success;
   }
+}
+
+// To call attention to an element, add the class 'highlight'
+.highlight {
+  background-color: yellow !important; // important overrides flash message background-color
 }

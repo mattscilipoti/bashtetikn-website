@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
+## Upcoming: Upgrade to Rails 7, Remove Foundation
+
+- Upgrade Ruby: 3.0.2 to 3.0.3
+- Upgrade Rails 6.1.4 to 7.0.0.rc1
+- Upgrade FontAwesome 5 to 6
+- Remove Foundation, style manually
+- Style: briefly highlight flash messages
+- Add script: bin/upgrade_dev_dependencies
+
 ## 2021-12-01: Add Foundation 6
 
 - Add Foundation 6 (from Zurb)

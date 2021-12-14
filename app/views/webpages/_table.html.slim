@@ -22,14 +22,13 @@ table.webpages
     - webpages.each do |webpage|
       tr[data={id: dom_id(webpage)}]
         td = link_to webpage.name, webpage
-        td
-          small = external_link_to(webpage.url, webpage.url)
+        td.url = external_link_to(truncate(webpage.url, length: 45), webpage.url, title: webpage.url)
         - PageScan.descendants.each do |page_scan_class|
           - scan = webpage.last_scans.detect{ |scan| scan.type == page_scan_class.name }
           - if scan
             td.count= scan.issues.size
             td.count= scan.warnings.size
-            td(title=scan.scanned_at)= link_to("#{time_ago_in_words(scan.scanned_at)} ago", page_scan_path(scan))
+            td.datetime(title=scan.scanned_at)= link_to("#{time_ago_in_words(scan.scanned_at)} ago", page_scan_path(scan))
           - else
             - page_scan_td_count.times do
               td
