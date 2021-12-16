@@ -9,7 +9,7 @@ h1
 table
   thead
     tr
-      th Type
+      th Page Scan
       th Webpage
       th Created At
       th Queued At
@@ -23,8 +23,10 @@ table
     - @page_scans.each do |page_scan|
       tr[data={id: dom_id(page_scan)}]
         td.type.icon
-          = link_to page_scan_path(page_scan), title: "Show #{page_scan.class.name.titleize} details for Webpage: #{page_scan.webpage.try(:name)}" do
-            = font_awesome_icon(page_scan.icon_name)
+          - tooltip_text = "Show #{page_scan.class.name.titleize} details for Webpage: #{page_scan.webpage.try(:name)}"
+          = link_to page_scan_path(page_scan), title: tooltip_text do
+            = page_scan_icon(page_scan)
+            = page_scan.class.name.titleize
         td.webpage
           - if page_scan.webpage
             = link_to(page_scan.webpage.name, page_scan.webpage, title: "Show details for Webpage: #{page_scan.webpage.name}")

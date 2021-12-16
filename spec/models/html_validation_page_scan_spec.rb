@@ -7,7 +7,7 @@ require_relative '../shared/shared_examples_for_page_scans'
 RSpec.describe HtmlValidationPageScan, type: :model do
   it_behaves_like 'Any PageScan'
 
-  its(:icon_name) { should eql('microscope') }
+  its(:icon_name) { should eql('w3c_validator_nu_icon') }
 
   describe '#scan', vcr: true do
     it 'converts results errors to #issues' do
@@ -45,6 +45,12 @@ RSpec.describe HtmlValidationPageScan, type: :model do
   describe '#validator' do
     it 'is a Bashtetikn::HtmlValidatorFromW3C' do
       expect(subject.validator).to be_a(Bashtetikn::HtmlValidatorFromW3C)
+    end
+  end
+
+  describe '#validator_name' do
+    it 'is W3C Nu Validator' do
+      expect(subject.validator_name.to_s).to eql('W3C Nu Validator')
     end
   end
 

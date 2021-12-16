@@ -16,9 +16,9 @@ fieldset
   ul
     - PageScan.descendants.each do |page_scan_class|
       li(class=page_scan_class.name.underscore)
-        = page_scan_link_to(page_scan_class: page_scan_class, scanned_model: @website) do
-          = font_awesome_icon(page_scan_class.icon_name)
+        = perform_page_scan_link_to(page_scan_class: page_scan_class, scanned_model: @website) do
           span 
+            / Template: Perform (X ct) Scans
             | Perform (
             strong = @website.webpages.size
             = ") #{page_scan_class.name.titleize.pluralize}"

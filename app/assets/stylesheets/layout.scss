@@ -54,6 +54,13 @@ a.external {
   }
 }
 
+// Highlight image when hover
+a .icon:hover {
+  background-color: $color-secondary;
+  border-radius: 4px;
+  color: darkslategray;
+}
+
 fieldset {
   border: 3px double $color-secondary;
   legend {
@@ -231,4 +238,8 @@ ul {
 // To call attention to an element, add the class 'highlight'
 .highlight {
   background-color: yellow !important; // important overrides flash message background-color
+}
+
+.page_scan_icon {
+  padding: 0 $padding-default/2;
 }

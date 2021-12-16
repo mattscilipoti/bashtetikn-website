@@ -9,6 +9,22 @@ class PageScan < ApplicationRecord
   scope :queued, -> { where.not(queued_at: nil).where(scanned_at: nil) }
   scope :scanned, -> { where.not(scanned_at: nil) }
 
+  # The class used to validate the page
+  def self.validator
+    raise NotImplementedError, "Implement in child"
+  end
+
+  # The displyed name of the scan provider
+  def self.validator_name
+    raise NotImplementedError, "Implement in child"
+  end
+
+  # The URI of the scan provider
+  def self.validator_uri
+    raise NotImplementedError, "Implement in child"
+  end
+  
+
   def icon_name
     raise NotImplementedError, "Implement in child"
   end
@@ -30,13 +46,15 @@ class PageScan < ApplicationRecord
     :initialized
   end
 
-  # The class used to validate the page
   def validator
-    raise NotImplementedError, "Implement in child"
+    self.class.validator
   end
 
-  # The URI of the scan provider
+  def validator_name
+    self.class.validator_name
+  end
+
   def validator_uri
-    raise NotImplementedError, "Implement in child"
+    self.class.validator_uri
   end
 end

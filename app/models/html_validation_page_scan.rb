@@ -3,11 +3,15 @@ require 'bashtetikn'
 # Scans a URL, recording HTML validation issues
 class HtmlValidationPageScan < PageScan
   def self.icon_name
-    'microscope'
+    'w3c_validator_nu_icon'
   end
 
   def self.validator
     Bashtetikn::HtmlValidatorFromW3C.new
+  end
+
+  def self.validator_name
+    'W3C Nu Validator'
   end
 
   def self.validator_uri
@@ -35,13 +39,5 @@ class HtmlValidationPageScan < PageScan
       path: '/nu/',
       query: { doc: url }.to_query,
     )
-  end
-
-  def validator
-    self.class.validator
-  end
-
-  def validator_uri
-    self.class.validator_uri
   end
 end

@@ -6,8 +6,8 @@ table.webpages
       th
       - PageScan.descendants.each do |page_scan_class|
        th[colspan=page_scan_td_count]
-         = font_awesome_icon(page_scan_class.icon_name)
-         = page_scan_class.name.titleize
+         = page_scan_icon(page_scan_class)
+         span(title=page_scan_class.validator_uri) = page_scan_class.name.titleize
       th
     tr
       th Name
