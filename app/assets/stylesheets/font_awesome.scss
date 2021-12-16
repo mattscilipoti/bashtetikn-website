@@ -1,14 +1,14 @@
 /* FontAwesome */
-
-// Highlight image when hover
-a i.fas:hover {
-  background-color: lightsteelblue;
-  border-radius: 4px;
-  color: darkslategray;
+@import "variables";
+// Support solid 
+.fas,
+.fa-solid {
+  font-family: 'Font Awesome 6 Solid';
+  font-weight: 900; 
 }
 
 // Make image slightly bigger, add elbow room
 i.fas {
   font-size: 1.2em;
-  padding: 4px;
+  padding: $padding-default/2;
 }

@@ -3,7 +3,7 @@
 // Add Font: FontAwesome v6 (only Solid)
 @font-face {
   font-display: block;
-  font-family: 'FontAwesome6Solid';
+  font-family: 'Font Awesome 6 Solid';
   font-style: normal;
   font-weight: 900;
   src: 
@@ -32,7 +32,7 @@ a:hover {
 a:not(.external) {
   &:after {
     color: LightGray;
-    font-family: "FontAwesome6Solid";
+    font-family: "Font Awesome 6 Solid";
     font-size: 75%;
     content: "\00a0\f0c1"; // &nbsp; + link icon -> https://fontawesome.com/v6.0/icons/link?s=solid
   }
@@ -46,7 +46,7 @@ a.external {
   &:after {
     color: LightGray;
     content: "\00a0\f35d"; // &nbsp; + external link icon -> https://fontawesome.com/v6.0/icons/up-right-from-square?s=solid
-    font-family: "FontAwesome6Solid";
+    font-family: "Font Awesome 6 Solid";
     font-size: 75%;
   }
   &:hover:after {
