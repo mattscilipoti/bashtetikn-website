@@ -1,4 +1,4 @@
-- page_scan_td_count = 4 # issues, warnings, scanned_at
+- page_scan_td_count = 5 # issues, warnings, scanned_at
 table.webpages
   thead
     tr
@@ -8,16 +8,18 @@ table.webpages
        th[colspan=page_scan_td_count]
          = page_scan_icon(page_scan_class)
          span(title=page_scan_class.validator_uri) = page_scan_class.name.titleize
-      th(rowspan=2) Actions
+      th(colspan=2) Actions
     tr
       / th Accounted for via rowspan
       / th Accounted for via rowspan
       - PageScan.descendants.each do |page_scan_class|
-        th Results
-        th Issues
+        th Scan Now
+        th Errors
         th Warnings
         th Scanned At
-      / th Accounted for via rowspan
+        th Results
+      th Edit
+      th Delete
 
   tbody
     - webpages.each do |webpage|
@@ -25,20 +27,22 @@ table.webpages
         td = link_to webpage.name, webpage
         td.url = external_link_to(truncate(webpage.url, length: 45), webpage.url, title: webpage.url)
         - PageScan.descendants.each do |page_scan_class|
+          / Style condiseration: Each Scan section bookended by icons
+          td.icon
+            = perform_page_scan_link_to(page_scan_class: page_scan_class, scanned_model: webpage, caption: '')
           - scan = webpage.last_scans.detect{ |scan| scan.type == page_scan_class.name }
           - if scan
-            - tooltip_text = "Show #{scan.class.name.titleize} details for #{webpage.name.inspect}"
-            td.icon = link_to(page_scan_icon(scan, title: tooltip_text), page_scan_path(scan), title: tooltip_text)
             td.count= scan.issues.size
             td.count= scan.warnings.size
-            td.datetime(title=scan.scanned_at)= "#{time_ago_in_words(scan.scanned_at)} ago"
+            td.datetime= datetime_el(:t, scan.scanned_at)
+            - tooltip_text = "Show #{scan.class.name.titleize} details for #{webpage.name.inspect}"
+            td.icon = link_to(font_awesome_icon('file-lines'), page_scan_path(scan), title: tooltip_text)
           - else
-            - page_scan_td_count.times do
+            - (page_scan_td_count-1).times do
               td
                 /! placeholder for scan info
-        td
-          = link_to 'Validate&nbsp;HTML'.html_safe, html_validation_page_scan_webpage_path(webpage)
-          = "&nbsp;|&nbsp;".html_safe
-          = link_to 'Edit', edit_webpage_path(webpage)
-          = "&nbsp;|&nbsp;".html_safe
-          = link_to 'Destroy', webpage, data: { confirm: 'Are you sure?' }, method: :delete
+        
+        td.icon
+          = link_to font_awesome_icon(:edit), edit_webpage_path(webpage), title: "Edit #{webpage.name.inspect}"
+        td.icon
+          = link_to font_awesome_icon(:trash), webpage, data: { confirm: 'Are you sure?' }, method: :delete, title: "Delete #{webpage.name.inspect}"
