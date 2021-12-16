@@ -19,13 +19,23 @@ body {
 a {
   color: $color-text-dark-on-light;
   text-decoration: none; 
-}
-a:visited {
-  color: $color-text-dark-on-light; 
-}
-a:hover {
-  color: $color-primary; 
-  text-decoration: underline; 
+
+  &.no-link-icon:after {
+    content: '' !important // override (default) link icon
+  }
+  &:visited {
+    color: $color-text-dark-on-light; 
+  }
+  &:hover {
+    color: $color-primary; 
+    text-decoration: underline; 
+  }
+  // Highlight image when hover
+  .icon:hover {
+    background-color: $color-secondary;
+    border-radius: 4px;
+    color: darkslategray;
+  }
 }
 
 // Identify (internal) links with icon
@@ -52,13 +62,6 @@ a.external {
   &:hover:after {
     color: $color-primary;
   }
-}
-
-// Highlight image when hover
-a .icon:hover {
-  background-color: $color-secondary;
-  border-radius: 4px;
-  color: darkslategray;
 }
 
 fieldset {
@@ -163,9 +166,6 @@ nav {
       }
       a {
         text-decoration: none;
-        &:not(.external):after {
-          content: '' // override (default) link icon
-        }
       }
     }
   }
@@ -240,6 +240,6 @@ ul {
   background-color: yellow !important; // important overrides flash message background-color
 }
 
-.page_scan_icon {
-  padding: 0 $padding-default/2;
+.icon {
+  padding: $padding-default/2;
 }

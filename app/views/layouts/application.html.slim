@@ -23,10 +23,10 @@ html lang=I18n.locale
     header
       nav.top-bar
         ul.menu
-          = menu_list_item "Home", root_path
-          = menu_list_item "Websites", websites_path
-          = menu_list_item "Webpages", webpages_path
-          = menu_list_item   "PageScans", page_scans_path
+          = menu_list_item "Home", root_path, class: 'no-link-icon'
+          = menu_list_item "Websites", websites_path, class: 'no-link-icon'
+          = menu_list_item "Webpages", webpages_path, class: 'no-link-icon'
+          = menu_list_item   "PageScans", page_scans_path, class: 'no-link-icon'
           - unless Rails.env.production?
             li.menu-text.environment= "(#{Rails.env})"
       div#flash_messages(data={turbolinks: false})
