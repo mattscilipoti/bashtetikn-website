@@ -2,22 +2,22 @@
 table.webpages
   thead
     tr
-      th
-      th
+      th(rowspan=2) Name
+      th(rowspan=2) Url
       - PageScan.descendants.each do |page_scan_class|
        th[colspan=page_scan_td_count]
          = page_scan_icon(page_scan_class)
          span(title=page_scan_class.validator_uri) = page_scan_class.name.titleize
-      th
+      th(rowspan=2) Actions
     tr
-      th Name
-      th Url
+      / th Accounted for via rowspan
+      / th Accounted for via rowspan
       - PageScan.descendants.each do |page_scan_class|
-        th Scan
+        th Results
         th Issues
         th Warnings
         th Scanned At
-      th Actions
+      / th Accounted for via rowspan
 
   tbody
     - webpages.each do |webpage|
