@@ -1,7 +1,8 @@
 fieldset 
   legend
     h3[data={id: dom_id(page_scan)}]
-      =page_scan.type.titleize
+      = page_scan_icon(page_scan)
+      span(title=page_scan.validator_uri) = page_scan.type.titleize
 
       span.subheader(title=page_scan.scanned_at)
         |&nbsp;(tested&nbsp;

@@ -17,9 +17,7 @@ fieldset
   ul
     - PageScan.descendants.each do |page_scan_class|
       li(class=page_scan_class.name.underscore)
-        = page_scan_link_to(page_scan_class: page_scan_class, scanned_model: @webpage) do
-          = font_awesome_icon(page_scan_class.icon_name)
-          span Perform #{page_scan_class.name.titleize.pluralize}
+        = perform_page_scan_link_to(page_scan_class: page_scan_class, scanned_model: @webpage)
 
 fieldset
   - last_scans = @webpage.last_scans
