@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
-## Upcoming: Upgrade to Rails 7, Remove Foundation
+## 2022-01-13: Improve PageScan tables, FontAwesome to CDN
+
+- Improve Page Scan tables: reorder cols, use Scan icon for actions to perform scan.
+  - Use Icon from Scanner source
+- Convert FontAwesome to use CDN (vs. downloaded files provided by server)
+
+## 2021-12-14: Upgrade to Rails 7, Remove Foundation
 
 - Upgrade Ruby: 3.0.2 to 3.0.3
 - Upgrade Rails 6.1.4 to 7.0.0.rc1
