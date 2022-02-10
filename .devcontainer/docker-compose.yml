@@ -7,7 +7,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
       args:
         # [Choice] Ruby version: 3, 3.0, 2, 2.7, 2.6, 2.5
-        VARIANT: 3.0
+        VARIANT: '3.0'
         # [Choice] Node.js version: lts/*, 16, 14, 12, 10
         NODE_VERSION: "lts/*"
 

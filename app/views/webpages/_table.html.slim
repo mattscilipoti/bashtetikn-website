@@ -1,4 +1,4 @@
-- page_scan_td_count = 5 # issues, warnings, scanned_at
+- page_scan_td_count = 6 # scan, issues, issues (alt), warnings, scanned_at, results
 table.webpages
   thead
     tr
@@ -14,8 +14,9 @@ table.webpages
       / th Accounted for via rowspan
       - PageScan.descendants.each do |page_scan_class|
         th Scan Now
-        th Errors
-        th Warnings
+        th.count Errors (Total)
+        th.count Errors (Missing Image Alt)
+        th.count Warnings
         th Scanned At
         th Results
       th Edit
@@ -32,7 +33,12 @@ table.webpages
             = perform_page_scan_link_to(page_scan_class: page_scan_class, scanned_model: webpage, caption: '')
           - scan = webpage.last_scans.detect{ |scan| scan.type == page_scan_class.name }
           - if scan
-            td.count= scan.issues.size
+            - issue_count = scan.issues.size
+            - missing_image_alt_issues_count = scan.issues(filter: :image_alt_attribute).size
+            td.count= issue_count
+            td.count
+              = missing_image_alt_issues_count
+              small= " (#{(missing_image_alt_issues_count/issue_count)*100.round(1)}%)"
             td.count= scan.warnings.size
             td.datetime= datetime_el(:t, scan.scanned_at)
             - tooltip_text = "Show #{scan.class.name.titleize} details for #{webpage.name.inspect}"
@@ -41,7 +47,7 @@ table.webpages
             - (page_scan_td_count-1).times do
               td
                 /! placeholder for scan info
-        
+
         td.icon
           = link_to font_awesome_icon(:edit), edit_webpage_path(webpage), title: "Edit #{webpage.name.inspect}"
         td.icon

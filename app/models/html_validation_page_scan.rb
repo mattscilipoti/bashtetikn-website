@@ -22,6 +22,17 @@ class HtmlValidationPageScan < PageScan
     self.class.icon_name
   end
 
+  def issues(filter: nil)
+    return self[:issues] if filter.nil?
+
+    case filter
+    when :image_alt_attribute
+      self[:issues].select {|issue| issue =~ /“img” element must have an “alt” attribute/ }
+    else
+      raise ArgumentError, "Unsupported filter (#{filter}) for issues."
+    end
+  end
+
   def scan
     results = validator.validate_uri(self.url)
 

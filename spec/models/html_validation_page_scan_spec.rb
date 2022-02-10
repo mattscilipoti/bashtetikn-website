@@ -9,6 +9,25 @@ RSpec.describe HtmlValidationPageScan, type: :model do
 
   its(:icon_name) { should eql('w3c_validator_nu_icon') }
 
+  describe '#issues, w/filter' do
+    it 'errors for unsupported filter' do
+      expect { 
+        subject.issues(filter: :bad_filter) 
+      }.to raise_error ArgumentError, /unsupported/i
+    end
+
+    it 'can filter issues' do
+      issues = [
+        'An “img” element must have an “alt” attribute, except under certain conditions. For details, consult guidance on providing text alternatives for images.',
+        'Another issue'
+      ]
+      subject.issues = issues
+      filtered_issues = subject.issues(filter: :image_alt_attribute)
+      expect(filtered_issues.size).to eql(1)
+      expect(filtered_issues).to contain_exactly(issues[0])
+    end
+  end
+
   describe '#scan', vcr: true do
     it 'converts results errors to #issues' do
       subject.url = 'https://w3c-validators.github.io/w3c_validators/invalid_html5.html'
