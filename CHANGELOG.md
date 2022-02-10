@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
+## Upcoming: Filter issues with missing Image Alt Attribute
+
+- fixes Dokcerfile for ruby 3.0.3 (convert int to string)
+- page_scan#index indicates count of issues with missing Image Alt Attribute
+
 ## 2022-01-13: Improve PageScan tables, FontAwesome to CDN
 
 - Improve Page Scan tables: reorder cols, use Scan icon for actions to perform scan.
