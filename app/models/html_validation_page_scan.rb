@@ -33,6 +33,17 @@ class HtmlValidationPageScan < PageScan
     end
   end
 
+  def issues_missing_img_alt
+    issues(filter: :image_alt_attribute)
+  end
+
+  def issues_missing_img_alt_percentage
+    return 0 unless issues.size > 0 # handle divide by zero
+
+    # Use to_f to handle very small percentages (497/498==0, 497/498.0==0.99799)
+    (issues_missing_img_alt.size/issues.size.to_f)*100
+  end
+
   def scan
     results = validator.validate_uri(self.url)
 

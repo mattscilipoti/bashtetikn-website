@@ -28,6 +28,30 @@ RSpec.describe HtmlValidationPageScan, type: :model do
     end
   end
 
+  describe '#issues_missing_img_alt_percentage' do
+    it 'should calculate correctly for very small percentages' do
+      # Tests for known issue: (497/498==0, 497/498.0==0.99799)
+      # Stub Workaround: populate with array of the correct size
+      allow(subject).to receive(:issues).and_return((1..498).to_a)
+      allow(subject).to receive(:issues_missing_img_alt).and_return((1..497).to_a)
+      expect(subject.issues_missing_img_alt_percentage).to eql(497/498.0*100)
+    end
+
+    it 'should handle divide by zero scenario, returning 0 when there are no issues' do
+      # Stub Workaround: populate with array of the correct size
+      allow(subject).to receive(:issues).and_return([])
+      allow(subject).to receive(:issues_missing_img_alt).and_return([1])
+      expect(subject.issues_missing_img_alt_percentage).to eql(0)
+    end
+
+    it 'should return 0.0 when there are no issues for missing alt image' do
+      # Stub Workaround: populate with array of the correct size
+      allow(subject).to receive(:issues).and_return([1])
+      allow(subject).to receive(:issues_missing_img_alt).and_return([])
+      expect(subject.issues_missing_img_alt_percentage).to eql(0.0)
+    end
+  end
+
   describe '#scan', vcr: true do
     it 'converts results errors to #issues' do
       subject.url = 'https://w3c-validators.github.io/w3c_validators/invalid_html5.html'
