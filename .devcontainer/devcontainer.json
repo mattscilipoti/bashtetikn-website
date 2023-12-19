@@ -40,7 +40,8 @@
 		"mtxr.sqltools",
 		"mtxr.sqltools-driver-pg",
 		"EditorConfig.EditorConfig",
-		"noku.rails-run-spec-vscode"
+		"noku.rails-run-spec-vscode",
+		"ms-azuretools.vscode-docker"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
