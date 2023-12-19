@@ -6,8 +6,7 @@ fieldset
 
       span.subheader(title=page_scan.scanned_at)
         |&nbsp;(tested&nbsp;
-        = time_ago_in_words(page_scan.scanned_at)
-        |&nbsp;ago
+        = datetime_el(page_scan.scanned_at)
 
       span.subheader.scan_results
         |, 

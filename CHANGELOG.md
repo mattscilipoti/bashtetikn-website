@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
+## Upcoming: OPOSUP-548 List Hidden Fields with autocomplete errors
+
+- Update datetime_el helper
+  - Defaults: element_container_type=span, include_seconds=true
+  - Replace time_ago_in_words
+- Seed: add site for W3C Validators
+
 ## 2022-11-10: Fix Missing Img Alt percentage
 
 ## 2022-02-09: Filter issues with missing Image Alt Attribute

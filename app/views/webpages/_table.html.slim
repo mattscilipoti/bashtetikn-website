@@ -41,7 +41,7 @@ table.webpages
               - if missing_image_alt_issues_count > 0
                 small= " (#{scan.issues_missing_img_alt_percentage.to_i}%)"
             td.count= scan.warnings.size
-            td.datetime= datetime_el(:t, scan.scanned_at)
+            td.datetime= datetime_el(scan.scanned_at)
             - tooltip_text = "Show #{scan.class.name.titleize} details for #{webpage.name.inspect}"
             td.icon = link_to(font_awesome_icon('file-lines'), page_scan_path(scan), title: tooltip_text)
           - else

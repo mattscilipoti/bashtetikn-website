@@ -68,8 +68,7 @@ fieldset
           span.scan_type = queued_scan.type.titleize
           |&nbsp;(Queued:&nbsp;
           - queued_at = queued_scan.queued_at
-          span.date[title=queued_at] = time_ago_in_words(queued_at, include_seconds: true)
-          |&nbsp;ago)
+          span.date[title=queued_at] = datetime_el(queued_at)
 
 p.actions
   => link_to 'Edit', edit_webpage_path(@webpage)
