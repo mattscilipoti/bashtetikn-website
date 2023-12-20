@@ -12,6 +12,9 @@ In place of release version numbers, we organize via deploys to Production (by D
 - Update datetime_el helper
   - Defaults: element_container_type=span, include_seconds=true
   - Replace time_ago_in_words
+- Gems: 
+  - Add vendor/cache
+  - Add ruby-lsp (for vs code)
 - Seed: add site for W3C Validators
 
 ## 2022-11-10: Fix Missing Img Alt percentage
