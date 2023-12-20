@@ -29,6 +29,7 @@ RUN bundle config build.nokogiri --use-system-libraries;
 ENV DISABLE_BOOTSNAP_COMPILE_CACHE=false
 
 COPY Gemfile* /tmp/
+COPY vendor/cache/* /tmp/vendor/cache/
 WORKDIR /tmp
 RUN bundle install
 
