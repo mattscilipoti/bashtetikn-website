@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
-## Upcoming: List Hidden Fields with autocomplete errors
+## 2023-12-20: List Hidden Fields with autocomplete errors
 
 - Add list of errors that are "hidden fields with autocomplete"
 - Update datetime_el helper
