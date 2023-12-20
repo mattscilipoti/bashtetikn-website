@@ -15,24 +15,31 @@ puts "Cleaning db, via truncation..."
 do_not_truncate = %w[] # add tables to ignore, e.g. users
 DatabaseCleaner.clean_with :truncation, :except => do_not_truncate
 
-Website.create!(
-  name: 'TEST SITE',
-  url: 'https://example.com'
-)
-
-Webpage.create!(
-  name: 'TEST VALID PAGE 1',
-  url: 'https://w3c-validators.github.io/w3c_validators/valid_html5.html'
-)
-
-Webpage.create!(
-  name: 'TEST INVALID PAGE 1',
-  url: 'https://w3c-validators.github.io/w3c_validators/invalid_html5.html'
-)
-
 HtmlValidationPageScan.create!(
   url: 'https://example.com/1',
   webpage: Webpage.first,
   warnings: [{message: 'WARN 1'}],
   issues: [{message: 'ERR 1'}, {message: 'ERR 2'}]
+)
+
+test_site = Website.create!(
+  name: 'TEST SITE',
+  url: 'https://example.com'
+)
+
+w3c_site = Website.create!(
+  name: 'W3C Validators Site',
+  url: 'https://w3c-validators.github.io'
+)
+
+Webpage.create!(
+  name: 'TEST VALID PAGE 1',
+  url: 'https://w3c-validators.github.io/w3c_validators/valid_html5.html',
+  website: w3c_site,
+)
+
+Webpage.create!(
+  name: 'TEST INVALID PAGE 1',
+  url: 'https://w3c-validators.github.io/w3c_validators/invalid_html5.html',
+  website: w3c_site,
 )

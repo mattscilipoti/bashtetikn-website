@@ -188,6 +188,13 @@ table {
     &.datetime {
       text-align: center;
     }
+    &.demphasize {
+      background-color: scale-color($color-secondary, $lightness: 80%);
+      border-left:  2px solid $color-secondary;
+      border-right: 2px solid $color-secondary;
+      color: gray;
+      font-weight: normal;
+    }
     &.icon {
       text-align: center;
     }    

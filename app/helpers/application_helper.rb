@@ -1,8 +1,10 @@
 module ApplicationHelper
   # standard element to display datetime
-  def datetime_el(element_container_type, datetime)
+  def datetime_el(datetime, include_seconds: true, element_container_type: :span)
+    return nil if datetime.blank?
+
     content_tag(element_container_type, title: datetime) do
-      datetime ? "#{time_ago_in_words(datetime)} ago" : nil
+      "#{time_ago_in_words(datetime, include_seconds: include_seconds)} ago"
     end
   end
 

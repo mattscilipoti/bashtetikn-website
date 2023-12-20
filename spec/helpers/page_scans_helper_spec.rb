@@ -4,7 +4,7 @@ RSpec.configure do |config|
   config.include RSpecHtmlMatchers
 end
 
-# Specs in this file have access to a helper object that includes
+# Specs in this file have access to the `helper` object that includes
 # the PageScansHelper. For example:
 #
 # describe PageScansHelper do

@@ -30,9 +30,9 @@ table
         td.webpage
           - if page_scan.webpage
             = link_to(page_scan.webpage.name, page_scan.webpage, title: "Show details for Webpage: #{page_scan.webpage.name}")
-        = datetime_el(:td, page_scan.created_at)
-        = datetime_el(:td, page_scan.queued_at)
-        = datetime_el(:td, page_scan.scanned_at)
+        td.datetime= datetime_el(page_scan.created_at)
+        td.datetime= datetime_el(page_scan.queued_at)
+        td.datetime= datetime_el(page_scan.scanned_at)
         td.issues.count = page_scan.issues.size
         td.warnings.count = page_scan.warnings.size
         td.url
