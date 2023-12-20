@@ -1,4 +1,4 @@
-- page_scan_td_count = 6 # scan, issues, issues (alt), warnings, scanned_at, results
+- page_scan_td_count = 7 # scan, issues, issues (alt), issues (hidden), warnings, scanned_at, results
 table.webpages
   thead
     tr
@@ -15,7 +15,8 @@ table.webpages
       - PageScan.descendants.each do |page_scan_class|
         th Scan Now
         th.count Errors (Total)
-        th.count Errors (Missing Image Alt)
+        th.count.demphasize Errors (Missing Image Alt)
+        th.count.demphasize Errors (Hidden Input with autocomplete)
         th.count Warnings
         th Scanned At
         th Results
@@ -35,11 +36,16 @@ table.webpages
           - if scan
             - issue_count = scan.issues.size
             - missing_image_alt_issues_count = scan.issues_missing_img_alt.size
+            - hidden_input_with_autocomplete_count = scan.issues_with_hidden_input_and_autocomplete.size
             td.count= issue_count
-            td.count
+            td.count.demphasize
               = missing_image_alt_issues_count
               - if missing_image_alt_issues_count > 0
                 small= " (#{scan.issues_missing_img_alt_percentage.to_i}%)"
+            td.count.demphasize
+              = hidden_input_with_autocomplete_count
+              - if hidden_input_with_autocomplete_count > 0
+                small= " (#{scan.issues_with_hidden_input_and_autocomplete_percentage.to_i}%)"
             td.count= scan.warnings.size
             td.datetime= datetime_el(scan.scanned_at)
             - tooltip_text = "Show #{scan.class.name.titleize} details for #{webpage.name.inspect}"

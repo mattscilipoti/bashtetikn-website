@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 In place of release version numbers, we organize via deploys to Production (by Date/Time).
 
-## Upcoming: OPOSUP-548 List Hidden Fields with autocomplete errors
+## Upcoming: List Hidden Fields with autocomplete errors
 
+- Add list of errors that are "hidden fields with autocomplete"
 - Update datetime_el helper
   - Defaults: element_container_type=span, include_seconds=true
   - Replace time_ago_in_words
